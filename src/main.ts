@@ -1,8 +1,7 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import PrimeVue from 'primevue/config'
-import 'primevue/resources/themes/lara-light-blue/theme.css'
-import 'primevue/resources/primevue.min.css'
+import Aura from '@primevue/themes/aura'
 import 'primeicons/primeicons.css'
 import './style.css'
 
@@ -21,7 +20,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(to) {
     if (to.hash) {
       return {
         el: to.hash,
@@ -35,6 +34,13 @@ const router = createRouter({
 const app = createApp(App)
 
 app.use(router)
-app.use(PrimeVue)
+app.use(PrimeVue, {
+  theme: {
+    preset: Aura,
+    options: {
+      darkModeSelector: '.dark-mode'
+    }
+  }
+})
 
 app.mount('#app') 
