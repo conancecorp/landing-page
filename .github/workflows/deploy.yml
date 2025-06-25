@@ -27,9 +27,6 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./landing-page
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,7 +36,7 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
-          cache-dependency-path: landing-page/package-lock.json
+          cache-dependency-path: 'landing-page/package-lock.json'
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -51,13 +48,17 @@ jobs:
           static_site_generator: custom
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          cd landing-page
+          npm ci
 
       - name: Build with Vite
         env:
           VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
           VITE_ENVIRONMENT: production
-        run: npm run build
+        run: |
+          cd landing-page
+          npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
