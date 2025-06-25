@@ -50,22 +50,18 @@ jobs:
           static_site_generator: custom
 
       - name: Install dependencies
-        run: |
-          cd landing-page
-          npm ci
+        run: npm ci
 
       - name: Build with Vite
         env:
           VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
           VITE_ENVIRONMENT: production
-        run: |
-          cd landing-page
-          npm run build
-
+        run: npm run build
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./landing-page/dist
+          path: ./dist
 
   # Deployment job
   deploy:
