@@ -2,6 +2,10 @@
 
 Site vitrine moderne pour l'application Conance, développé avec Vue 3, TypeScript, PrimeVue 3 et Tailwind CSS.
 
+## Activité
+
+![Alt](https://repobeats.axiom.co/api/embed/a23cf608b530daeeb926ca912090d8b8593ce8eb.svg "Repobeats analytics image")
+
 ## 🚀 Démarrage rapide
 
 ### Prérequis
