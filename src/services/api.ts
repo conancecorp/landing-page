@@ -11,10 +11,12 @@ interface ContactResponse {
   message: string;
 }
 
-// Use the same origin to avoid CORS issues during development
-const API_BASE_URL = window.location.origin.includes('5174') 
-  ? 'http://localhost:8000/api/v1'  // When landing page runs on 5174
-  : 'http://localhost:8000/api/v1'; // Default
+// API URL configuration using environment variables
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
+const ENVIRONMENT = import.meta.env.VITE_ENVIRONMENT || 'development';
+
+console.log('🔧 Environment:', ENVIRONMENT);
+console.log('🌐 API Base URL:', API_BASE_URL);
 
 // Helper function to extract user-friendly error messages from FastAPI validation errors
 function extractErrorMessage(errorData: any): string {

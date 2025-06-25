@@ -1,6 +1,91 @@
 # Site Vitrine Conance
 
-Site vitrine pour l'application Conance, une solution SaaS de gestion des commissions pour cabinets de gestion de patrimoine.
+Site vitrine moderne pour l'application Conance, développé avec Vue 3, TypeScript, PrimeVue 3 et Tailwind CSS.
+
+## 🚀 Démarrage rapide
+
+### Prérequis
+- Node.js 18+
+- npm
+
+### Installation
+```bash
+npm install
+```
+
+### Configuration
+1. Copiez le fichier d'exemple des variables d'environnement :
+```bash
+cp env.example .env
+```
+
+2. Modifiez le fichier `.env` selon vos besoins :
+```env
+VITE_API_BASE_URL=http://localhost:8000/api/v1
+VITE_ENVIRONMENT=development
+```
+
+### Développement
+```bash
+npm run dev
+```
+
+Le site sera accessible sur `http://localhost:5174`
+
+### Build de production
+```bash
+npm run build
+```
+
+## 🔧 Configuration des variables d'environnement
+
+### Variables disponibles
+- `VITE_API_BASE_URL` : URL de base de l'API (ex: `https://api.conance.io/api/v1`)
+- `VITE_ENVIRONMENT` : Environnement (`development`, `production`)
+
+### Configuration GitHub Pages
+
+Pour déployer sur GitHub Pages, configurez les secrets GitHub suivants :
+
+1. Allez dans **Settings** > **Secrets and variables** > **Actions**
+2. Ajoutez les secrets suivants :
+   - `VITE_API_BASE_URL` : URL de votre API de production (ex: `https://api.conance.io/api/v1`)
+
+### Déploiement automatique
+
+Le site se déploie automatiquement sur GitHub Pages à chaque push sur `main`/`master` qui modifie le dossier `landing-page/`.
+
+## 📁 Structure du projet
+
+```
+src/
+├── components/         # Composants Vue réutilisables
+├── services/          # Services API et utilitaires
+├── views/             # Pages principales
+├── assets/            # Images, styles, etc.
+└── main.ts           # Point d'entrée de l'application
+```
+
+## 🎨 Thème et styles
+
+Le site utilise une palette de couleurs personnalisée basée sur l'identité visuelle Conance :
+- Primaire : #23B086 (vert Conance)
+- Accent : #33FFC2 (vert clair)
+- Fond sombre : #0F2F2C
+
+## 📞 Fonctionnalités
+
+- **Page d'accueil** : Hero, fonctionnalités, tarifs, contact
+- **Formulaire de contact** : Envoi d'emails via l'API backend
+- **Pages légales** : CGU et mentions légales
+- **Responsive design** : Optimisé pour tous les écrans
+- **SEO optimisé** : Meta tags et structure sémantique
+
+## 🔗 Liens utiles
+
+- [Application principale](https://app.conance.io)
+- [Documentation API](https://api.conance.io/docs)
+- [Support](mailto:contact@conance.io)
 
 ## Structure du site
 
