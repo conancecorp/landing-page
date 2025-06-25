@@ -108,7 +108,7 @@ export default {
   name: 'CGU',
   data() {
     return {
-      lastUpdate: '15 décembre 2024'
+      lastUpdate: '25 juin 2025'
     }
   }
 }
