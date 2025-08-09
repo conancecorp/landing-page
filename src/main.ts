@@ -43,4 +43,13 @@ app.use(PrimeVue, {
   }
 })
 
+// Restaure l'URL après redirection GitHub Pages
+router.isReady().then(() => {
+  const pathToRestore = sessionStorage.getItem('pathToRestore')
+  if (pathToRestore) {
+    sessionStorage.removeItem('pathToRestore')
+    router.push('/' + pathToRestore)
+  }
+})
+
 app.mount('#app') 

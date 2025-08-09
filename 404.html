@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Conance - Redirection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8fafc;
+            color: #64748b;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #e2e8f0;
+            border-top: 3px solid #23b086;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        // Configuration SPA pour GitHub Pages
+        // Stocke l'URL demandée et redirige vers l'index
+        (function() {
+            const path = window.location.pathname.slice(1);
+            const search = window.location.search;
+            
+            if (path) {
+                // Stocke le path dans sessionStorage pour que l'app Vue puisse le récupérer
+                sessionStorage.setItem('pathToRestore', path + search);
+            }
+            
+            // Redirige vers l'index pour que Vue Router prenne le contrôle
+            window.location.href = '/';
+        })();
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="spinner"></div>
+        <p>Redirection en cours...</p>
+    </div>
+</body>
+</html>
