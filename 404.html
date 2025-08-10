@@ -39,14 +39,18 @@
         (function() {
             const path = window.location.pathname.slice(1);
             const search = window.location.search;
+            const hash = window.location.hash;
             
             if (path) {
-                // Stocke le path dans sessionStorage pour que l'app Vue puisse le récupérer
-                sessionStorage.setItem('pathToRestore', path + search);
+                // Stocke le path complet dans sessionStorage pour que l'app Vue puisse le récupérer
+                sessionStorage.setItem('pathToRestore', path + search + hash);
+                
+                // Redirige vers l'index avec un paramètre pour éviter les boucles
+                window.location.replace(window.location.origin + '/index.html');
+            } else {
+                // Si pas de path spécifique, va directement à l'index
+                window.location.replace(window.location.origin + '/index.html');
             }
-            
-            // Redirige vers l'index pour que Vue Router prenne le contrôle
-            window.location.href = '/';
         })();
     </script>
 </head>

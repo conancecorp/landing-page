@@ -48,7 +48,9 @@ router.isReady().then(() => {
   const pathToRestore = sessionStorage.getItem('pathToRestore')
   if (pathToRestore) {
     sessionStorage.removeItem('pathToRestore')
-    router.push('/' + pathToRestore)
+    // Assure-toi que le path commence par '/'
+    const cleanPath = pathToRestore.startsWith('/') ? pathToRestore : '/' + pathToRestore
+    router.push(cleanPath)
   }
 })
 
