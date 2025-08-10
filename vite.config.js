@@ -2,23 +2,35 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import { fileURLToPath, URL } from 'node:url'
+import { copyFileSync } from 'fs'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
-  // Base path for GitHub Pages - will be set automatically by GitHub
-  base: process.env.NODE_ENV === 'production' ? '/Conance/' : '/',
+  plugins: [
+    vue(),
+    // Plugin pour copier le fichier 404.html après le build
+    {
+      name: 'copy-404',
+      writeBundle() {
+        try {
+          copyFileSync('404.html', 'dist/404.html')
+          console.log('✓ 404.html copié dans dist/')
+        } catch (err) {
+          console.error('Erreur lors de la copie de 404.html:', err)
+        }
+      }
+    }
+  ],
+  // Base path for GitHub Pages
+  base: './',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  base: './', // Specify the base path
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    // Optionally configure the public path if needed
-    publicDir: './',
     rollupOptions: {
       output: {
         manualChunks: {
