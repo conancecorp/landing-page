@@ -27,7 +27,7 @@
             <div class="text-gray-700 space-y-2">
               <p><strong>Raison sociale :</strong> Conance</p>
               <p><strong>Forme juridique :</strong> Auto-entreprise</p>
-              <p><strong>SIRET :</strong> [À compléter]</p>
+              <p><strong>SIRET :</strong> 99150569400018</p>
               <p><strong>Adresse :</strong> 4 Quai François Mitterrand, 44200 Nantes, France</p>
               <p><strong>Téléphone :</strong> 06 99 96 46 97</p>
               <p><strong>Email :</strong> <a href="mailto:contact@conance.io" class="text-primary-600">contact@conance.io</a></p>
