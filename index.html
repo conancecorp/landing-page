@@ -1,52 +1,57 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Conance - Solution SaaS de gestion des commissions pour cabinets de gestion de patrimoine" />
-    <meta name="keywords" content="gestion commissions, cabinet patrimoine, SaaS, finance" />
-    <meta property="og:title" content="Conance - Simplifiez la gestion des commissions" />
-    <meta property="og:description" content="Solution SaaS complète pour les cabinets de gestion de patrimoine" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://conance.io" />
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <title>Conance - Simplifiez la gestion des commissions</title>
-    
-    <!-- Umami Analytics -->
-    <script defer src="https://analytics.elouanb7.com/script.js" data-website-id="8a72159c-d03b-4956-be0e-e16e594c376a"></script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-    
-    <!-- Chatwoot Live Chat -->
-    <script>
-      // Only load Chatwoot in production (not on localhost)
-      if (!window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
-        (function(d,t) {
-          var BASE_URL="https://chat.elouanb7.com";
-          var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-          g.src=BASE_URL+"/packs/js/sdk.js";
-          g.async = true;
-          s.parentNode.insertBefore(g,s);
-          g.onload=function(){
-            window.chatwootSDK.run({
-              websiteToken: '52uef695Yuu1sdh7DFyUuKoU',
-              baseUrl: BASE_URL
-            })
-          }
-        })(document,"script");
-      } else {
-        console.log('Chatwoot disabled in development mode');
-      }
-    </script>
-  </body>
-</html> 
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Conance - Solution SaaS de gestion des commissions pour cabinets de gestion de patrimoine" />
+  <meta name="keywords" content="gestion commissions, cabinet patrimoine, SaaS, finance" />
+  <meta property="og:title" content="Conance - Simplifiez la gestion des commissions" />
+  <meta property="og:description" content="Solution SaaS complète pour les cabinets de gestion de patrimoine" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://conance.io" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <title>Conance - Simplifiez la gestion des commissions</title>
+
+  <!-- Umami Analytics -->
+  <script defer src="https://analytics.elouanb7.com/script.js"
+    data-website-id="8a72159c-d03b-4956-be0e-e16e594c376a"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+
+  <!-- Chatwoot Live Chat -->
+  <script>
+    // Only load Chatwoot in production (not on localhost)
+    if (!window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+      (function (d, t) {
+        var BASE_URL = "https://chat.elouanb7.com";
+        var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        g.src = BASE_URL + "/packs/js/sdk.js";
+        g.async = true;
+        s.parentNode.insertBefore(g, s);
+        g.onload = function () {
+          window.chatwootSDK.run({
+            websiteToken: '52uef695Yuu1sdh7DFyUuKoU',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document, "script");
+    } else {
+      console.log('Chatwoot disabled in development mode');
+    }
+  </script>
+</body>
+
+</html>
