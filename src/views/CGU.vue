@@ -9,7 +9,7 @@
               <img src="/logo-conance.svg" alt="Conance" class="h-8 w-auto" />
             </router-link>
           </div>
-          <router-link to="/" class="text-gray-600 hover:text-primary-600 transition-colors">
+          <router-link to="/" class="text-gray-600 hover:text-primary-500 transition-colors">
             Retour à l'accueil
           </router-link>
         </div>
@@ -94,7 +94,7 @@
             <h2 class="text-2xl font-semibold text-gray-900 mb-4">9. Contact</h2>
             <p class="text-gray-700">
               Pour toute question relative aux présentes CGU, vous pouvez nous contacter à :
-              <a href="mailto:contact@conance.io" class="text-primary-600 hover:text-primary-700">contact@conance.io</a>
+              <a href="mailto:contact@conance.io" class="text-primary-500 hover:text-primary-700">contact@conance.io</a>
             </p>
           </section>
         </div>

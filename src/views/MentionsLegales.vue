@@ -9,7 +9,7 @@
               <img src="/logo-conance.svg" alt="Conance" class="h-8 w-auto" />
             </router-link>
           </div>
-          <router-link to="/" class="text-gray-600 hover:text-primary-600 transition-colors">
+          <router-link to="/" class="text-gray-600 hover:text-primary-500 transition-colors">
             Retour à l'accueil
           </router-link>
         </div>
@@ -30,7 +30,7 @@
               <p><strong>SIRET :</strong> 99150569400018</p>
               <p><strong>Adresse :</strong> 4 Quai François Mitterrand, 44200 Nantes, France</p>
               <p><strong>Téléphone :</strong> 06 99 96 46 97</p>
-              <p><strong>Email :</strong> <a href="mailto:contact@conance.io" class="text-primary-600">contact@conance.io</a></p>
+              <p><strong>Email :</strong> <a href="mailto:contact@conance.io" class="text-primary-500">contact@conance.io</a></p>
             </div>
           </section>
 
@@ -47,11 +47,11 @@
             <div class="text-gray-700 space-y-2">
               <p><strong>Hébergeur de l'application :</strong> Scaleway SAS</p>
               <p><strong>Adresse :</strong> 8 rue de la Ville l'Évêque, 75008 Paris, France</p>
-              <p><strong>Site web :</strong> <a href="https://www.scaleway.com" class="text-primary-600" target="_blank">https://www.scaleway.com</a></p>
+              <p><strong>Site web :</strong> <a href="https://www.scaleway.com" class="text-primary-500" target="_blank">https://www.scaleway.com</a></p>
               <br>
               <p><strong>Hébergeur du site vitrine :</strong> Vercel Inc.</p>
               <p><strong>Adresse :</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis</p>
-              <p><strong>Site web :</strong> <a href="https://vercel.com" class="text-primary-600" target="_blank">https://vercel.com</a></p>
+              <p><strong>Site web :</strong> <a href="https://vercel.com" class="text-primary-500" target="_blank">https://vercel.com</a></p>
             </div>
           </section>
 
@@ -111,7 +111,7 @@
             <h2 class="text-2xl font-semibold text-gray-900 mb-4">Contact</h2>
             <p class="text-gray-700">
               Pour toute question concernant ces mentions légales, vous pouvez nous contacter à :
-              <a href="mailto:contact@conance.io" class="text-primary-600 hover:text-primary-700">contact@conance.io</a>
+              <a href="mailto:contact@conance.io" class="text-primary-500 hover:text-primary-700">contact@conance.io</a>
             </p>
           </section>
         </div>

@@ -10,9 +10,9 @@
             </a>
           </div>
           <div class="hidden md:flex space-x-8">
-            <a href="#fonctionnalites" class="text-gray-600 hover:text-primary-600 transition-colors">Fonctionnalités</a>
-            <a href="#tarifs" class="text-gray-600 hover:text-primary-600 transition-colors">Tarifs</a>
-            <a href="#contact" class="text-gray-600 hover:text-primary-600 transition-colors">Contact</a>
+            <a href="#fonctionnalites" class="text-gray-600 hover:text-primary-500 transition-colors">Fonctionnalités</a>
+            <a href="#tarifs" class="text-gray-600 hover:text-primary-500 transition-colors">Tarifs</a>
+            <a href="#contact" class="text-gray-600 hover:text-primary-500 transition-colors">Contact</a>
           </div>
           <div class="flex items-center space-x-4">
             <a href="https://app.conance.io" class="btn-primary">Se connecter</a>
@@ -59,7 +59,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
             <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <i class="pi pi-users text-primary-600 text-xl"></i>
+              <i class="pi pi-users text-primary-500 text-xl"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Gestion des conseillers et clients</h3>
             <p class="text-gray-600">Centralisez toutes les informations de vos conseillers et clients dans une interface intuitive.</p>
@@ -67,7 +67,7 @@
 
           <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
             <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <i class="pi pi-file-edit text-primary-600 text-xl"></i>
+              <i class="pi pi-file-edit text-primary-500 text-xl"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Suivi des contrats et commissions</h3>
             <p class="text-gray-600">Gérez vos contrats et calculez automatiquement les commissions associées.</p>
@@ -75,7 +75,7 @@
 
           <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
             <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <i class="pi pi-upload text-primary-600 text-xl"></i>
+              <i class="pi pi-upload text-primary-500 text-xl"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Import/export de données</h3>
             <p class="text-gray-600">Importez facilement vos données existantes et exportez vos rapports en quelques clics.</p>
@@ -83,7 +83,7 @@
 
           <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
             <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <i class="pi pi-chart-line text-primary-600 text-xl"></i>
+              <i class="pi pi-chart-line text-primary-500 text-xl"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Tableaux de bord et rapports</h3>
             <p class="text-gray-600">Visualisez vos performances avec des tableaux de bord interactifs et des rapports détaillés.</p>
@@ -91,7 +91,7 @@
 
           <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
             <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <i class="pi pi-building text-primary-600 text-xl"></i>
+              <i class="pi pi-building text-primary-500 text-xl"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Gestion multi-entreprises</h3>
             <p class="text-gray-600">Gérez plusieurs entreprises avec une séparation stricte des données et des accès.</p>
@@ -99,7 +99,7 @@
 
           <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
             <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <i class="pi pi-shield text-primary-600 text-xl"></i>
+              <i class="pi pi-shield text-primary-500 text-xl"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Rôles et permissions avancés</h3>
             <p class="text-gray-600">Contrôlez finement les accès avec un système de rôles et permissions personnalisables.</p>
@@ -184,9 +184,9 @@
           </div>
 
           <!-- Plan Pro -->
-          <div class="bg-white rounded-lg shadow-lg p-8 border-2 border-primary-600 relative flex flex-col">
+          <div class="bg-white rounded-lg shadow-lg p-8 border-2 border-primary-500 relative flex flex-col">
             <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <span class="bg-primary-600 text-white px-4 py-1 rounded-full text-sm font-medium">Populaire</span>
+              <span class="bg-primary-500 text-white px-4 py-1 rounded-full text-sm font-medium">Populaire</span>
             </div>
             <div class="text-center">
               <h3 class="text-2xl font-bold text-gray-900 mb-2">Pro</h3>
@@ -262,7 +262,7 @@
               </li>
               <li class="flex items-center">
                 <i class="pi pi-star text-primary-500 mr-3"></i>
-                <span class="text-primary-600 font-medium">Limites extensibles sur demande</span>
+                <span class="text-primary-500 font-medium">Limites extensibles sur demande</span>
               </li>
             </ul>
             <a href="#contact" class="w-full btn-secondary text-center block mt-auto">Nous contacter</a>
@@ -288,15 +288,15 @@
             <h3 class="text-2xl font-semibold mb-6">Informations de contact</h3>
             <div class="space-y-4">
               <div class="flex items-center">
-                <i class="pi pi-envelope text-primary-600 mr-4"></i>
+                <i class="pi pi-envelope text-primary-500 mr-4"></i>
                 <span>contact@conance.io</span>
               </div>
               <div class="flex items-center">
-                <i class="pi pi-phone text-primary-600 mr-4"></i>
+                <i class="pi pi-phone text-primary-500 mr-4"></i>
                 <span>06 99 96 46 97</span>
               </div>
               <div class="flex items-center">
-                <i class="pi pi-map-marker text-primary-600 mr-4"></i>
+                <i class="pi pi-map-marker text-primary-500 mr-4"></i>
                 <span>4 Quai François Mitterrand, 44200 Nantes</span>
               </div>
             </div>
