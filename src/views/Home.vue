@@ -120,152 +120,194 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto items-stretch">
+        <div class="grid md:grid-cols-5 gap-6 max-w-7xl mx-auto items-stretch">
           <!-- Plan Gratuit -->
-          <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-200 flex flex-col">
+          <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
             <div class="text-center">
-              <h3 class="text-2xl font-bold text-gray-900 mb-2">Gratuit</h3>
-              <p class="text-gray-600 mb-6">Plan gratuit avec fonctionnalités de base</p>
-              <div class="mb-6">
-                <span class="text-4xl font-bold text-gray-900">0€</span>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Gratuit</h3>
+              <p class="text-gray-600 mb-4 text-sm">Pour découvrir Conance</p>
+              <div class="mb-4">
+                <span class="text-3xl font-bold text-gray-900">0€</span>
                 <span class="text-gray-600">/mois</span>
               </div>
             </div>
-            <ul class="space-y-3 mb-8 flex-grow">
+            <ul class="space-y-2 mb-6 flex-grow text-sm">
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>Jusqu'à 100 documents</span>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>5 000 commissions</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>3 partenaires</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
                 <span>3 utilisateurs</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>100 Mo de stockage</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>Support communautaire</span>
-              </li>
-            </ul>
-            <a href="https://app.conance.io" class="w-full btn-secondary text-center block mt-auto">Commencer gratuitement</a>
-          </div>
-
-          <!-- Plan Starter -->
-          <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-200 flex flex-col">
-            <div class="text-center">
-              <h3 class="text-2xl font-bold text-gray-900 mb-2">Starter</h3>
-              <p class="text-gray-600 mb-6">Pour les petites équipes qui débutent</p>
-              <div class="mb-6">
-                <span class="text-4xl font-bold text-gray-900">99€</span>
-                <span class="text-gray-600">/mois</span>
-              </div>
-            </div>
-            <ul class="space-y-3 mb-8 flex-grow">
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>Jusqu'à 2 500 documents</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>3 utilisateurs</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
                 <span>1 Go de stockage</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>Support email</span>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>Support communautaire</span>
               </li>
             </ul>
-            <a href="https://app.conance.io" class="w-full btn-secondary text-center block mt-auto">Choisir ce plan</a>
+            <a href="https://app.conance.io" class="w-full btn-secondary text-center block mt-auto text-sm">Commencer gratuitement</a>
           </div>
 
-          <!-- Plan Pro -->
-          <div class="bg-white rounded-lg shadow-lg p-8 border-2 border-primary-500 relative flex flex-col">
-            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <span class="bg-primary-500 text-white px-4 py-1 rounded-full text-sm font-medium">Populaire</span>
-            </div>
+          <!-- Plan Starter -->
+          <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
             <div class="text-center">
-              <h3 class="text-2xl font-bold text-gray-900 mb-2">Pro</h3>
-              <p class="text-gray-600 mb-6">Pour les entreprises en croissance</p>
-              <div class="mb-6">
-                <span class="text-4xl font-bold text-gray-900">249€</span>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Starter</h3>
+              <p class="text-gray-600 mb-4 text-sm">Pour les petites structures</p>
+              <div class="mb-4">
+                <span class="text-3xl font-bold text-gray-900">100€</span>
                 <span class="text-gray-600">/mois</span>
               </div>
             </div>
-            <ul class="space-y-3 mb-8 flex-grow">
+            <ul class="space-y-2 mb-6 flex-grow text-sm">
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>Jusqu'à 15 000 documents</span>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>500 000 commissions</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>10 utilisateurs</span>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>10 partenaires</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>3 utilisateurs</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
                 <span>10 Go de stockage</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>Support premium</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>Export des données</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>Personnalisation</span>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>Support email</span>
               </li>
             </ul>
-            <a href="https://app.conance.io" class="w-full btn-primary text-center block mt-auto">Choisir ce plan</a>
+            <a href="https://app.conance.io" class="w-full btn-secondary text-center block mt-auto text-sm">Choisir ce plan</a>
           </div>
 
-          <!-- Plan Entreprise -->
-          <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-200 flex flex-col">
+          <!-- Plan Standard -->
+          <div class="bg-white rounded-lg shadow-lg p-6 border-2 border-primary-500 relative flex flex-col">
+            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+              <span class="bg-primary-500 text-white px-3 py-1 rounded-full text-xs font-medium">Populaire</span>
+            </div>
             <div class="text-center">
-              <h3 class="text-2xl font-bold text-gray-900 mb-2">Entreprise</h3>
-              <p class="text-gray-600 mb-6">Pour les grandes structures et au-delà</p>
-              <div class="mb-6">
-                <span class="text-3xl font-bold text-gray-900">À partir de 499€</span>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Standard</h3>
+              <p class="text-gray-600 mb-4 text-sm">Pour les cabinets en croissance</p>
+              <div class="mb-4">
+                <span class="text-3xl font-bold text-gray-900">200€</span>
                 <span class="text-gray-600">/mois</span>
               </div>
             </div>
-            <ul class="space-y-3 mb-8 flex-grow">
+            <ul class="space-y-2 mb-6 flex-grow text-sm">
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>100 000+ documents</span>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>2 millions de commissions</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>100+ utilisateurs</span>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>25 partenaires</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>50+ Go de stockage</span>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>10 utilisateurs</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>Support premium dédié</span>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>50 Go de stockage</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>Export des données</span>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>Support premium</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-3"></i>
-                <span>Personnalisation avancée</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-star text-primary-500 mr-3"></i>
-                <span class="text-primary-500 font-medium">Limites extensibles sur demande</span>
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>Accès API</span>
               </li>
             </ul>
-            <a href="#contact" class="w-full btn-secondary text-center block mt-auto">Nous contacter</a>
+            <a href="https://app.conance.io" class="w-full btn-primary text-center block mt-auto text-sm">Choisir ce plan</a>
+          </div>
+
+          <!-- Plan Premium -->
+          <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Premium</h3>
+              <p class="text-gray-600 mb-4 text-sm">Pour les grands cabinets</p>
+              <div class="mb-4">
+                <span class="text-3xl font-bold text-gray-900">400€</span>
+                <span class="text-gray-600">/mois</span>
+              </div>
+            </div>
+            <ul class="space-y-2 mb-6 flex-grow text-sm">
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>10 millions de commissions</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>100 partenaires</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>25 utilisateurs</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>100 Go de stockage</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>Support prioritaire</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>Intégrations personnalisées</span>
+              </li>
+            </ul>
+            <a href="https://app.conance.io" class="w-full btn-secondary text-center block mt-auto text-sm">Choisir ce plan</a>
+          </div>
+
+          <!-- Plan Entreprise -->
+          <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Entreprise</h3>
+              <p class="text-gray-600 mb-4 text-sm">Sur mesure</p>
+              <div class="mb-4">
+                <span class="text-2xl font-bold text-gray-900">Sur devis</span>
+              </div>
+            </div>
+            <ul class="space-y-2 mb-6 flex-grow text-sm">
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>Commissions illimitées</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>Partenaires illimités</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>Utilisateurs illimités</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>Stockage sur mesure</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <span>Support dédié</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-star text-primary-500 mr-2"></i>
+                <span class="text-primary-500 font-medium">Configuration dédiée</span>
+              </li>
+            </ul>
+            <a href="#contact" class="w-full btn-secondary text-center block mt-auto text-sm">Nous contacter</a>
           </div>
         </div>
       </div>
