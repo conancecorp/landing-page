@@ -1,44 +1,93 @@
 <template>
   <div class="min-h-screen">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
-      <div class="container">
-        <div class="flex justify-between items-center h-16">
-          <div class="flex items-center">
-            <a href="/" class="flex items-center">
-              <img src="/logo-conance.svg" alt="Conance" class="h-8 w-auto" />
+    <!-- Hero Section -->
+    <section class="pb-16 md:pb-24" style="background-color: #0F2F2C;">
+      <!-- Floating Navigation -->
+      <nav class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4">
+        <div :class="['max-w-6xl mx-auto transition-all duration-300', navbarDark ? 'navbar-floating-dark' : 'navbar-floating-light']">
+          <div class="flex justify-between items-center h-14 px-4 sm:px-6">
+            <div class="flex items-center">
+              <a href="#" @click.prevent="scrollToTop" class="flex items-center">
+                <img :src="navbarDark ? '/logo-conance-white.svg' : '/logo-conance.svg'" alt="Conance" class="h-7 w-auto" />
+              </a>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+              <a href="#fonctionnalites" :class="['transition-colors text-sm', navbarDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-primary-500']">Fonctionnalités</a>
+              <a href="#tarifs" :class="['transition-colors text-sm', navbarDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-primary-500']">Tarifs</a>
+              <a href="#contact" :class="['transition-colors text-sm', navbarDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-primary-500']">Contact</a>
+            </div>
+            <div class="flex items-center space-x-3">
+              <a href="https://app.conance.io" :class="navbarDark ? 'btn-nav-floating-dark' : 'btn-nav-floating-light'">Se connecter</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Text content with container constraint -->
+      <div class="container pt-28">
+        <div class="text-center max-w-4xl mx-auto">
+          <h1 class="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Simplifiez la gestion de vos commissions
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300/90 mb-10 max-w-2xl mx-auto font-light">
+            Solution SaaS complète pour les cabinets de gestion de patrimoine.
+            Gérez vos conseillers, clients, contrats et commissions en toute simplicité.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-3 mb-12 md:mb-16">
+            <a href="https://app.conance.io" class="btn-primary px-6 py-3">
+              Démarrer gratuitement
             </a>
-          </div>
-          <div class="hidden md:flex space-x-8">
-            <a href="#fonctionnalites" class="text-gray-600 hover:text-primary-500 transition-colors">Fonctionnalités</a>
-            <a href="#tarifs" class="text-gray-600 hover:text-primary-500 transition-colors">Tarifs</a>
-            <a href="#contact" class="text-gray-600 hover:text-primary-500 transition-colors">Contact</a>
-          </div>
-          <div class="flex items-center space-x-4">
-            <a href="https://app.conance.io" class="btn-primary">Se connecter</a>
+            <a href="#tarifs" class="btn-secondary px-6 py-3">
+              Voir les tarifs
+            </a>
           </div>
         </div>
       </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20" style="background-color: #0F2F2C;">
-      <div class="container">
-        <div class="text-center max-w-4xl mx-auto">
-          <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
-            Simplifiez la gestion des commissions de votre cabinet
-          </h1>
-          <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Solution SaaS complète pour les cabinets de gestion de patrimoine. 
-            Gérez vos conseillers, clients, contrats et commissions en toute simplicité.
-          </p>
-          <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="https://app.conance.io" class="btn-primary text-lg px-8 py-4">
-              Démarrer gratuitement
+      <!-- Browser Window Mockup - outside container for full width -->
+      <div class="mx-auto px-4 sm:px-8 lg:px-16" style="max-width: 1300px;">
+        <div class="browser-window">
+          <!-- Chrome Title Bar with macOS buttons + Tab -->
+          <div class="browser-titlebar">
+            <!-- macOS Traffic Lights -->
+            <div class="window-controls">
+              <span class="window-control close"></span>
+              <span class="window-control minimize"></span>
+              <span class="window-control maximize"></span>
+            </div>
+            <!-- Tabs Container -->
+            <div class="browser-tabs-container">
+              <div class="browser-tab">
+                <img src="/favicon/favicon.svg" alt="" class="browser-tab-icon" />
+                <span class="browser-tab-title">Conance - Tableau de bord</span>
+                <span class="browser-tab-close">×</span>
+              </div>
+            </div>
+          </div>
+          <!-- URL Bar / Toolbar -->
+          <div class="browser-toolbar">
+            <div class="browser-nav">
+              <span class="browser-nav-btn disabled">←</span>
+              <span class="browser-nav-btn disabled">→</span>
+              <span class="browser-nav-btn">↻</span>
+            </div>
+            <a href="https://app.conance.io" target="_blank" rel="noopener noreferrer" class="browser-url browser-url-link">
+              <span class="browser-url-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </span>
+              <span class="browser-url-text"><span class="url-dimmed">https://</span>app.conance.io</span>
             </a>
-            <a href="#tarifs" class="btn-secondary text-lg px-8 py-4">
-              Voir les tarifs
-            </a>
+          </div>
+          <!-- Screenshot Content with Parallax -->
+          <div ref="browserContent" class="browser-content">
+            <img
+              ref="screenshotImg"
+              src="/screenshots/placeholder.svg"
+              alt="Aperçu du tableau de bord Conance"
+            />
           </div>
         </div>
       </div>
@@ -48,58 +97,64 @@
     <section id="fonctionnalites" class="py-20 bg-white">
       <div class="container">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+          <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Tout ce dont vous avez besoin
           </h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
             Une solution complète pour optimiser la gestion de votre cabinet
           </p>
         </div>
         
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Violet (Indigo) -->
           <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <i class="pi pi-users text-primary-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(99, 102, 241, 0.15);">
+              <i class="pi pi-users text-xl" style="color: #6366f1;"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Gestion des conseillers et clients</h3>
             <p class="text-gray-600">Centralisez toutes les informations de vos conseillers et clients dans une interface intuitive.</p>
           </div>
 
+          <!-- Vert (Émeraude) -->
           <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <i class="pi pi-file-edit text-primary-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(16, 185, 129, 0.15);">
+              <i class="pi pi-file-edit text-xl" style="color: #10b981;"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Suivi des contrats et commissions</h3>
             <p class="text-gray-600">Gérez vos contrats et calculez automatiquement les commissions associées.</p>
           </div>
 
+          <!-- Orange -->
           <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <i class="pi pi-upload text-primary-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(245, 158, 11, 0.15);">
+              <i class="pi pi-upload text-xl" style="color: #f59e0b;"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Import/export de données</h3>
             <p class="text-gray-600">Importez facilement vos données existantes et exportez vos rapports en quelques clics.</p>
           </div>
 
+          <!-- Bleu -->
           <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <i class="pi pi-chart-line text-primary-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(59, 130, 246, 0.15);">
+              <i class="pi pi-chart-line text-xl" style="color: #3b82f6;"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Tableaux de bord et rapports</h3>
             <p class="text-gray-600">Visualisez vos performances avec des tableaux de bord interactifs et des rapports détaillés.</p>
           </div>
 
+          <!-- Rose/Rouge -->
           <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <i class="pi pi-building text-primary-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(239, 68, 68, 0.15);">
+              <i class="pi pi-building text-xl" style="color: #ef4444;"></i>
             </div>
-            <h3 class="text-xl font-semibold mb-3">Gestion multi-entreprises</h3>
-            <p class="text-gray-600">Gérez plusieurs entreprises avec une séparation stricte des données et des accès.</p>
+            <h3 class="text-xl font-semibold mb-3">Gestion multi-entités</h3>
+            <p class="text-gray-600">Gérez plusieurs entités au sein de votre cabinet avec une séparation claire des données.</p>
           </div>
 
+          <!-- Cyan -->
           <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-              <i class="pi pi-shield text-primary-500 text-xl"></i>
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(6, 182, 212, 0.15);">
+              <i class="pi pi-shield text-xl" style="color: #06b6d4;"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Rôles et permissions avancés</h3>
             <p class="text-gray-600">Contrôlez finement les accès avec un système de rôles et permissions personnalisables.</p>
@@ -112,10 +167,10 @@
     <section id="tarifs" class="py-20 bg-gray-50">
       <div class="container">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+          <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Tarifs transparents
           </h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
             Choisissez le plan qui correspond à la taille de votre cabinet
           </p>
         </div>
@@ -153,7 +208,7 @@
                 <span>Support communautaire</span>
               </li>
             </ul>
-            <a href="https://app.conance.io" class="w-full btn-secondary text-center block mt-auto text-sm">Commencer gratuitement</a>
+            <a href="https://app.conance.io" class="w-full btn-secondary-light text-center block mt-auto text-sm">Commencer gratuitement</a>
           </div>
 
           <!-- Plan Starter -->
@@ -188,7 +243,7 @@
                 <span>Support email</span>
               </li>
             </ul>
-            <a href="https://app.conance.io" class="w-full btn-secondary text-center block mt-auto text-sm">Choisir ce plan</a>
+            <a href="https://app.conance.io" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
           </div>
 
           <!-- Plan Standard -->
@@ -223,14 +278,10 @@
               </li>
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>Support premium</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>Accès API</span>
+                <span>Support email</span>
               </li>
             </ul>
-            <a href="https://app.conance.io" class="w-full btn-primary text-center block mt-auto text-sm">Choisir ce plan</a>
+            <a href="https://app.conance.io" class="w-full btn-primary-card text-center block mt-auto">Choisir ce plan</a>
           </div>
 
           <!-- Plan Premium -->
@@ -262,14 +313,10 @@
               </li>
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>Support prioritaire</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>Intégrations personnalisées</span>
+                <span>Support email</span>
               </li>
             </ul>
-            <a href="https://app.conance.io" class="w-full btn-secondary text-center block mt-auto text-sm">Choisir ce plan</a>
+            <a href="https://app.conance.io" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
           </div>
 
           <!-- Plan Entreprise -->
@@ -307,7 +354,7 @@
                 <span class="text-primary-500 font-medium">Configuration dédiée</span>
               </li>
             </ul>
-            <a href="#contact" class="w-full btn-secondary text-center block mt-auto text-sm">Nous contacter</a>
+            <a href="#contact" class="w-full btn-secondary-light text-center block mt-auto text-sm">Nous contacter</a>
           </div>
         </div>
       </div>
@@ -317,10 +364,10 @@
     <section id="contact" class="py-20 bg-white">
       <div class="container">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+          <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Contactez-nous
           </h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
             Vous avez des questions ? Notre équipe est là pour vous aider.
           </p>
         </div>
@@ -391,7 +438,7 @@
                 <div v-else>{{ statusMessage }}</div>
               </div>
               
-              <button type="submit" class="w-full btn-primary" :disabled="isSubmitting">
+              <button type="submit" class="w-full btn-primary-card" :disabled="isSubmitting">
                 {{ isSubmitting ? 'Envoi en cours...' : 'Envoyer le message' }}
               </button>
             </form>
@@ -464,10 +511,82 @@ export default {
       isSubmitting: false,
       statusMessage: '',
       statusType: 'success', // 'success' or 'error'
-      currentYear: new Date().getFullYear()
+      currentYear: new Date().getFullYear(),
+      scrollHandler: null,
+      navbarScrollHandler: null,
+      resizeHandler: null,
+      navbarDark: true
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.initParallaxScroll()
+      this.initNavbarScroll()
+    })
+  },
+  beforeUnmount() {
+    if (this.scrollHandler) {
+      window.removeEventListener('scroll', this.scrollHandler)
+    }
+    if (this.navbarScrollHandler) {
+      window.removeEventListener('scroll', this.navbarScrollHandler)
     }
   },
   methods: {
+    initParallaxScroll() {
+      const browserContent = this.$refs.browserContent
+      const screenshotImg = this.$refs.screenshotImg
+
+      if (!browserContent || !screenshotImg) return
+
+      // Calculate max scroll based on image aspect ratio
+      const imgWidth = screenshotImg.offsetWidth
+      const aspectRatio = 2400 / 1600 // SVG viewBox ratio
+      const imgHeight = imgWidth * aspectRatio
+      const containerHeight = browserContent.offsetHeight
+      const maxScroll = Math.max(0, imgHeight - containerHeight)
+
+      this.scrollHandler = () => {
+        const rect = browserContent.getBoundingClientRect()
+        const windowHeight = window.innerHeight
+
+        // Start scrolling when browser window is at 40% from top of viewport
+        // End when browser window has completely left the viewport
+        const scrollStart = windowHeight * 0.4
+        const scrollEnd = -rect.height * 0.8
+
+        // Calculate progress (0 = scroll starts, 1 = scroll ends)
+        const progress = Math.max(0, Math.min(1, (scrollStart - rect.top) / (scrollStart - scrollEnd)))
+
+        // Apply parallax transform (slower with 0.7 multiplier)
+        const translateY = -progress * maxScroll * 0.7
+        screenshotImg.style.transform = `translateY(${translateY}px)`
+      }
+
+      window.addEventListener('scroll', this.scrollHandler, { passive: true })
+      this.scrollHandler()
+    },
+    initNavbarScroll() {
+      // Get the hero section element
+      const heroSection = this.$el.querySelector('section')
+      if (!heroSection) return
+
+      this.navbarScrollHandler = () => {
+        const heroBottom = heroSection.getBoundingClientRect().bottom
+        // Switch to light navbar when hero section is above the navbar (with some offset)
+        this.navbarDark = heroBottom > 70
+      }
+
+      window.addEventListener('scroll', this.navbarScrollHandler, { passive: true })
+      this.navbarScrollHandler()
+    },
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      // Clear the hash from URL
+      if (window.location.hash) {
+        history.pushState('', document.title, window.location.pathname + window.location.search)
+      }
+    },
     validateForm() {
       const errors = []
       

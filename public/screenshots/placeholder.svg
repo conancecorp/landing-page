@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2400" viewBox="0 0 1600 2400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2f2c"/>
+      <stop offset="100%" style="stop-color:#0a2320"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="2400" fill="url(#bg)"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.1">
+    <line x1="0" y1="100" x2="1600" y2="100" stroke="#23b086" stroke-width="1"/>
+    <line x1="0" y1="200" x2="1600" y2="200" stroke="#23b086" stroke-width="1"/>
+    <line x1="0" y1="300" x2="1600" y2="300" stroke="#23b086" stroke-width="1"/>
+    <line x1="0" y1="400" x2="1600" y2="400" stroke="#23b086" stroke-width="1"/>
+    <line x1="0" y1="500" x2="1600" y2="500" stroke="#23b086" stroke-width="1"/>
+  </g>
+
+  <!-- Header bar simulation -->
+  <rect x="40" y="40" width="1520" height="80" rx="8" fill="#1a4a45" opacity="0.5"/>
+
+  <!-- Sidebar simulation -->
+  <rect x="40" y="140" width="280" height="2220" rx="8" fill="#1a4a45" opacity="0.3"/>
+
+  <!-- Main content cards -->
+  <rect x="340" y="140" width="1220" height="200" rx="12" fill="#1a4a45" opacity="0.4"/>
+  <rect x="340" y="360" width="590" height="300" rx="12" fill="#1a4a45" opacity="0.4"/>
+  <rect x="950" y="360" width="610" height="300" rx="12" fill="#1a4a45" opacity="0.4"/>
+  <rect x="340" y="680" width="1220" height="400" rx="12" fill="#1a4a45" opacity="0.4"/>
+
+  <!-- Chart simulation -->
+  <g transform="translate(400, 750)">
+    <polyline points="0,300 100,250 200,280 300,150 400,180 500,100 600,120 700,50 800,80 900,30 1000,60 1100,20"
+              fill="none" stroke="#23b086" stroke-width="3" opacity="0.6"/>
+  </g>
+
+  <!-- Additional cards for scroll effect -->
+  <rect x="340" y="1100" width="590" height="250" rx="12" fill="#1a4a45" opacity="0.4"/>
+  <rect x="950" y="1100" width="610" height="250" rx="12" fill="#1a4a45" opacity="0.4"/>
+  <rect x="340" y="1370" width="1220" height="300" rx="12" fill="#1a4a45" opacity="0.4"/>
+  <rect x="340" y="1690" width="400" height="200" rx="12" fill="#1a4a45" opacity="0.4"/>
+  <rect x="760" y="1690" width="400" height="200" rx="12" fill="#1a4a45" opacity="0.4"/>
+  <rect x="1180" y="1690" width="380" height="200" rx="12" fill="#1a4a45" opacity="0.4"/>
+  <rect x="340" y="1910" width="1220" height="350" rx="12" fill="#1a4a45" opacity="0.4"/>
+
+  <!-- Conance branding -->
+  <text x="800" y="1200" font-family="Inter, system-ui, sans-serif" font-size="48" fill="#23b086" text-anchor="middle" opacity="0.3">
+    Dashboard Preview
+  </text>
+</svg>

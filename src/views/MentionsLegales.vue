@@ -1,15 +1,15 @@
 <template>
   <div class="min-h-screen bg-gray-50">
-    <!-- Navigation simple -->
-    <nav class="bg-white border-b border-gray-200">
-      <div class="container">
-        <div class="flex justify-between items-center h-16">
+    <!-- Floating Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4">
+      <div class="navbar-floating-light max-w-6xl mx-auto">
+        <div class="flex justify-between items-center h-14 px-4 sm:px-6">
           <div class="flex items-center">
             <router-link to="/" class="flex items-center">
-              <img src="/logo-conance.svg" alt="Conance" class="h-8 w-auto" />
+              <img src="/logo-conance.svg" alt="Conance" class="h-7 w-auto" />
             </router-link>
           </div>
-          <router-link to="/" class="text-gray-600 hover:text-primary-500 transition-colors">
+          <router-link to="/" class="text-gray-600 hover:text-primary-500 transition-colors text-sm">
             Retour à l'accueil
           </router-link>
         </div>
@@ -17,13 +17,13 @@
     </nav>
 
     <!-- Contenu Mentions Légales -->
-    <div class="container py-12">
-      <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-sm p-8">
-        <h1 class="text-4xl font-bold text-gray-900 mb-8">Mentions Légales</h1>
+    <div class="container pt-28 pb-12">
+      <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg border border-gray-100 p-8 md:p-12">
+        <h1 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-8">Mentions Légales</h1>
         
         <div class="prose prose-lg max-w-none">
           <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Éditeur du site</h2>
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">Éditeur du site</h2>
             <div class="text-gray-700 space-y-2">
               <p><strong>Raison sociale :</strong> Conance</p>
               <p><strong>Forme juridique :</strong> Auto-entreprise</p>
@@ -35,15 +35,15 @@
           </section>
 
           <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Directeur de la publication</h2>
-            <div class="text-gray-700">
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">Directeur de la publication</h2>
+            <div class="text-gray-700 space-y-2">
               <p><strong>Nom :</strong> Elouan BESSETTES</p>
               <p><strong>Qualité :</strong> Auto-entrepreneur</p>
             </div>
           </section>
 
           <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Hébergement</h2>
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">Hébergement</h2>
             <div class="text-gray-700 space-y-2">
               <p><strong>Hébergeur de l'application :</strong> Scaleway SAS</p>
               <p><strong>Adresse :</strong> 8 rue de la Ville l'Évêque, 75008 Paris, France</p>
@@ -56,7 +56,7 @@
           </section>
 
           <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Propriété intellectuelle</h2>
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">Propriété intellectuelle</h2>
             <p class="text-gray-700 mb-4">
               Le site Conance et l'ensemble de son contenu (textes, images, graphismes, logo, icônes, sons, logiciels)
               sont la propriété exclusive de Conance, à l'exception des marques, logos ou contenus
@@ -69,7 +69,7 @@
           </section>
 
           <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Protection des données personnelles</h2>
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">Protection des données personnelles</h2>
             <p class="text-gray-700 mb-4">
               Conance respecte la réglementation en vigueur relative à la protection des données personnelles,
               notamment le Règlement Général sur la Protection des Données (RGPD).
@@ -81,7 +81,7 @@
           </section>
 
           <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Cookies</h2>
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">Cookies</h2>
             <p class="text-gray-700">
               Le site utilise des cookies pour améliorer l'expérience utilisateur et analyser le trafic.
               Vous pouvez configurer votre navigateur pour refuser les cookies, mais certaines fonctionnalités
@@ -90,7 +90,7 @@
           </section>
 
           <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Responsabilité</h2>
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">Responsabilité</h2>
             <p class="text-gray-700">
               Les informations diffusées sur le site sont réputées fiables. Toutefois, Conance ne peut garantir
               l'exactitude ou la pertinence de ces informations. En conséquence, l'utilisation des informations
@@ -100,7 +100,7 @@
           </section>
 
           <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Droit applicable et juridiction</h2>
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">Droit applicable et juridiction</h2>
             <p class="text-gray-700">
               Les présentes mentions légales sont régies par le droit français. En cas de litige,
               et à défaut de résolution amiable, les tribunaux français seront seuls compétents.
@@ -108,7 +108,7 @@
           </section>
 
           <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Contact</h2>
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">Contact</h2>
             <p class="text-gray-700">
               Pour toute question concernant ces mentions légales, vous pouvez nous contacter à :
               <a href="mailto:contact@conance.io" class="text-primary-500 hover:text-primary-700">contact@conance.io</a>
