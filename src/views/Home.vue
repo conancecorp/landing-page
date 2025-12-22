@@ -472,6 +472,7 @@
           <div>
             <h4 class="font-semibold mb-4">Support</h4>
             <ul class="space-y-2 text-gray-400">
+              <li><a href="https://docs.conance.io" target="_blank" class="hover:text-white transition-colors">Documentation</a></li>
               <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
               <li><a href="mailto:contact@conance.io" class="hover:text-white transition-colors">Support</a></li>
             </ul>

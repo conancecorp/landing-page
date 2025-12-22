@@ -97,7 +97,7 @@ Le site vitrine sera une page unique (one-page) avec les sections suivantes :
 
 1. **Hero Section**
    - Logo Conance
-   - Titre accrocheur : "Simplifiez la gestion des commissions de votre cabinet"
+   - Titre accrocheur : "Simplifiez la gestion de vos commissions"
    - Sous-titre : "Solution SaaS complète pour les cabinets de gestion de patrimoine"
    - CTA principal : "Démarrer gratuitement" (redirige vers app.conance.io)
    - CTA secondaire : "Voir les tarifs" (ancre vers la section prix)
