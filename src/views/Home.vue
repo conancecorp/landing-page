@@ -85,7 +85,7 @@
           <div ref="browserContent" class="browser-content">
             <img
               ref="screenshotImg"
-              src="/screenshots/placeholder.svg"
+              src="/screenshots/dashboard.png"
               alt="Aperçu du tableau de bord Conance"
             />
           </div>
@@ -541,7 +541,7 @@ export default {
 
       // Calculate max scroll based on image aspect ratio
       const imgWidth = screenshotImg.offsetWidth
-      const aspectRatio = 2400 / 1600 // SVG viewBox ratio
+      const aspectRatio = 2960 / 3230 // Screenshot aspect ratio
       const imgHeight = imgWidth * aspectRatio
       const containerHeight = browserContent.offsetHeight
       const maxScroll = Math.max(0, imgHeight - containerHeight)
