@@ -82,7 +82,7 @@
             </a>
           </div>
           <!-- Screenshot Content with Parallax -->
-          <div ref="browserContent" class="browser-content">
+          <div ref="browserContent" class="browser-content cursor-pointer" @click="openLightbox('/screenshots/dashboard.png', 'Aperçu du tableau de bord Conance')">
             <img
               ref="screenshotImg"
               src="/screenshots/dashboard.png"
@@ -121,7 +121,7 @@
               <i class="pi pi-file-edit text-xl" style="color: #10b981;"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Suivi des contrats et commissions</h3>
-            <p class="text-gray-600">Gérez vos contrats et calculez automatiquement les commissions associées.</p>
+            <p class="text-gray-600">Retrouvez facilement les commissions associées à chaque contrat avec une traçabilité fine.</p>
           </div>
 
           <!-- Orange -->
@@ -148,7 +148,7 @@
               <i class="pi pi-building text-xl" style="color: #ef4444;"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Gestion multi-entités</h3>
-            <p class="text-gray-600">Gérez plusieurs entités au sein de votre cabinet avec une séparation claire des données.</p>
+            <p class="text-gray-600">Consolidez les données de plusieurs structures juridiques et analysez-les dans un espace unifié.</p>
           </div>
 
           <!-- Cyan -->
@@ -158,6 +158,180 @@
             </div>
             <h3 class="text-xl font-semibold mb-3">Rôles et permissions avancés</h3>
             <p class="text-gray-600">Contrôlez finement les accès avec un système de rôles et permissions personnalisables.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Showcase: Commissions -->
+    <section class="py-20 bg-gray-50">
+      <div class="container">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Screenshot côté gauche -->
+          <div class="order-2 lg:order-1">
+            <div class="browser-window-small">
+              <!-- Chrome Title Bar with macOS buttons + Tab -->
+              <div class="browser-titlebar-small">
+                <!-- macOS Traffic Lights -->
+                <div class="window-controls-small">
+                  <span class="window-control-small close"></span>
+                  <span class="window-control-small minimize"></span>
+                  <span class="window-control-small maximize"></span>
+                </div>
+                <!-- Tabs Container -->
+                <div class="browser-tabs-container-small">
+                  <div class="browser-tab-small">
+                    <img src="/favicon/favicon.svg" alt="" class="browser-tab-icon-small" />
+                    <span class="browser-tab-title-small">Conance - Commissions</span>
+                  </div>
+                </div>
+              </div>
+              <!-- URL Bar / Toolbar -->
+              <div class="browser-toolbar-small">
+                <div class="browser-nav-small">
+                  <span class="browser-nav-btn-small disabled">←</span>
+                  <span class="browser-nav-btn-small disabled">→</span>
+                  <span class="browser-nav-btn-small">↻</span>
+                </div>
+                <div class="browser-url-small">
+                  <span class="browser-url-icon-small">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                  </span>
+                  <span class="browser-url-text-small"><span class="url-dimmed">https://</span>app.conance.io/commissions</span>
+                </div>
+              </div>
+              <!-- Screenshot Content -->
+              <div class="browser-content-small cursor-pointer" @click="openLightbox('/screenshots/commissions.png', 'Aperçu de la gestion des commissions')">
+                <img
+                  src="/screenshots/commissions.png"
+                  alt="Aperçu de la gestion des commissions"
+                  class="w-full"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Texte côté droit -->
+          <div class="order-1 lg:order-2">
+            <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-4" style="background-color: rgba(16, 185, 129, 0.15); color: #10b981;">
+              <i class="pi pi-money-bill mr-2"></i>
+              Commissions
+            </div>
+            <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Suivez vos commissions en temps réel
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">
+              Visualisez l'ensemble de vos commissions dans un tableau clair et détaillé.
+              Filtrez par période, partenaire, conseiller ou type de produit pour une analyse précise.
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
+                <span class="text-gray-700">Vue consolidée de toutes vos commissions</span>
+              </li>
+              <li class="flex items-start">
+                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
+                <span class="text-gray-700">Filtres avancés multi-critères</span>
+              </li>
+              <li class="flex items-start">
+                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
+                <span class="text-gray-700">Export des données pour vos analyses</span>
+              </li>
+              <li class="flex items-start">
+                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
+                <span class="text-gray-700">Historique complet et traçabilité</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Showcase: Import -->
+    <section class="py-20 bg-white">
+      <div class="container">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Texte côté gauche -->
+          <div>
+            <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-4" style="background-color: rgba(245, 158, 11, 0.15); color: #f59e0b;">
+              <i class="pi pi-upload mr-2"></i>
+              Import
+            </div>
+            <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Importez vos données facilement
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">
+              Gagnez du temps avec notre système d'import intelligent. Importez vos fichiers de commissions
+              depuis vos partenaires en quelques clics, avec détection automatique des formats.
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
+                <span class="text-gray-700">Support des formats Excel et CSV (autres formats à venir)</span>
+              </li>
+              <li class="flex items-start">
+                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
+                <span class="text-gray-700">Mapping intelligent des colonnes</span>
+              </li>
+              <li class="flex items-start">
+                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
+                <span class="text-gray-700">Validation et détection des erreurs</span>
+              </li>
+              <li class="flex items-start">
+                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
+                <span class="text-gray-700">Configurations sauvegardées par partenaire</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Screenshot côté droit -->
+          <div>
+            <div class="browser-window-small">
+              <!-- Chrome Title Bar with macOS buttons + Tab -->
+              <div class="browser-titlebar-small">
+                <!-- macOS Traffic Lights -->
+                <div class="window-controls-small">
+                  <span class="window-control-small close"></span>
+                  <span class="window-control-small minimize"></span>
+                  <span class="window-control-small maximize"></span>
+                </div>
+                <!-- Tabs Container -->
+                <div class="browser-tabs-container-small">
+                  <div class="browser-tab-small">
+                    <img src="/favicon/favicon.svg" alt="" class="browser-tab-icon-small" />
+                    <span class="browser-tab-title-small">Conance - Import</span>
+                  </div>
+                </div>
+              </div>
+              <!-- URL Bar / Toolbar -->
+              <div class="browser-toolbar-small">
+                <div class="browser-nav-small">
+                  <span class="browser-nav-btn-small disabled">←</span>
+                  <span class="browser-nav-btn-small disabled">→</span>
+                  <span class="browser-nav-btn-small">↻</span>
+                </div>
+                <div class="browser-url-small">
+                  <span class="browser-url-icon-small">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                  </span>
+                  <span class="browser-url-text-small"><span class="url-dimmed">https://</span>app.conance.io/import</span>
+                </div>
+              </div>
+              <!-- Screenshot Content -->
+              <div class="browser-content-small cursor-pointer" @click="openLightbox('/screenshots/import.png', 'Aperçu de l\'import de données')">
+                <img
+                  src="/screenshots/import.png"
+                  alt="Aperçu de l'import de données"
+                  class="w-full"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -492,6 +666,18 @@
         </div>
       </div>
     </footer>
+
+    <!-- Lightbox -->
+    <Transition name="lightbox">
+      <div v-if="lightboxOpen" class="lightbox-overlay" @click="closeLightbox">
+        <button class="lightbox-close" @click="closeLightbox">
+          <i class="pi pi-times"></i>
+        </button>
+        <div class="lightbox-content" @click.stop>
+          <img :src="lightboxImage" :alt="lightboxAlt" />
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -516,7 +702,10 @@ export default {
       scrollHandler: null,
       navbarScrollHandler: null,
       resizeHandler: null,
-      navbarDark: true
+      navbarDark: true,
+      lightboxOpen: false,
+      lightboxImage: '',
+      lightboxAlt: ''
     }
   },
   mounted() {
@@ -580,6 +769,16 @@ export default {
 
       window.addEventListener('scroll', this.navbarScrollHandler, { passive: true })
       this.navbarScrollHandler()
+    },
+    openLightbox(imageSrc, alt) {
+      this.lightboxImage = imageSrc
+      this.lightboxAlt = alt
+      this.lightboxOpen = true
+      document.body.style.overflow = 'hidden'
+    },
+    closeLightbox() {
+      this.lightboxOpen = false
+      document.body.style.overflow = ''
     },
     scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' })
