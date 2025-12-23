@@ -717,8 +717,8 @@ html {
 }
 
 .lightbox-content {
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 75vw;
+  max-height: 85vh;
   overflow: auto;
   border-radius: 8px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -728,6 +728,7 @@ html {
   display: block;
   max-width: 100%;
   height: auto;
+  cursor: pointer;
 }
 
 /* Lightbox transitions */

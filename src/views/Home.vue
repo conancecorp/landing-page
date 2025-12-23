@@ -17,7 +17,7 @@
               <a href="#contact" :class="['transition-colors text-sm', navbarDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-primary-500']">Contact</a>
             </div>
             <div class="flex items-center space-x-3">
-              <a href="https://app.conance.io" :class="navbarDark ? 'btn-nav-floating-dark' : 'btn-nav-floating-light'">Se connecter</a>
+              <a href="https://app.conance.io/login" :class="navbarDark ? 'btn-nav-floating-dark' : 'btn-nav-floating-light'">Se connecter</a>
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@
             Gérez vos conseillers, clients, contrats et commissions en toute simplicité.
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-3 mb-12 md:mb-16">
-            <a href="https://app.conance.io" class="btn-primary px-6 py-3">
+            <a href="https://app.conance.io/register?plan=gratuit" class="btn-primary px-6 py-3">
               Démarrer gratuitement
             </a>
             <a href="#tarifs" class="btn-secondary px-6 py-3">
@@ -93,8 +93,57 @@
       </div>
     </section>
 
+    <!-- Mission Section - Gain de temps -->
+    <section class="py-20 bg-white">
+      <div class="container">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6" style="background-color: rgba(35, 176, 134, 0.12); color: #1a8a6a;">
+            <i class="pi pi-clock mr-2"></i>
+            Gagnez du temps
+          </div>
+          <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Automatisez ce qui vous prend des heures
+          </h2>
+          <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto">
+            Fini les tableaux croisés dynamiques Excel à refaire chaque mois.
+            Conance automatise le traitement de vos commissions pour que vos équipes
+            se concentrent sur ce qui compte vraiment.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <!-- Stat 1 -->
+          <div class="text-center p-6">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background-color: rgba(35, 176, 134, 0.12);">
+              <i class="pi pi-stopwatch text-2xl" style="color: #23b086;"></i>
+            </div>
+            <h3 class="text-3xl font-bold text-gray-900 mb-2">-80%</h3>
+            <p class="text-gray-600">de temps passé sur le traitement des commissions</p>
+          </div>
+
+          <!-- Stat 2 -->
+          <div class="text-center p-6">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background-color: rgba(35, 176, 134, 0.12);">
+              <i class="pi pi-file-excel text-2xl" style="color: #23b086;"></i>
+            </div>
+            <h3 class="text-3xl font-bold text-gray-900 mb-2">0</h3>
+            <p class="text-gray-600">tableau croisé dynamique à maintenir manuellement</p>
+          </div>
+
+          <!-- Stat 3 -->
+          <div class="text-center p-6">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background-color: rgba(35, 176, 134, 0.12);">
+              <i class="pi pi-users text-2xl" style="color: #23b086;"></i>
+            </div>
+            <h3 class="text-3xl font-bold text-gray-900 mb-2">+</h3>
+            <p class="text-gray-600">de temps pour vos équipes sur des tâches à valeur ajoutée</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Fonctionnalités Section -->
-    <section id="fonctionnalites" class="py-20 bg-white">
+    <section id="fonctionnalites" class="py-20 bg-gray-50">
       <div class="container">
         <div class="text-center mb-16">
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -164,7 +213,7 @@
     </section>
 
     <!-- Feature Showcase: Commissions -->
-    <section class="py-20 bg-gray-50">
+    <section class="py-20 bg-white">
       <div class="container">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <!-- Screenshot côté gauche -->
@@ -251,7 +300,7 @@
     </section>
 
     <!-- Feature Showcase: Import -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-gray-50">
       <div class="container">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <!-- Texte côté gauche -->
@@ -338,7 +387,7 @@
     </section>
 
     <!-- Tarifs Section -->
-    <section id="tarifs" class="py-20 bg-gray-50">
+    <section id="tarifs" class="py-20 bg-white">
       <div class="container">
         <div class="text-center mb-16">
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -382,7 +431,7 @@
                 <span>Support communautaire</span>
               </li>
             </ul>
-            <a href="https://app.conance.io" class="w-full btn-secondary-light text-center block mt-auto text-sm">Commencer gratuitement</a>
+            <a href="https://app.conance.io/register?plan=gratuit" class="w-full btn-secondary-light text-center block mt-auto text-sm">Commencer gratuitement</a>
           </div>
 
           <!-- Plan Starter -->
@@ -417,7 +466,7 @@
                 <span>Support email</span>
               </li>
             </ul>
-            <a href="https://app.conance.io" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
+            <a href="https://app.conance.io/register?plan=starter" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
           </div>
 
           <!-- Plan Standard -->
@@ -455,7 +504,7 @@
                 <span>Support email</span>
               </li>
             </ul>
-            <a href="https://app.conance.io" class="w-full btn-primary-card text-center block mt-auto">Choisir ce plan</a>
+            <a href="https://app.conance.io/register?plan=standard" class="w-full btn-primary-card text-center block mt-auto">Choisir ce plan</a>
           </div>
 
           <!-- Plan Premium -->
@@ -490,7 +539,7 @@
                 <span>Support email</span>
               </li>
             </ul>
-            <a href="https://app.conance.io" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
+            <a href="https://app.conance.io/register?plan=premium" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
           </div>
 
           <!-- Plan Entreprise -->
@@ -535,7 +584,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-20 bg-gray-50">
       <div class="container">
         <div class="text-center mb-16">
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -639,7 +688,7 @@
             <ul class="space-y-2 text-gray-400">
               <li><a href="#fonctionnalites" class="hover:text-white transition-colors">Fonctionnalités</a></li>
               <li><a href="#tarifs" class="hover:text-white transition-colors">Tarifs</a></li>
-              <li><a href="https://app.conance.io" class="hover:text-white transition-colors">Se connecter</a></li>
+              <li><a href="https://app.conance.io/login" class="hover:text-white transition-colors">Se connecter</a></li>
             </ul>
           </div>
           
@@ -673,8 +722,8 @@
         <button class="lightbox-close" @click="closeLightbox">
           <i class="pi pi-times"></i>
         </button>
-        <div class="lightbox-content" @click.stop>
-          <img :src="lightboxImage" :alt="lightboxAlt" />
+        <div class="lightbox-content">
+          <img :src="lightboxImage" :alt="lightboxAlt" @click="closeLightbox" />
         </div>
       </div>
     </Transition>
