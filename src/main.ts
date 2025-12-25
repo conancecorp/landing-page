@@ -9,12 +9,14 @@ import App from './App.vue'
 import Home from './views/Home.vue'
 import CGU from './views/CGU.vue'
 import MentionsLegales from './views/MentionsLegales.vue'
+import PolitiqueConfidentialite from './views/PolitiqueConfidentialite.vue'
 
 // Router configuration
 const routes = [
   { path: '/', component: Home },
   { path: '/cgu', component: CGU },
-  { path: '/mentions-legales', component: MentionsLegales }
+  { path: '/mentions-legales', component: MentionsLegales },
+  { path: '/politique-confidentialite', component: PolitiqueConfidentialite }
 ]
 
 const router = createRouter({

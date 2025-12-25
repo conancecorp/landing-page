@@ -706,6 +706,7 @@
             <ul class="space-y-2 text-gray-400">
               <li><router-link to="/cgu" class="hover:text-white transition-colors">CGU</router-link></li>
               <li><router-link to="/mentions-legales" class="hover:text-white transition-colors">Mentions légales</router-link></li>
+              <li><router-link to="/politique-confidentialite" class="hover:text-white transition-colors">Politique de confidentialité</router-link></li>
             </ul>
           </div>
         </div>
