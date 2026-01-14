@@ -465,6 +465,10 @@
                 <i class="pi pi-check text-primary-500 mr-2"></i>
                 <span>Support email</span>
               </li>
+              <li class="flex items-center">
+                <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                <span><strong>Fonctionnalités IA</strong></span>
+              </li>
             </ul>
             <a href="https://app.conance.io/register?plan=starter" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
           </div>
@@ -503,6 +507,10 @@
                 <i class="pi pi-check text-primary-500 mr-2"></i>
                 <span>Support email</span>
               </li>
+              <li class="flex items-center">
+                <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                <span><strong>Fonctionnalités IA</strong></span>
+              </li>
             </ul>
             <a href="https://app.conance.io/register?plan=standard" class="w-full btn-primary-card text-center block mt-auto">Choisir ce plan</a>
           </div>
@@ -538,6 +546,10 @@
                 <i class="pi pi-check text-primary-500 mr-2"></i>
                 <span>Support email</span>
               </li>
+              <li class="flex items-center">
+                <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                <span><strong>Fonctionnalités IA</strong></span>
+              </li>
             </ul>
             <a href="https://app.conance.io/register?plan=premium" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
           </div>
@@ -571,6 +583,10 @@
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
                 <span>Support dédié</span>
+              </li>
+              <li class="flex items-center">
+                <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                <span><strong>Fonctionnalités IA</strong></span>
               </li>
               <li class="flex items-center">
                 <i class="pi pi-star text-primary-500 mr-2"></i>
