@@ -157,12 +157,20 @@
               Il garantit disposer des droits nécessaires sur les données importées.
             </p>
             <p class="text-gray-600 mb-4">
-              Conance s'engage à fournir un Service disponible et fonctionnel. En cas de dysfonctionnement,
+              Conance s'efforce de fournir un Service disponible et fonctionnel. En cas de dysfonctionnement,
               Conance s'efforcera de rétablir le Service dans les meilleurs délais.
             </p>
             <p class="text-gray-600 mb-4">
-              Conance ne peut être tenu responsable des dommages indirects résultant de l'utilisation du Service,
-              notamment les pertes de données, de chiffre d'affaires ou d'opportunités commerciales.
+              <strong>Absence de garantie de disponibilité :</strong> Conance ne garantit pas un taux de disponibilité
+              spécifique du Service (SLA/uptime). Le Service est fourni "en l'état" et peut faire l'objet d'interruptions,
+              qu'elles soient planifiées (maintenance) ou non (pannes, incidents techniques, cas de force majeure).
+              L'Utilisateur reconnaît et accepte que le Service puisse être temporairement indisponible sans que cela
+              n'ouvre droit à indemnisation, réduction de prix ou remboursement.
+            </p>
+            <p class="text-gray-600 mb-4">
+              Conance ne peut être tenu responsable des dommages directs ou indirects résultant de l'utilisation
+              ou de l'impossibilité d'utiliser le Service, notamment les pertes de données, de chiffre d'affaires,
+              d'opportunités commerciales, ou tout préjudice lié à une indisponibilité du Service.
             </p>
           </section>
 
@@ -219,7 +227,7 @@ export default {
   name: 'CGU',
   data() {
     return {
-      lastUpdate: '25 décembre 2025'
+      lastUpdate: '16 janvier 2026'
     }
   }
 }
