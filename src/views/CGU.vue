@@ -9,9 +9,12 @@
               <img src="/logo-conance.svg" alt="Conance" class="h-7 w-auto" />
             </router-link>
           </div>
-          <router-link to="/" class="text-gray-600 hover:text-primary-500 transition-colors text-sm">
-            Retour à l'accueil
-          </router-link>
+          <div class="flex items-center space-x-6">
+            <router-link to="/cgu" class="text-sm font-medium text-primary-500">CGU</router-link>
+            <router-link to="/mentions-legales" class="text-sm text-gray-600 hover:text-primary-500 transition-colors">Mentions légales</router-link>
+            <router-link to="/politique-confidentialite" class="text-sm text-gray-600 hover:text-primary-500 transition-colors">Confidentialité</router-link>
+            <router-link to="/" class="text-sm text-gray-600 hover:text-primary-500 transition-colors">Retour à l'accueil</router-link>
+          </div>
         </div>
       </div>
     </nav>
@@ -168,9 +171,22 @@
               n'ouvre droit à indemnisation, réduction de prix ou remboursement.
             </p>
             <p class="text-gray-600 mb-4">
-              Conance ne peut être tenu responsable des dommages directs ou indirects résultant de l'utilisation
-              ou de l'impossibilité d'utiliser le Service, notamment les pertes de données, de chiffre d'affaires,
-              d'opportunités commerciales, ou tout préjudice lié à une indisponibilité du Service.
+              <strong>Responsabilité pour faute professionnelle :</strong> Conance est responsable des dommages directs
+              causés au Client par une faute professionnelle avérée dans le cadre de la fourniture du Service.
+              Conance est titulaire d'une assurance Responsabilité Civile Professionnelle souscrite auprès d'AIG Europe SA
+              (voir les <router-link to="/mentions-legales" class="text-primary-500 hover:text-primary-700">Mentions Légales</router-link> pour les détails).
+            </p>
+            <p class="text-gray-600 mb-4">
+              <strong>Plafond de responsabilité :</strong> La responsabilité totale de Conance, toutes causes confondues,
+              est limitée au montant le plus faible entre : (a) le plafond de garantie de l'assurance RC Professionnelle
+              en vigueur (soit 100 000€ à la date des présentes) et (b) le montant total des sommes effectivement versées
+              par le Client au titre de son abonnement au cours des douze (12) mois précédant le fait générateur du dommage.
+            </p>
+            <p class="text-gray-600 mb-4">
+              <strong>Exclusion des dommages indirects :</strong> En aucun cas Conance ne pourra être tenu responsable
+              des dommages indirects subis par le Client, tels que notamment les pertes de chiffre d'affaires,
+              de bénéfices, d'opportunités commerciales, de clientèle, d'économies escomptées, ou tout préjudice
+              résultant d'une perte ou d'une altération de données.
             </p>
           </section>
 
@@ -227,7 +243,7 @@ export default {
   name: 'CGU',
   data() {
     return {
-      lastUpdate: '16 janvier 2026'
+      lastUpdate: '3 mars 2026'
     }
   }
 }

@@ -386,19 +386,125 @@
       </div>
     </section>
 
-    <!-- Tarifs Section -->
-    <section id="tarifs" class="py-20 bg-white">
+    <!-- Section Externalisation / Prestataires -->
+    <section class="py-20 bg-white">
       <div class="container">
-        <div class="text-center mb-16">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Illustration schématique (gauche) -->
+          <div class="flex items-center justify-center">
+            <div class="w-full max-w-md">
+              <!-- Prestataire card -->
+              <div class="bg-white rounded-xl shadow-lg border-2 p-6 mb-4" style="border-color: #23b086;">
+                <div class="flex items-center mb-4">
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center mr-3" style="background-color: rgba(35, 176, 134, 0.15);">
+                    <i class="pi pi-building text-lg" style="color: #23b086;"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900">Prestataire</h4>
+                    <p class="text-sm text-gray-500">Espace d'administration centralisé</p>
+                  </div>
+                </div>
+                <div class="border-t border-gray-100 pt-4">
+                  <p class="text-xs text-gray-400 uppercase font-medium mb-3">Cabinets gérés</p>
+                  <div class="space-y-2">
+                    <div class="flex items-center p-2 rounded-lg bg-gray-50">
+                      <div class="w-8 h-8 rounded-md flex items-center justify-center mr-3" style="background-color: rgba(99, 102, 241, 0.15);">
+                        <i class="pi pi-briefcase text-sm" style="color: #6366f1;"></i>
+                      </div>
+                      <span class="text-sm font-medium text-gray-700">Cabinet Alpha</span>
+                    </div>
+                    <div class="flex items-center p-2 rounded-lg bg-gray-50">
+                      <div class="w-8 h-8 rounded-md flex items-center justify-center mr-3" style="background-color: rgba(245, 158, 11, 0.15);">
+                        <i class="pi pi-briefcase text-sm" style="color: #f59e0b;"></i>
+                      </div>
+                      <span class="text-sm font-medium text-gray-700">Cabinet Beta</span>
+                    </div>
+                    <div class="flex items-center p-2 rounded-lg bg-gray-50">
+                      <div class="w-8 h-8 rounded-md flex items-center justify-center mr-3" style="background-color: rgba(239, 68, 68, 0.15);">
+                        <i class="pi pi-briefcase text-sm" style="color: #ef4444;"></i>
+                      </div>
+                      <span class="text-sm font-medium text-gray-700">Cabinet Gamma</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Texte (droite) -->
+          <div>
+            <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-4" style="background-color: rgba(239, 68, 68, 0.15); color: #ef4444;">
+              <i class="pi pi-sitemap mr-2"></i>
+              Multi-Cabinets
+            </div>
+            <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Vous gérez les commissions pour plusieurs cabinets ?
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">
+              De nombreux cabinets de gestion de patrimoine font le choix d'externaliser
+              le traitement de leurs commissions auprès de prestataires spécialisés.
+              Conance propose des offres <strong>Multi-Cabinets</strong> conçues spécifiquement
+              pour ces prestataires, leur permettant de centraliser la gestion des commissions
+              de tous leurs cabinets clients depuis un espace unifié.
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
+                <span class="text-gray-700">Un seul abonnement pour gérer plusieurs cabinets</span>
+              </li>
+              <li class="flex items-start">
+                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
+                <span class="text-gray-700">Chaque cabinet dispose de son propre espace isolé et sécurisé</span>
+              </li>
+              <li class="flex items-start">
+                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
+                <span class="text-gray-700">Basculez entre vos cabinets en un clic</span>
+              </li>
+              <li class="flex items-start">
+                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
+                <span class="text-gray-700">Idéal pour les prestataires qui gèrent l'externalisation des commissions</span>
+              </li>
+            </ul>
+            <div class="mt-8">
+              <a href="#tarifs" class="btn-primary px-6 py-3 inline-block" @click.prevent="showGroupPricing">Voir les offres Multi-Cabinets</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tarifs Section -->
+    <section id="tarifs" class="py-20 bg-gray-50">
+      <div class="container">
+        <div class="text-center mb-12">
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Tarifs transparents
           </h2>
           <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
-            Choisissez le plan qui correspond à la taille de votre cabinet
+            Des offres adaptées aux cabinets comme aux prestataires multi-cabinets
           </p>
         </div>
 
-        <div class="grid md:grid-cols-5 gap-6 max-w-7xl mx-auto items-stretch">
+        <!-- Onglets Cabinet / Multi-Cabinets -->
+        <div class="flex justify-center mb-10">
+          <div class="inline-flex rounded-lg border border-gray-200 bg-white p-1 shadow-sm">
+            <button
+              :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'cabinet' ? 'bg-primary-500 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900']"
+              @click="pricingTab = 'cabinet'"
+            >
+              <i class="pi pi-building mr-2"></i>Cabinet
+            </button>
+            <button
+              :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'group' ? 'bg-primary-500 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900']"
+              @click="pricingTab = 'group'"
+            >
+              <i class="pi pi-sitemap mr-2"></i>Multi-Cabinets
+            </button>
+          </div>
+        </div>
+
+        <!-- Plans Cabinet -->
+        <div v-show="pricingTab === 'cabinet'" class="grid md:grid-cols-5 gap-6 max-w-7xl mx-auto items-stretch">
           <!-- Plan Gratuit -->
           <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
             <div class="text-center">
@@ -528,11 +634,11 @@
             <ul class="space-y-2 mb-6 flex-grow text-sm">
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>10 millions de commissions</span>
+                <span>8 millions de commissions</span>
               </li>
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>100 partenaires</span>
+                <span>75 partenaires</span>
               </li>
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
@@ -558,15 +664,16 @@
           <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
             <div class="text-center">
               <h3 class="text-xl font-bold text-gray-900 mb-2">Entreprise</h3>
-              <p class="text-gray-600 mb-4 text-sm">Sur mesure</p>
+              <p class="text-gray-600 mb-4 text-sm">Pour les plus exigeants</p>
               <div class="mb-4">
-                <span class="text-2xl font-bold text-gray-900">Sur devis</span>
+                <span class="text-3xl font-bold text-gray-900">800€</span>
+                <span class="text-gray-600">/mois</span>
               </div>
             </div>
             <ul class="space-y-2 mb-6 flex-grow text-sm">
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>Commissions illimitées</span>
+                <span>20 millions de commissions</span>
               </li>
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
@@ -574,11 +681,11 @@
               </li>
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>Utilisateurs illimités</span>
+                <span>100 utilisateurs</span>
               </li>
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>Stockage sur mesure</span>
+                <span>300 Go de stockage</span>
               </li>
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
@@ -593,14 +700,158 @@
                 <span class="text-primary-500 font-medium">Configuration dédiée</span>
               </li>
             </ul>
-            <a href="#contact" class="w-full btn-secondary-light text-center block mt-auto text-sm">Nous contacter</a>
+            <a href="https://app.conance.io/register?plan=entreprise" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
           </div>
+        </div>
+
+        <!-- Plans Multi-Cabinets -->
+        <div v-show="pricingTab === 'group'">
+          <p class="text-center text-gray-500 mb-8 max-w-3xl mx-auto">
+            Pour les prestataires qui gèrent les commissions de cabinets ayant choisi d'externaliser leur gestion. Chaque cabinet dispose de son propre espace avec des quotas dédiés.
+          </p>
+          <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
+            <!-- Groupe Starter -->
+            <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
+              <div class="text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Groupe Starter</h3>
+                <p class="text-gray-600 mb-4 text-sm">Pour débuter en multi-cabinets</p>
+                <div class="mb-4">
+                  <span class="text-3xl font-bold text-gray-900">180€</span>
+                  <span class="text-gray-600">/mois</span>
+                </div>
+              </div>
+              <ul class="space-y-2 mb-6 flex-grow text-sm">
+                <li class="flex items-center">
+                  <i class="pi pi-building text-primary-500 mr-2"></i>
+                  <span><strong>3 cabinets</strong> inclus</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>10 Go de stockage par cabinet</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>3 utilisateurs par cabinet</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>500 000 commissions par cabinet</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>10 partenaires par cabinet</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>Imports, Exports et Rapports</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                  <span><strong>Fonctionnalités IA</strong></span>
+                </li>
+              </ul>
+              <a href="https://app.conance.io/register?plan=groupe+starter" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
+            </div>
+
+            <!-- Groupe Standard -->
+            <div class="bg-white rounded-lg shadow-lg p-6 border-2 border-primary-500 relative flex flex-col">
+              <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span class="bg-primary-500 text-white px-3 py-1 rounded-full text-xs font-medium">Populaire</span>
+              </div>
+              <div class="text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Groupe Standard</h3>
+                <p class="text-gray-600 mb-4 text-sm">Pour les prestataires en croissance</p>
+                <div class="mb-4">
+                  <span class="text-3xl font-bold text-gray-900">550€</span>
+                  <span class="text-gray-600">/mois</span>
+                </div>
+              </div>
+              <ul class="space-y-2 mb-6 flex-grow text-sm">
+                <li class="flex items-center">
+                  <i class="pi pi-building text-primary-500 mr-2"></i>
+                  <span><strong>10 cabinets</strong> inclus</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>10 Go de stockage par cabinet</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>3 utilisateurs par cabinet</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>500 000 commissions par cabinet</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>10 partenaires par cabinet</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>Imports, Exports et Rapports</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                  <span><strong>Fonctionnalités IA</strong></span>
+                </li>
+              </ul>
+              <a href="https://app.conance.io/register?plan=groupe+standard" class="w-full btn-primary-card text-center block mt-auto">Choisir ce plan</a>
+            </div>
+
+            <!-- Groupe Premium -->
+            <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
+              <div class="text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Groupe Premium</h3>
+                <p class="text-gray-600 mb-4 text-sm">Pour les grands prestataires</p>
+                <div class="mb-4">
+                  <span class="text-3xl font-bold text-gray-900">1 000€</span>
+                  <span class="text-gray-600">/mois</span>
+                </div>
+              </div>
+              <ul class="space-y-2 mb-6 flex-grow text-sm">
+                <li class="flex items-center">
+                  <i class="pi pi-building text-primary-500 mr-2"></i>
+                  <span><strong>25 cabinets</strong> inclus</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>10 Go de stockage par cabinet</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>3 utilisateurs par cabinet</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>500 000 commissions par cabinet</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>10 partenaires par cabinet</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <span>Imports, Exports et Rapports</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                  <span><strong>Fonctionnalités IA</strong></span>
+                </li>
+              </ul>
+              <a href="https://app.conance.io/register?plan=groupe+premium" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
+            </div>
+          </div>
+
+          <p class="text-center text-gray-400 text-sm mt-6">
+            Besoin de plus de cabinets ? <a href="#contact" class="text-primary-500 hover:underline">Contactez-nous</a> pour une offre sur mesure.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
+    <section id="contact" class="py-20 bg-white">
       <div class="container">
         <div class="text-center mb-16">
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -769,6 +1020,7 @@ export default {
       navbarScrollHandler: null,
       resizeHandler: null,
       navbarDark: true,
+      pricingTab: 'cabinet',
       lightboxOpen: false,
       lightboxImage: '',
       lightboxAlt: ''
@@ -845,6 +1097,12 @@ export default {
     closeLightbox() {
       this.lightboxOpen = false
       document.body.style.overflow = ''
+    },
+    showGroupPricing() {
+      this.pricingTab = 'group'
+      this.$nextTick(() => {
+        document.getElementById('tarifs').scrollIntoView({ behavior: 'smooth' })
+      })
     },
     scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' })

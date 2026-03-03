@@ -9,9 +9,12 @@
               <img src="/logo-conance.svg" alt="Conance" class="h-7 w-auto" />
             </router-link>
           </div>
-          <router-link to="/" class="text-gray-600 hover:text-primary-500 transition-colors text-sm">
-            Retour à l'accueil
-          </router-link>
+          <div class="flex items-center space-x-6">
+            <router-link to="/cgu" class="text-sm text-gray-600 hover:text-primary-500 transition-colors">CGU</router-link>
+            <router-link to="/mentions-legales" class="text-sm text-gray-600 hover:text-primary-500 transition-colors">Mentions légales</router-link>
+            <router-link to="/politique-confidentialite" class="text-sm font-medium text-primary-500">Confidentialité</router-link>
+            <router-link to="/" class="text-sm text-gray-600 hover:text-primary-500 transition-colors">Retour à l'accueil</router-link>
+          </div>
         </div>
       </div>
     </nav>

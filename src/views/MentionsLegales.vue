@@ -9,9 +9,12 @@
               <img src="/logo-conance.svg" alt="Conance" class="h-7 w-auto" />
             </router-link>
           </div>
-          <router-link to="/" class="text-gray-600 hover:text-primary-500 transition-colors text-sm">
-            Retour à l'accueil
-          </router-link>
+          <div class="flex items-center space-x-6">
+            <router-link to="/cgu" class="text-sm text-gray-600 hover:text-primary-500 transition-colors">CGU</router-link>
+            <router-link to="/mentions-legales" class="text-sm font-medium text-primary-500">Mentions légales</router-link>
+            <router-link to="/politique-confidentialite" class="text-sm text-gray-600 hover:text-primary-500 transition-colors">Confidentialité</router-link>
+            <router-link to="/" class="text-sm text-gray-600 hover:text-primary-500 transition-colors">Retour à l'accueil</router-link>
+          </div>
         </div>
       </div>
     </nav>
@@ -49,9 +52,18 @@
               <p><strong>Adresse :</strong> 8 rue de la Ville l'Évêque, 75008 Paris, France</p>
               <p><strong>Site web :</strong> <a href="https://www.scaleway.com" class="text-primary-500" target="_blank">https://www.scaleway.com</a></p>
               <br>
-              <p><strong>Hébergeur du site vitrine :</strong> Vercel Inc.</p>
-              <p><strong>Adresse :</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis</p>
-              <p><strong>Site web :</strong> <a href="https://vercel.com" class="text-primary-500" target="_blank">https://vercel.com</a></p>
+              <p><strong>Hébergeur du site vitrine :</strong> GitHub, Inc.</p>
+              <p><strong>Adresse :</strong> 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis</p>
+              <p><strong>Site web :</strong> <a href="https://pages.github.com" class="text-primary-500" target="_blank">https://pages.github.com</a></p>
+            </div>
+          </section>
+
+          <section class="mb-8">
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">Assurance Responsabilité Civile Professionnelle</h2>
+            <div class="text-gray-700 space-y-2">
+              <p><strong>Assureur :</strong> AIG Europe SA, société de droit luxembourgeois au capital de 47 176 255€, immatriculée au RCS Luxembourg sous le numéro B 218806</p>
+              <p><strong>Succursale France :</strong> Tour CBX, 1 Passerelle des Reflets, 92400 Courbevoie (RCS Nanterre 838 136 463)</p>
+              <p><strong>Plafond de garantie :</strong> 100 000€</p>
             </div>
           </section>
 
