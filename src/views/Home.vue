@@ -142,6 +142,30 @@
       </div>
     </section>
 
+    <!-- Section Différenciation / Complémentarité CRM -->
+    <section class="py-20" style="background-color: #0F2F2C;">
+      <div class="container">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6" style="background-color: rgba(35, 176, 134, 0.15); color: #5fd3aa;">
+            <i class="pi pi-link mr-2"></i>
+            Complémentaire de vos outils
+          </div>
+          <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+            Votre CRM gère vos clients.<br />Conance gère vos commissions.
+          </h2>
+          <p class="text-lg text-gray-300/90 mb-4 max-w-2xl mx-auto font-light">
+            Les logiciels patrimoniaux (CRM, agrégateurs d'encours, outils de conformité) savent
+            tout sur vos clients et leurs placements. Mais aucun ne tient la <strong class="text-white">comptabilité
+            de l'argent qui rentre</strong> dans votre cabinet.
+          </p>
+          <p class="text-lg text-gray-300/90 max-w-2xl mx-auto font-light">
+            Conance ne remplace pas votre CRM : il prend le relais là où il s'arrête. Gardez vos outils,
+            confiez-nous le suivi et l'analyse de vos commissions.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Fonctionnalités Section -->
     <section id="fonctionnalites" class="py-20 bg-gray-50">
       <div class="container">
@@ -270,28 +294,28 @@
               Commissions
             </div>
             <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Suivez vos commissions en temps réel
+              La comptabilité analytique de votre chiffre d'affaires
             </h2>
             <p class="text-lg text-gray-600 mb-6">
-              Visualisez l'ensemble de vos commissions dans un tableau clair et détaillé.
-              Filtrez par période, partenaire, conseiller ou type de produit pour une analyse précise.
+              Bien plus qu'un simple suivi : ventilez l'ensemble de votre chiffre d'affaires selon
+              tous les axes qui comptent pour piloter votre cabinet, et obtenez la réponse en quelques clics.
             </p>
             <ul class="space-y-3">
               <li class="flex items-start">
                 <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Vue consolidée de toutes vos commissions</span>
+                <span class="text-gray-700">Par conseiller, partenaire, produit et client</span>
               </li>
               <li class="flex items-start">
                 <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Filtres avancés multi-critères</span>
+                <span class="text-gray-700">Par nature : récurrent (encours) ou ponctuel (droits d'entrée)</span>
               </li>
               <li class="flex items-start">
                 <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Export des données pour vos analyses</span>
+                <span class="text-gray-700">Par activité : CIF, Courtage, IOBSP…</span>
               </li>
               <li class="flex items-start">
                 <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Historique complet et traçabilité</span>
+                <span class="text-gray-700">Par entité comptable, avec historique complet et traçabilité</span>
               </li>
             </ul>
           </div>
@@ -319,7 +343,7 @@
             <ul class="space-y-3">
               <li class="flex items-start">
                 <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Support des formats Excel et CSV (autres formats à venir)</span>
+                <span class="text-gray-700">Support des formats Excel et CSV, et désormais le PDF <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium align-middle" style="background-color: rgba(245, 158, 11, 0.15); color: #b45309;">Beta</span></span>
               </li>
               <li class="flex items-start">
                 <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
@@ -385,6 +409,37 @@
         </div>
       </div>
     </section>
+
+    <!-- Section Témoignage -->
+    <!-- DÉSACTIVÉE : avis fictifs. Pour réactiver, retirer le <template v-if="false"> / </template> qui entourent la section, et remplacer les témoignages factices (tableau `testimonials`) par les vrais avis. -->
+    <template v-if="false">
+    <section class="py-10 overflow-hidden" style="background-color: #0F2F2C;">
+      <div class="testimonial-marquee relative">
+        <div class="marquee-track flex items-start py-2">
+          <div v-for="(t, i) in marqueeTestimonials" :key="i" class="shrink-0 w-[340px] md:w-[440px] flex mr-5" :aria-hidden="i >= testimonials.length ? 'true' : null">
+            <div class="flex flex-col h-[330px] md:h-[285px] w-full bg-white rounded-2xl p-6 overflow-hidden" style="box-shadow: 0 2px 4px rgba(15,47,44,0.04), 0 10px 22px -8px rgba(15,47,44,0.16);">
+              <span class="heading-font text-4xl leading-none select-none pointer-events-none" style="color: rgba(35, 176, 134, 0.22);">&ldquo;</span>
+
+              <blockquote class="text-[15px] text-gray-700 leading-relaxed mt-2 mb-5">
+                {{ quotePreview(t.quote) }}<button v-if="isLongQuote(t.quote)" type="button" @click="openTestimonialModal(t)" class="read-more-link">Lire l'avis complet</button>
+              </blockquote>
+
+              <!-- Auteur -->
+              <div class="flex items-center pt-5 mt-auto border-t border-gray-100">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center mr-3 text-white text-xs font-semibold shrink-0" style="background-color: #0F2F2C;">
+                  {{ t.initials }}
+                </div>
+                <div class="text-left min-w-0">
+                  <p class="font-semibold text-gray-900 text-sm leading-tight truncate">{{ t.name }}</p>
+                  <p class="text-xs text-gray-500 truncate">{{ t.role }} <span class="italic">(exemple)</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </template>
 
     <!-- Section Externalisation / Prestataires -->
     <section class="py-20 bg-white">
@@ -984,6 +1039,30 @@
       </div>
     </footer>
 
+    <!-- Modale Témoignage complet -->
+    <Transition name="lightbox">
+      <div v-if="testimonialModal" class="fixed inset-0 z-[60] flex items-center justify-center p-4" style="background: rgba(15,47,44,0.55);" @click="closeTestimonialModal">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-8 relative shadow-2xl" @click.stop>
+          <button type="button" @click="closeTestimonialModal" aria-label="Fermer" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition-colors">
+            <i class="pi pi-times"></i>
+          </button>
+          <span class="heading-font text-5xl leading-none select-none pointer-events-none" style="color: rgba(35, 176, 134, 0.25);">&ldquo;</span>
+          <blockquote class="text-lg text-gray-800 leading-relaxed mt-2 mb-6">
+            {{ testimonialModal.quote }}
+          </blockquote>
+          <div class="flex items-center pt-5 border-t border-gray-100">
+            <div class="w-11 h-11 rounded-full flex items-center justify-center mr-3 text-white text-sm font-semibold shrink-0" style="background-color: #0F2F2C;">
+              {{ testimonialModal.initials }}
+            </div>
+            <div class="text-left">
+              <p class="font-semibold text-gray-900 text-sm leading-tight">{{ testimonialModal.name }}</p>
+              <p class="text-xs text-gray-500">{{ testimonialModal.role }} <span class="italic">(exemple)</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Transition>
+
     <!-- Lightbox -->
     <Transition name="lightbox">
       <div v-if="lightboxOpen" class="lightbox-overlay" @click="closeLightbox">
@@ -1023,7 +1102,44 @@ export default {
       pricingTab: 'cabinet',
       lightboxOpen: false,
       lightboxImage: '',
-      lightboxAlt: ''
+      lightboxAlt: '',
+      testimonialModal: null,
+      // TODO: remplacer ces témoignages factices par les vrais avis clients avant la mise en production
+      testimonials: [
+        {
+          initials: 'ML',
+          name: 'Marie Lambert',
+          role: 'Dirigeante — Cabinet Patrimoine Conseil',
+          rating: 5,
+          quote: "Avant Conance, je passais deux jours par mois à rapprocher mes relevés de commissions sous Excel. Aujourd'hui c'est l'affaire d'une heure, et je sais enfin précisément ce que chaque partenaire me verse, par conseiller, par activité et par produit. Un confort de pilotage que je n'aurais pas imaginé."
+        },
+        {
+          initials: 'TR',
+          name: 'Thomas Renaud',
+          role: 'Associé — Renaud Gestion Privée',
+          rating: 5,
+          quote: "Le suivi par activité CIF et Courtage est limpide. Je pilote ma marge par conseiller, et non plus seulement par produit, en quelques clics — fini les tableaux croisés à reconstruire chaque trimestre."
+        },
+        {
+          initials: 'SD',
+          name: 'Sophie Dumas',
+          role: 'CGP — Cabinet Horizon Patrimoine',
+          rating: 5,
+          quote: "Je dépose le relevé du partenaire, les colonnes sont reconnues automatiquement, je n'ai plus qu'à valider. Résultat concret : le temps de saisie mensuel divisé par cinq."
+        }
+      ]
+    }
+  },
+  computed: {
+    // Liste dupliquée pour une boucle de défilement continue et sans rupture
+    marqueeTestimonials() {
+      // Répété 4× : la piste couvre largement la fenêtre, la boucle reste sans trou (translateX -50%)
+      return [
+        ...this.testimonials,
+        ...this.testimonials,
+        ...this.testimonials,
+        ...this.testimonials
+      ]
     }
   },
   mounted() {
@@ -1096,6 +1212,24 @@ export default {
     },
     closeLightbox() {
       this.lightboxOpen = false
+      document.body.style.overflow = ''
+    },
+    isLongQuote(quote) {
+      return quote.length > 210
+    },
+    quotePreview(quote) {
+      if (!this.isLongQuote(quote)) return quote
+      let cut = quote.slice(0, 170)
+      const lastSpace = cut.lastIndexOf(' ')
+      if (lastSpace > 0) cut = cut.slice(0, lastSpace)
+      return cut + '… '
+    },
+    openTestimonialModal(testimonial) {
+      this.testimonialModal = testimonial
+      document.body.style.overflow = 'hidden'
+    },
+    closeTestimonialModal() {
+      this.testimonialModal = null
       document.body.style.overflow = ''
     },
     showGroupPricing() {
@@ -1189,4 +1323,43 @@ export default {
     }
   }
 }
-</script> 
+</script>
+
+<style scoped>
+/* Marquee témoignages : défilement horizontal continu, en pause au survol */
+.testimonial-marquee {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.marquee-track {
+  width: max-content;
+  animation: testimonial-marquee-scroll 45s linear infinite;
+}
+.testimonial-marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes testimonial-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Lien inline « Lire l'avis complet » */
+.read-more-link {
+  display: inline;
+  color: #1a8a6a;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s ease;
+}
+.read-more-link:hover {
+  color: #0f6b50;
+}
+</style> 
