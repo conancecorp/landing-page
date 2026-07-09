@@ -72,9 +72,31 @@
               Les abonnements sont disponibles en formule mensuelle ou annuelle. L'abonnement annuel bénéficie
               d'une réduction équivalente à deux mois gratuits.
             </p>
+          </section>
+
+          <section class="mb-8">
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">4bis. Révision des tarifs</h2>
             <p class="text-gray-600 mb-4">
-              Conance se réserve le droit de modifier ses tarifs moyennant un préavis de 30 jours.
-              Les nouveaux tarifs s'appliqueront au renouvellement de l'abonnement.
+              Les tarifs des abonnements sont fixes. Ils ne font l'objet d'aucune indexation automatique,
+              ni d'aucune révision liée à un indice de référence.
+            </p>
+            <p class="text-gray-600 mb-4">
+              Conance se réserve le droit de réviser librement ses tarifs. Toute révision est notifiée au Client
+              moyennant un préavis de trente (30) jours, par email ou via un message dans son espace client.
+            </p>
+            <p class="text-gray-600 mb-4">
+              Les tarifs en vigueur au titre de l'abonnement en cours restent garantis jusqu'au terme de la période
+              d'abonnement souscrite. Aucune hausse tarifaire ne s'applique de manière rétroactive ni en cours de
+              période d'abonnement.
+            </p>
+            <p class="text-gray-600 mb-4">
+              La nouvelle tarification s'applique au premier renouvellement de l'abonnement intervenant après
+              l'expiration du préavis.
+            </p>
+            <p class="text-gray-600 mb-4">
+              Le Client qui refuse la nouvelle tarification peut résilier son abonnement sans pénalité avant
+              l'entrée en vigueur de celle-ci, dans les conditions prévues à l'article 11. À défaut de résiliation,
+              la nouvelle tarification est réputée acceptée.
             </p>
           </section>
 
@@ -137,6 +159,26 @@
               Les données sont hébergées en Europe (France) et ne sont jamais partagées avec des tiers sans consentement explicite.
               Pour plus d'informations, consultez notre
               <router-link to="/politique-confidentialite" class="text-primary-500 hover:text-primary-700">Politique de Confidentialité</router-link>.
+            </p>
+          </section>
+
+          <section class="mb-8">
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">8bis. Fonctionnalités d'intelligence artificielle</h2>
+            <p class="text-gray-600 mb-4">
+              Le Service propose des fonctionnalités optionnelles reposant sur l'intelligence artificielle :
+              extraction de bordereaux PDF et suggestion de correspondance de colonnes lors des imports.
+              Ces fonctionnalités impliquent la transmission de certaines données à un prestataire
+              d'inférence tiers (Replicate, États-Unis), dans les conditions décrites dans la
+              <router-link to="/politique-confidentialite" class="text-primary-500 hover:text-primary-700">Politique de Confidentialité</router-link>.
+            </p>
+            <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+              <li>Elles sont <strong>désactivées par défaut</strong> et ne peuvent être utilisées qu'après activation explicite par un administrateur du cabinet, depuis les paramètres de l'application, après lecture des conditions de partage. Cette acceptation est horodatée et journalisée.</li>
+              <li>Elles peuvent être <strong>désactivées à tout moment</strong> par un administrateur du cabinet ; la désactivation bloque immédiatement leur usage pour tous les membres.</li>
+              <li>Les données transmises servent exclusivement au traitement demandé ; elles ne sont pas utilisées pour entraîner des modèles et sont automatiquement supprimées de la plateforme du prestataire au bout d'une heure.</li>
+              <li>Les résultats produits par l'IA (tableaux extraits, suggestions de mapping) sont fournis à titre d'assistance : l'Utilisateur reste responsable de leur vérification avant validation.</li>
+            </ul>
+            <p class="text-gray-600 mb-4">
+              Version des conditions de partage IA : 11 juin 2026.
             </p>
           </section>
 
@@ -243,7 +285,7 @@ export default {
   name: 'CGU',
   data() {
     return {
-      lastUpdate: '3 mars 2026'
+      lastUpdate: '9 juillet 2026'
     }
   }
 }

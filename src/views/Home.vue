@@ -540,21 +540,49 @@
           </p>
         </div>
 
-        <!-- Onglets Cabinet / Multi-Cabinets -->
-        <div class="flex justify-center mb-10">
-          <div class="inline-flex rounded-lg border border-gray-200 bg-white p-1 shadow-sm">
-            <button
-              :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'cabinet' ? 'bg-primary-500 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900']"
-              @click="pricingTab = 'cabinet'"
-            >
-              <i class="pi pi-building mr-2"></i>Cabinet
-            </button>
-            <button
-              :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'group' ? 'bg-primary-500 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900']"
-              @click="pricingTab = 'group'"
-            >
-              <i class="pi pi-sitemap mr-2"></i>Multi-Cabinets
-            </button>
+        <!-- Sélecteurs tarifs : onglets centrés, toggle périodicité à droite -->
+        <div class="relative mb-10">
+          <!-- Onglets Cabinet / Multi-Cabinets (centrés) -->
+          <div class="flex justify-center">
+            <div class="inline-flex rounded-lg border border-gray-200 bg-white p-1 shadow-sm">
+              <button
+                :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'cabinet' ? 'bg-primary-500 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900']"
+                @click="pricingTab = 'cabinet'"
+              >
+                <i class="pi pi-building mr-2"></i>Cabinet
+              </button>
+              <button
+                :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'group' ? 'bg-primary-500 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900']"
+                @click="pricingTab = 'group'"
+              >
+                <i class="pi pi-sitemap mr-2"></i>Multi-Cabinets
+              </button>
+            </div>
+          </div>
+
+          <!-- Toggle coulissant Mensuel / Annuel (à droite sur desktop, centré sous les onglets sur mobile) -->
+          <div class="flex justify-center mt-4 md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
+            <div class="inline-flex items-center gap-3 select-none">
+              <span
+                :class="['text-sm cursor-pointer transition-colors', billingPeriod === 'monthly' ? 'text-gray-900 font-semibold' : 'text-gray-500']"
+                @click="billingPeriod = 'monthly'"
+              >Mensuel</span>
+              <button
+                type="button"
+                role="switch"
+                :aria-checked="billingPeriod === 'annual'"
+                aria-label="Basculer entre facturation mensuelle et annuelle"
+                :class="['relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200', billingPeriod === 'annual' ? 'bg-primary-500' : 'bg-gray-300']"
+                @click="billingPeriod = billingPeriod === 'annual' ? 'monthly' : 'annual'"
+              >
+                <span :class="['inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform duration-200', billingPeriod === 'annual' ? 'translate-x-6' : 'translate-x-1']"></span>
+              </button>
+              <span
+                :class="['text-sm cursor-pointer transition-colors', billingPeriod === 'annual' ? 'text-gray-900 font-semibold' : 'text-gray-500']"
+                @click="billingPeriod = 'annual'"
+              >Annuel</span>
+              <span class="px-2 py-0.5 rounded-full text-xs font-medium text-primary-500" style="background-color: rgba(35, 176, 134, 0.12);">2 mois offerts</span>
+            </div>
           </div>
         </div>
 
@@ -601,8 +629,9 @@
               <h3 class="text-xl font-bold text-gray-900 mb-2">Starter</h3>
               <p class="text-gray-600 mb-4 text-sm">Pour les petites structures</p>
               <div class="mb-4">
-                <span class="text-3xl font-bold text-gray-900">100€</span>
+                <span class="text-3xl font-bold text-gray-900">{{ displayPrice(100) }}€</span>
                 <span class="text-gray-600">/mois</span>
+                <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(100) }}€/an · 2 mois offerts</p>
               </div>
             </div>
             <ul class="space-y-2 mb-6 flex-grow text-sm">
@@ -643,8 +672,9 @@
               <h3 class="text-xl font-bold text-gray-900 mb-2">Standard</h3>
               <p class="text-gray-600 mb-4 text-sm">Pour les cabinets en croissance</p>
               <div class="mb-4">
-                <span class="text-3xl font-bold text-gray-900">200€</span>
+                <span class="text-3xl font-bold text-gray-900">{{ displayPrice(200) }}€</span>
                 <span class="text-gray-600">/mois</span>
+                <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(200) }}€/an · 2 mois offerts</p>
               </div>
             </div>
             <ul class="space-y-2 mb-6 flex-grow text-sm">
@@ -682,8 +712,9 @@
               <h3 class="text-xl font-bold text-gray-900 mb-2">Premium</h3>
               <p class="text-gray-600 mb-4 text-sm">Pour les grands cabinets</p>
               <div class="mb-4">
-                <span class="text-3xl font-bold text-gray-900">400€</span>
+                <span class="text-3xl font-bold text-gray-900">{{ displayPrice(400) }}€</span>
                 <span class="text-gray-600">/mois</span>
+                <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(400) }}€/an · 2 mois offerts</p>
               </div>
             </div>
             <ul class="space-y-2 mb-6 flex-grow text-sm">
@@ -721,8 +752,9 @@
               <h3 class="text-xl font-bold text-gray-900 mb-2">Entreprise</h3>
               <p class="text-gray-600 mb-4 text-sm">Pour les plus exigeants</p>
               <div class="mb-4">
-                <span class="text-3xl font-bold text-gray-900">800€</span>
+                <span class="text-3xl font-bold text-gray-900">{{ displayPrice(800) }}€</span>
                 <span class="text-gray-600">/mois</span>
+                <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(800) }}€/an · 2 mois offerts</p>
               </div>
             </div>
             <ul class="space-y-2 mb-6 flex-grow text-sm">
@@ -771,8 +803,9 @@
                 <h3 class="text-xl font-bold text-gray-900 mb-2">Groupe Starter</h3>
                 <p class="text-gray-600 mb-4 text-sm">Pour débuter en multi-cabinets</p>
                 <div class="mb-4">
-                  <span class="text-3xl font-bold text-gray-900">180€</span>
+                  <span class="text-3xl font-bold text-gray-900">{{ displayPrice(180) }}€</span>
                   <span class="text-gray-600">/mois</span>
+                  <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(180) }}€/an · 2 mois offerts</p>
                 </div>
               </div>
               <ul class="space-y-2 mb-6 flex-grow text-sm">
@@ -817,8 +850,9 @@
                 <h3 class="text-xl font-bold text-gray-900 mb-2">Groupe Standard</h3>
                 <p class="text-gray-600 mb-4 text-sm">Pour les prestataires en croissance</p>
                 <div class="mb-4">
-                  <span class="text-3xl font-bold text-gray-900">550€</span>
+                  <span class="text-3xl font-bold text-gray-900">{{ displayPrice(550) }}€</span>
                   <span class="text-gray-600">/mois</span>
+                  <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(550) }}€/an · 2 mois offerts</p>
                 </div>
               </div>
               <ul class="space-y-2 mb-6 flex-grow text-sm">
@@ -860,8 +894,9 @@
                 <h3 class="text-xl font-bold text-gray-900 mb-2">Groupe Premium</h3>
                 <p class="text-gray-600 mb-4 text-sm">Pour les grands prestataires</p>
                 <div class="mb-4">
-                  <span class="text-3xl font-bold text-gray-900">1 000€</span>
+                  <span class="text-3xl font-bold text-gray-900">{{ displayPrice(1000) }}€</span>
                   <span class="text-gray-600">/mois</span>
+                  <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(1000) }}€/an · 2 mois offerts</p>
                 </div>
               </div>
               <ul class="space-y-2 mb-6 flex-grow text-sm">
@@ -1100,6 +1135,7 @@ export default {
       resizeHandler: null,
       navbarDark: true,
       pricingTab: 'cabinet',
+      billingPeriod: 'monthly', // 'monthly' | 'annual' — l'annuel offre 2 mois (facturé 10× le mensuel)
       lightboxOpen: false,
       lightboxImage: '',
       lightboxAlt: '',
@@ -1231,6 +1267,17 @@ export default {
     closeTestimonialModal() {
       this.testimonialModal = null
       document.body.style.overflow = ''
+    },
+    // Prix mis en avant : mensuel tel quel, ou équivalent mensuel facturé annuellement (2 mois offerts → 10× le mensuel / 12)
+    displayPrice(monthly) {
+      const value = (this.billingPeriod === 'annual' && monthly > 0)
+        ? Math.round((monthly * 10) / 12)
+        : monthly
+      return value.toLocaleString('fr-FR')
+    },
+    // Montant annuel réellement facturé (2 mois offerts)
+    annualTotal(monthly) {
+      return (monthly * 10).toLocaleString('fr-FR')
     },
     showGroupPricing() {
       this.pricingTab = 'group'
