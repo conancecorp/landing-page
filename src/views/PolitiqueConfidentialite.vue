@@ -48,7 +48,7 @@
               <li><strong>Conance</strong></li>
               <li>Elouan BESSETTES, Auto-entrepreneur</li>
               <li>SIRET : 991 505 694 00018</li>
-              <li>Email : <a href="mailto:contact@conance.io" class="text-primary-500 hover:text-primary-700">contact@conance.io</a></li>
+              <li>Email : <a href="mailto:privacy@conance.io" class="text-primary-500 hover:text-primary-700">privacy@conance.io</a></li>
             </ul>
           </section>
 
@@ -123,8 +123,10 @@
             </p>
             <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
               <li><strong>Stripe</strong> : traitement des paiements (certifié PCI-DSS)</li>
-              <li><strong>Scaleway</strong> : hébergement des données (serveurs en France)</li>
-              <li><strong>Umami</strong> : analyse d'audience anonymisée (hébergé en Europe, sans cookies)</li>
+              <li><strong>Scaleway</strong> : hébergement de l'application et des données, envoi des emails transactionnels, sauvegardes (serveurs en France)</li>
+              <li><strong>OVHcloud</strong> : stockage des fichiers déposés sur la plateforme — imports Excel/CSV, PDF (serveurs en France)</li>
+              <li><strong>Replicate</strong> : traitement par intelligence artificielle (États-Unis) — <strong>uniquement</strong> si votre cabinet a explicitement activé les fonctionnalités IA (voir section 7bis)</li>
+              <li><strong>Umami</strong> : analyse d'audience anonymisée, auto-hébergée sur nos propres serveurs en Europe (Allemagne) — sans cookies, aucune donnée transmise à un tiers</li>
             </ul>
             <p class="text-gray-600 mb-4">
               Nous ne vendons jamais vos données personnelles à des tiers. Nous ne partageons vos données
@@ -139,9 +141,28 @@
               Vos données sont principalement hébergées et traitées au sein de l'Union Européenne (France).
             </p>
             <p class="text-gray-600 mb-4">
-              Certains de nos prestataires (notamment Stripe) peuvent traiter des données aux États-Unis.
-              Ces transferts sont encadrés par des garanties appropriées (clauses contractuelles types,
-              Data Privacy Framework).
+              Certains de nos prestataires (Stripe, et Replicate si les fonctionnalités IA sont activées)
+              peuvent traiter des données aux États-Unis. Ces transferts sont encadrés par des garanties
+              appropriées (clauses contractuelles types, Data Privacy Framework).
+            </p>
+          </section>
+
+          <section class="mb-8">
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">7bis. Fonctionnalités d'intelligence artificielle (optionnelles)</h2>
+            <p class="text-gray-600 mb-4">
+              Certaines fonctionnalités de Conance (extraction de bordereaux PDF, suggestion de
+              correspondance de colonnes lors d'un import) reposent sur des modèles d'intelligence
+              artificielle exécutés via la plateforme d'inférence Replicate (États-Unis).
+            </p>
+            <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+              <li>Ces fonctionnalités sont <strong>désactivées par défaut</strong> : un administrateur de votre cabinet doit les activer explicitement, après lecture des conditions de partage, depuis les paramètres de l'application. Elles peuvent être désactivées à tout moment.</li>
+              <li><strong>Extraction PDF</strong> : le document est d'abord traité localement sur nos serveurs ; le recours à un modèle d'IA externe (transmission du contenu du document) n'intervient qu'après confirmation explicite de l'utilisateur.</li>
+              <li><strong>Suggestion de mapping</strong> : seuls les en-têtes de colonnes et au plus trois lignes d'exemple du fichier (valeurs tronquées) sont transmis.</li>
+              <li>Les données transmises servent <strong>uniquement au traitement</strong> : elles sont automatiquement supprimées de la plateforme Replicate au bout d'une heure et ne sont pas utilisées pour entraîner des modèles.</li>
+            </ul>
+            <p class="text-gray-600 mb-4">
+              Si votre cabinet n'active pas ces fonctionnalités, aucune de ses données n'est transmise
+              à ce prestataire.
             </p>
           </section>
 
@@ -188,7 +209,7 @@
             </ul>
             <p class="text-gray-600 mb-4">
               Pour exercer ces droits, contactez-nous à
-              <a href="mailto:contact@conance.io" class="text-primary-500 hover:text-primary-700">contact@conance.io</a>.
+              <a href="mailto:privacy@conance.io" class="text-primary-500 hover:text-primary-700">privacy@conance.io</a>.
               Nous répondrons dans un délai d'un mois.
             </p>
             <p class="text-gray-600 mb-4">
@@ -238,7 +259,7 @@
             <p class="text-gray-600">
               Pour toute question concernant cette Politique de Confidentialité ou vos données personnelles,
               contactez-nous à :
-              <a href="mailto:contact@conance.io" class="text-primary-500 hover:text-primary-700">contact@conance.io</a>
+              <a href="mailto:privacy@conance.io" class="text-primary-500 hover:text-primary-700">privacy@conance.io</a>
             </p>
           </section>
         </div>
@@ -252,7 +273,7 @@ export default {
   name: 'PolitiqueConfidentialite',
   data() {
     return {
-      lastUpdate: '25 décembre 2025'
+      lastUpdate: '11 juin 2026'
     }
   }
 }
