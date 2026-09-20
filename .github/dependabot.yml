@@ -1,0 +1,54 @@
+# Mises à jour de dépendances automatiques (Dependabot).
+# - hebdo, lundi matin, PR sur `main` (branche unique de la landing) ;
+# - mineures + patchs regroupées en une seule PR pour limiter le bruit ;
+# - les majors arrivent en PR séparées, à traiter une par une.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "07:00"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 10
+    versioning-strategy: increase # met aussi à jour les ranges du package.json
+    labels: ["dependencies"]
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      npm-minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+    ignore:
+      # ⛔ Licence PrimeUI (commerciale) à partir de primevue 5 / @primeuix/themes 3
+      # / primeicons 8. Rester sur les versions MIT (4.5.x / 2.x / 7.x).
+      - dependency-name: "primevue"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@primeuix/themes"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "primeicons"
+        update-types: ["version-update:semver-major"]
+      # Tailwind 4 = migration de config (CSS-first, plugin PostCSS déplacé) à
+      # faire à la main, pas par PR automatique.
+      - dependency-name: "tailwindcss"
+        update-types: ["version-update:semver-major"]
+      # TypeScript 7 (port Go) : attendre le support de vue-tsc.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "07:00"
+      timezone: "Europe/Paris"
+    labels: ["dependencies", "ci"]
+    commit-message:
+      prefix: "chore(ci)"
+    groups:
+      github-actions:
+        patterns: ["*"]
