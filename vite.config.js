@@ -32,11 +32,15 @@ export default defineConfig({
     sourcemap: false,
     outDir: 'dist',
     assetsDir: 'assets',
-    rollupOptions: {
+    // Vite 8 (Rolldown) : la forme objet de manualChunks n'existe plus,
+    // advancedChunks est l'équivalent natif.
+    rolldownOptions: {
       output: {
-        manualChunks: {
-          vendor: ['vue', 'vue-router'],
-          primevue: ['primevue']
+        advancedChunks: {
+          groups: [
+            { name: 'primevue', test: /node_modules[\\/](primevue|@primevue|@primeuix)[\\/]/ },
+            { name: 'vendor', test: /node_modules[\\/](vue|@vue|vue-router)[\\/]/ }
+          ]
         }
       }
     }
