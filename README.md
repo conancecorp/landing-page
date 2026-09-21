@@ -57,7 +57,7 @@ Pour déployer sur GitHub Pages, configurez les secrets GitHub suivants :
 
 ### Déploiement automatique
 
-Le site se déploie automatiquement sur GitHub Pages à chaque push sur `main`/`master` qui modifie le dossier `landing-page/`.
+Le site se déploie automatiquement sur GitHub Pages à chaque push sur `main` (`.github/workflows/deploy.yml`).
 
 ## 📁 Structure du projet
 
