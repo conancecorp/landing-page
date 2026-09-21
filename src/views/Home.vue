@@ -26,7 +26,7 @@
       <!-- Text content with container constraint -->
       <div class="container pt-28">
         <div class="text-center max-w-4xl mx-auto">
-          <h1 class="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          <h1 class="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight md:leading-none">
             Simplifiez la gestion de vos commissions
           </h1>
           <p class="text-lg md:text-xl text-gray-300/90 mb-10 max-w-2xl mx-auto font-light">
@@ -343,7 +343,7 @@
             <ul class="space-y-3">
               <li class="flex items-start">
                 <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Support des formats Excel et CSV, et désormais le PDF <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium align-middle" style="background-color: rgba(245, 158, 11, 0.15); color: #b45309;">Beta</span></span>
+                <span class="text-gray-700">Support des formats Excel et CSV, et désormais le PDF <span class="inline-flex items-center px-2 py-0.5 rounded-sm text-xs font-medium align-middle" style="background-color: rgba(245, 158, 11, 0.15); color: #b45309;">Beta</span></span>
               </li>
               <li class="flex items-start">
                 <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
@@ -544,15 +544,15 @@
         <div class="relative mb-10">
           <!-- Onglets Cabinet / Multi-Cabinets (centrés) -->
           <div class="flex justify-center">
-            <div class="inline-flex rounded-lg border border-gray-200 bg-white p-1 shadow-sm">
+            <div class="inline-flex rounded-lg border border-gray-200 bg-white p-1 shadow-xs">
               <button
-                :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'cabinet' ? 'bg-primary-500 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900']"
+                :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'cabinet' ? 'bg-primary-500 text-white shadow-xs' : 'text-gray-600 hover:text-gray-900']"
                 @click="pricingTab = 'cabinet'"
               >
                 <i class="pi pi-building mr-2"></i>Cabinet
               </button>
               <button
-                :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'group' ? 'bg-primary-500 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900']"
+                :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'group' ? 'bg-primary-500 text-white shadow-xs' : 'text-gray-600 hover:text-gray-900']"
                 @click="pricingTab = 'group'"
               >
                 <i class="pi pi-sitemap mr-2"></i>Multi-Cabinets
@@ -575,7 +575,7 @@
                 :class="['relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200', billingPeriod === 'annual' ? 'bg-primary-500' : 'bg-gray-300']"
                 @click="billingPeriod = billingPeriod === 'annual' ? 'monthly' : 'annual'"
               >
-                <span :class="['inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform duration-200', billingPeriod === 'annual' ? 'translate-x-6' : 'translate-x-1']"></span>
+                <span :class="['inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition-transform duration-200', billingPeriod === 'annual' ? 'translate-x-6' : 'translate-x-1']"></span>
               </button>
               <span
                 :class="['text-sm cursor-pointer transition-colors', billingPeriod === 'annual' ? 'text-gray-900 font-semibold' : 'text-gray-500']"
@@ -598,7 +598,7 @@
                 <span class="text-gray-600">/mois</span>
               </div>
             </div>
-            <ul class="space-y-2 mb-6 flex-grow text-sm">
+            <ul class="space-y-2 mb-6 grow text-sm">
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
                 <span>5 000 commissions</span>
@@ -634,7 +634,7 @@
                 <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(100) }}€/an · 2 mois offerts</p>
               </div>
             </div>
-            <ul class="space-y-2 mb-6 flex-grow text-sm">
+            <ul class="space-y-2 mb-6 grow text-sm">
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
                 <span>500 000 commissions</span>
@@ -677,7 +677,7 @@
                 <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(200) }}€/an · 2 mois offerts</p>
               </div>
             </div>
-            <ul class="space-y-2 mb-6 flex-grow text-sm">
+            <ul class="space-y-2 mb-6 grow text-sm">
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
                 <span>2 millions de commissions</span>
@@ -717,7 +717,7 @@
                 <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(400) }}€/an · 2 mois offerts</p>
               </div>
             </div>
-            <ul class="space-y-2 mb-6 flex-grow text-sm">
+            <ul class="space-y-2 mb-6 grow text-sm">
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
                 <span>8 millions de commissions</span>
@@ -757,7 +757,7 @@
                 <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(800) }}€/an · 2 mois offerts</p>
               </div>
             </div>
-            <ul class="space-y-2 mb-6 flex-grow text-sm">
+            <ul class="space-y-2 mb-6 grow text-sm">
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-500 mr-2"></i>
                 <span>20 millions de commissions</span>
@@ -808,7 +808,7 @@
                   <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(180) }}€/an · 2 mois offerts</p>
                 </div>
               </div>
-              <ul class="space-y-2 mb-6 flex-grow text-sm">
+              <ul class="space-y-2 mb-6 grow text-sm">
                 <li class="flex items-center">
                   <i class="pi pi-building text-primary-500 mr-2"></i>
                   <span><strong>3 cabinets</strong> inclus</span>
@@ -855,7 +855,7 @@
                   <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(550) }}€/an · 2 mois offerts</p>
                 </div>
               </div>
-              <ul class="space-y-2 mb-6 flex-grow text-sm">
+              <ul class="space-y-2 mb-6 grow text-sm">
                 <li class="flex items-center">
                   <i class="pi pi-building text-primary-500 mr-2"></i>
                   <span><strong>10 cabinets</strong> inclus</span>
@@ -899,7 +899,7 @@
                   <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(1000) }}€/an · 2 mois offerts</p>
                 </div>
               </div>
-              <ul class="space-y-2 mb-6 flex-grow text-sm">
+              <ul class="space-y-2 mb-6 grow text-sm">
                 <li class="flex items-center">
                   <i class="pi pi-building text-primary-500 mr-2"></i>
                   <span><strong>25 cabinets</strong> inclus</span>
@@ -1076,7 +1076,7 @@
 
     <!-- Modale Témoignage complet -->
     <Transition name="lightbox">
-      <div v-if="testimonialModal" class="fixed inset-0 z-[60] flex items-center justify-center p-4" style="background: rgba(15,47,44,0.55);" @click="closeTestimonialModal">
+      <div v-if="testimonialModal" class="fixed inset-0 z-60 flex items-center justify-center p-4" style="background: rgba(15,47,44,0.55);" @click="closeTestimonialModal">
         <div class="bg-white rounded-2xl max-w-lg w-full p-8 relative shadow-2xl" @click.stop>
           <button type="button" @click="closeTestimonialModal" aria-label="Fermer" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition-colors">
             <i class="pi pi-times"></i>
