@@ -7,11 +7,22 @@
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <!-- Thème choisi (ou celui du système) posé avant le premier affichage : pas de flash clair -->
+  <script>
+    (function () {
+      var choix = 'system'
+      try { choix = localStorage.getItem('conance-vitrine-theme') || 'system' } catch (e) {}
+      var sombre = choix === 'dark' || (choix !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      if (sombre) document.documentElement.classList.add('dark')
+      document.documentElement.style.colorScheme = sombre ? 'dark' : 'light'
+    })()
+  </script>
   <meta name="description"
     content="Conance - Solution SaaS de gestion des commissions pour cabinets de gestion de patrimoine" />
   <meta name="keywords" content="gestion commissions, cabinet patrimoine, SaaS, finance" />
   <meta property="og:title" content="Conance - Simplifiez la gestion de vos commissions" />
-  <meta property="og:description" content="Solution SaaS complète pour les cabinets de gestion de patrimoine" />
+  <meta property="og:description" content="Le back-office des commissions des cabinets de gestion de patrimoine : importez vos bordereaux, repérez ce qui manque, prévoyez ce qui va tomber." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://conance.io" />
 
@@ -35,6 +46,10 @@
   <script>
     // Only load Chatwoot in production (not on localhost)
     if (!window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+      // Le widget démarre dans le thème de la page (posé plus haut) ; theme.ts le suit ensuite
+      window.chatwootSettings = {
+        darkMode: document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+      };
       (function (d, t) {
         var BASE_URL = "https://chat.elouanb7.com";
         var g = d.createElement(t), s = d.getElementsByTagName(t)[0];

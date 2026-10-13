@@ -1,20 +1,20 @@
 <template>
   <div class="min-h-screen">
     <!-- Hero Section -->
-    <section class="pb-16 md:pb-24" style="background-color: #0F2F2C;">
+    <section v-scroll:page class="heros bg-deep">
       <!-- Floating Navigation -->
       <nav class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4">
         <div :class="['max-w-6xl mx-auto transition-all duration-300', navbarDark ? 'navbar-floating-dark' : 'navbar-floating-light']">
           <div class="flex justify-between items-center h-14 px-4 sm:px-6">
             <div class="flex items-center">
               <a href="#" @click.prevent="scrollToTop" class="flex items-center">
-                <img :src="navbarDark ? '/logo-conance-white.svg' : '/logo-conance.svg'" alt="Conance" class="h-7 w-auto" />
+                <img :src="navbarDark || sombre ? '/logo-conance-white.svg' : '/logo-conance.svg'" alt="Conance" class="h-7 w-auto" />
               </a>
             </div>
             <div class="hidden md:flex items-center space-x-8">
-              <a href="#fonctionnalites" :class="['transition-colors text-sm', navbarDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-primary-500']">Fonctionnalités</a>
-              <a href="#tarifs" :class="['transition-colors text-sm', navbarDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-primary-500']">Tarifs</a>
-              <a href="#contact" :class="['transition-colors text-sm', navbarDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-primary-500']">Contact</a>
+              <a href="#fonctionnalites" :class="['transition-colors text-sm', navbarDark ? 'text-brume hover:text-blanc' : 'text-gray-600 hover:text-primary-700']">Fonctionnalités</a>
+              <a href="#tarifs" :class="['transition-colors text-sm', navbarDark ? 'text-brume hover:text-blanc' : 'text-gray-600 hover:text-primary-700']">Tarifs</a>
+              <a href="#contact" :class="['transition-colors text-sm', navbarDark ? 'text-brume hover:text-blanc' : 'text-gray-600 hover:text-primary-700']">Contact</a>
             </div>
             <div class="flex items-center space-x-3">
               <a href="https://app.conance.io/login" :class="navbarDark ? 'btn-nav-floating-dark' : 'btn-nav-floating-light'">Se connecter</a>
@@ -24,17 +24,17 @@
       </nav>
 
       <!-- Text content with container constraint -->
-      <div class="container pt-28">
+      <div class="container relative pt-28">
         <div class="text-center max-w-4xl mx-auto">
-          <h1 class="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight md:leading-none">
-            Simplifiez la gestion de vos commissions
+          <h1 v-reveal class="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-blanc mb-6 leading-tight md:leading-none">
+            Simplifiez la gestion de vos <span class="texte-degrade">commissions</span>
           </h1>
-          <p class="text-lg md:text-xl text-gray-300/90 mb-10 max-w-2xl mx-auto font-light">
-            Solution SaaS complète pour les cabinets de gestion de patrimoine.
-            Gérez vos conseillers, clients, contrats et commissions en toute simplicité.
+          <p v-reveal="120" class="text-lg md:text-xl text-brume/90 mb-10 max-w-2xl mx-auto font-light">
+            Le back-office des commissions des cabinets de gestion de patrimoine&nbsp;:
+            importez vos bordereaux, repérez ce qui manque, prévoyez ce qui va tomber.
           </p>
-          <div class="flex flex-col sm:flex-row justify-center gap-3 mb-12 md:mb-16">
-            <a href="https://app.conance.io/register?plan=gratuit" class="btn-primary px-6 py-3">
+          <div v-reveal="240" class="flex flex-col sm:flex-row justify-center gap-3 mb-12 md:mb-16">
+            <a href="https://app.conance.io/register?plan=gratuit" class="btn-accent px-6 py-3">
               Démarrer gratuitement
             </a>
             <a href="#tarifs" class="btn-secondary px-6 py-3">
@@ -44,8 +44,12 @@
         </div>
       </div>
 
-      <!-- Browser Window Mockup - outside container for full width -->
-      <div class="mx-auto px-4 sm:px-8 lg:px-16" style="max-width: 1300px;">
+      <!-- Capture du tableau de bord : inclinée en arrivant, elle se redresse au défilement et
+           déborde sur la section suivante ; trois pastilles tirées des vrais écrans flottent devant -->
+      <div class="heros-scene">
+        <div class="heros-halo" aria-hidden="true"></div>
+        <div v-reveal="360" class="heros-entree">
+        <div class="heros-maquette">
         <div class="browser-window">
           <!-- Chrome Title Bar with macOS buttons + Tab -->
           <div class="browser-titlebar">
@@ -81,84 +85,76 @@
               <span class="browser-url-text"><span class="url-dimmed">https://</span>app.conance.io</span>
             </a>
           </div>
-          <!-- Screenshot Content with Parallax -->
-          <div ref="browserContent" class="browser-content cursor-pointer" @click="openLightbox('/screenshots/dashboard.png', 'Aperçu du tableau de bord Conance')">
+          <div class="browser-content cursor-pointer" @click="openLightbox(capture('dashboard', sombre), 'Aperçu du tableau de bord Conance')">
             <img
-              ref="screenshotImg"
-              src="/screenshots/dashboard.png"
+              :src="capture('dashboard', sombre)"
               alt="Aperçu du tableau de bord Conance"
             />
           </div>
         </div>
+        </div>
+        </div>
+
+        <div class="flottante flottante--prevision" aria-hidden="true">
+          <div v-reveal.scale="900" class="pastille">
+            <div class="pastille-entete">
+              <span class="pastille-tuile"><i class="pi pi-chart-bar"></i></span>
+              <span class="pastille-etiquette">Prévisionnel 2026</span>
+            </div>
+            <strong class="pastille-chiffre">~{{ prevision.toLocaleString('fr-FR') }} €</strong>
+            <div class="mini-barres">
+              <span v-for="(hauteur, i) in barresPrevision" :key="i" :class="{ 'a-venir': i >= 9 }" :style="{ height: `${hauteur}%`, '--i': i }"></span>
+            </div>
+            <div class="mini-mois"><span v-for="(m, i) in 'JFMAMJJASOND'" :key="i">{{ m }}</span></div>
+            <div class="mini-legende"><span>Encaissé</span><span class="a-venir">À venir</span></div>
+          </div>
+        </div>
+        <div class="flottante flottante--attendues" aria-hidden="true">
+          <div v-reveal.scale="1080" class="pastille">
+            <div class="pastille-entete">
+              <span class="pastille-tuile pastille-tuile--alerte"><i class="pi pi-bell"></i></span>
+              <span class="pastille-etiquette">Commissions attendues</span>
+              <span class="pastille-compte">12</span>
+            </div>
+            <ul class="mini-lignes">
+              <li v-for="(ligne, i) in contratsMuets" :key="ligne.numero" :style="{ '--i': i }">
+                <span class="mini-contrat"><b>{{ ligne.numero }}</b>{{ ligne.partenaire }}</span>
+                <span class="manque">~{{ ligne.manque }} €</span>
+              </li>
+            </ul>
+            <div class="pastille-pied"><strong class="manque">~14 800 €</strong> de manque estimé</div>
+          </div>
+        </div>
+        <div class="flottante flottante--import" aria-hidden="true">
+          <div v-reveal.scale="1260" class="pastille">
+            <div class="pastille-entete">
+              <span class="pastille-tuile"><i class="pi pi-file-excel"></i></span>
+              <span>
+                <span class="pastille-etiquette">CORUM.xlsx</span>
+                <span class="pastille-sous">Configuration Corum appliquée</span>
+              </span>
+            </div>
+            <div class="mini-colonnes"><span v-for="i in 12" :key="i" :style="{ '--i': i }"></span></div>
+            <div class="pastille-ok"><i class="pi pi-check-circle"></i>12 colonnes reconnues</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Mission Section - Gain de temps -->
-    <section class="py-20 bg-white">
+    <!-- Complémentarité CRM -->
+    <section class="apres-heros pb-20 bg-page">
       <div class="container">
-        <div class="text-center mb-12">
-          <div class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6" style="background-color: rgba(35, 176, 134, 0.12); color: #1a8a6a;">
-            <i class="pi pi-clock mr-2"></i>
-            Gagnez du temps
-          </div>
+        <div v-reveal class="max-w-3xl mx-auto text-center">
+          <span class="section-badge"><i class="pi pi-link"></i>Complémentaire de vos outils</span>
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Automatisez ce qui vous prend des heures
-          </h2>
-          <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto">
-            Fini les tableaux croisés dynamiques Excel à refaire chaque mois.
-            Conance automatise le traitement de vos commissions pour que vos équipes
-            se concentrent sur ce qui compte vraiment.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <!-- Stat 1 -->
-          <div class="text-center p-6">
-            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background-color: rgba(35, 176, 134, 0.12);">
-              <i class="pi pi-stopwatch text-2xl" style="color: #23b086;"></i>
-            </div>
-            <h3 class="text-3xl font-bold text-gray-900 mb-2">-80%</h3>
-            <p class="text-gray-600">de temps passé sur le traitement des commissions</p>
-          </div>
-
-          <!-- Stat 2 -->
-          <div class="text-center p-6">
-            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background-color: rgba(35, 176, 134, 0.12);">
-              <i class="pi pi-file-excel text-2xl" style="color: #23b086;"></i>
-            </div>
-            <h3 class="text-3xl font-bold text-gray-900 mb-2">0</h3>
-            <p class="text-gray-600">tableau croisé dynamique à maintenir manuellement</p>
-          </div>
-
-          <!-- Stat 3 -->
-          <div class="text-center p-6">
-            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background-color: rgba(35, 176, 134, 0.12);">
-              <i class="pi pi-users text-2xl" style="color: #23b086;"></i>
-            </div>
-            <h3 class="text-3xl font-bold text-gray-900 mb-2">+</h3>
-            <p class="text-gray-600">de temps pour vos équipes sur des tâches à valeur ajoutée</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section Différenciation / Complémentarité CRM -->
-    <section class="py-20" style="background-color: #0F2F2C;">
-      <div class="container">
-        <div class="max-w-4xl mx-auto text-center">
-          <div class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6" style="background-color: rgba(35, 176, 134, 0.15); color: #5fd3aa;">
-            <i class="pi pi-link mr-2"></i>
-            Complémentaire de vos outils
-          </div>
-          <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Votre CRM gère vos clients.<br />Conance gère vos commissions.
           </h2>
-          <p class="text-lg text-gray-300/90 mb-4 max-w-2xl mx-auto font-light">
+          <p class="text-lg text-gray-600 mb-4">
             Les logiciels patrimoniaux (CRM, agrégateurs d'encours, outils de conformité) savent
-            tout sur vos clients et leurs placements. Mais aucun ne tient la <strong class="text-white">comptabilité
+            tout sur vos clients et leurs placements. Mais aucun ne tient la <strong class="text-gray-900">comptabilité
             de l'argent qui rentre</strong> dans votre cabinet.
           </p>
-          <p class="text-lg text-gray-300/90 max-w-2xl mx-auto font-light">
+          <p class="text-lg text-gray-600">
             Conance ne remplace pas votre CRM : il prend le relais là où il s'arrête. Gardez vos outils,
             confiez-nous le suivi et l'analyse de vos commissions.
           </p>
@@ -166,133 +162,153 @@
       </div>
     </section>
 
-    <!-- Fonctionnalités Section -->
-    <section id="fonctionnalites" class="py-20 bg-gray-50">
+    <!-- Le mois d'un cabinet : cinq temps, chacun renvoie à sa section -->
+    <section id="fonctionnalites" class="py-20 bg-warm">
       <div class="container">
-        <div class="text-center mb-16">
+        <div v-reveal class="text-center mb-14">
+          <span class="section-badge"><i class="pi pi-calendar"></i>Le mois d'un cabinet</span>
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Tout ce dont vous avez besoin
+            Du bordereau à la déclaration
           </h2>
           <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
-            Une solution complète pour optimiser la gestion de votre cabinet
+            Chaque mois, les mêmes cinq temps. Conance fait le travail de fond, vous gardez les décisions.
           </p>
         </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Violet (Indigo) -->
-          <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(99, 102, 241, 0.15);">
-              <i class="pi pi-users text-xl" style="color: #6366f1;"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">Gestion des conseillers et clients</h3>
-            <p class="text-gray-600">Centralisez toutes les informations de vos conseillers et clients dans une interface intuitive.</p>
-          </div>
 
-          <!-- Vert (Émeraude) -->
-          <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(16, 185, 129, 0.15);">
-              <i class="pi pi-file-edit text-xl" style="color: #10b981;"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">Suivi des contrats et commissions</h3>
-            <p class="text-gray-600">Retrouvez facilement les commissions associées à chaque contrat avec une traçabilité fine.</p>
-          </div>
+        <!-- Les étapes s'allument une à une au défilement, le fil se remplit derrière elles -->
+        <div v-scroll:entree="allumerEtapes" class="etapes-scene">
+        <div class="etapes-fil" aria-hidden="true"><span class="etapes-fil-plein"></span></div>
+        <ol class="etapes">
+          <li v-for="(etape, i) in etapes" :key="etape.ancre" v-reveal="i * 90">
+            <a :href="`#${etape.ancre}`" :class="['etape', { 'is-active': i < etapesAllumees }]">
+              <span class="etape-tuile"><i :class="['pi', etape.icone]"></i></span>
+              <span class="etape-corps">
+                <span class="etape-num">{{ String(i + 1).padStart(2, '0') }}</span>
+                <span class="etape-titre heading-font">{{ etape.titre }}</span>
+                <span class="etape-texte">{{ etape.texte }}</span>
+              </span>
+            </a>
+          </li>
+        </ol>
+        </div>
+      </div>
+    </section>
 
-          <!-- Orange -->
-          <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(245, 158, 11, 0.15);">
-              <i class="pi pi-upload text-xl" style="color: #f59e0b;"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">Import/export de données</h3>
-            <p class="text-gray-600">Importez facilement vos données existantes et exportez vos rapports en quelques clics.</p>
+    <!-- Importer -->
+    <section id="import" class="py-20 bg-page">
+      <div class="container">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div v-reveal.left>
+            <span class="section-badge"><i class="pi pi-upload"></i>Import</span>
+            <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Importez les bordereaux tels qu'ils arrivent
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">
+              Déposez le fichier du partenaire : Conance reconnaît ses colonnes, signale les erreurs
+              avant d'écrire quoi que ce soit et retient le format pour la fois suivante.
+            </p>
+            <ul class="liste-points">
+              <li><i class="pi pi-check-circle"></i><span>Excel, CSV et PDF : un relevé PDF devient un tableau importable</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Colonnes reconnues, configuration mémorisée par partenaire</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Validation et détection des erreurs avant l'import</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Un import raté s'annule en entier, contrats et clients créés compris</span></li>
+            </ul>
           </div>
+          <Parallaxe>
+            <BrowserFrame v-reveal.right="120" :src="capture('import', sombre)" alt="Aperçu de l'import de données" tab="Import" path="import" @zoom="openLightbox" />
+          </Parallaxe>
+        </div>
+      </div>
+    </section>
 
-          <!-- Bleu -->
-          <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(59, 130, 246, 0.15);">
-              <i class="pi pi-chart-line text-xl" style="color: #3b82f6;"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">Tableaux de bord et rapports</h3>
-            <p class="text-gray-600">Visualisez vos performances avec des tableaux de bord interactifs et des rapports détaillés.</p>
-          </div>
+    <!-- Prévoir : pilotage et prévisionnel (section phare) -->
+    <section id="previsionnel" class="py-20 bg-deep overflow-hidden relative">
+      <div class="container relative">
+        <div v-reveal class="text-center max-w-3xl mx-auto mb-12">
+          <span class="section-badge section-badge--sombre"><i class="pi pi-chart-line"></i>Pilotage et prévisionnel</span>
+          <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-blanc mb-6">
+            Sachez ce qui va tomber, et quand
+          </h2>
+          <p class="text-lg text-brume/90 font-light">
+            Conance lit le rythme de chaque contrat dans vos bordereaux et en déduit ce que vous allez
+            encaisser d'ici décembre, mois par mois et contrat par contrat. Un contrat en retard est
+            signalé, un rythme mal compris se corrige en deux clics.
+          </p>
+        </div>
 
-          <!-- Rose/Rouge -->
-          <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(239, 68, 68, 0.15);">
-              <i class="pi pi-building text-xl" style="color: #ef4444;"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">Gestion multi-entités</h3>
-            <p class="text-gray-600">Consolidez les données de plusieurs structures juridiques et analysez-les dans un espace unifié.</p>
-          </div>
+        <ul class="points-sombres">
+          <li v-reveal>
+            <i class="pi pi-wallet"></i>
+            <h3>Encours et production</h3>
+            <p>L'encours retenu par vos partenaires et la production de l'année, avec leur évolution mois par mois.</p>
+          </li>
+          <li v-reveal="120">
+            <i class="pi pi-chart-bar"></i>
+            <h3>Prévisionnel de l'année</h3>
+            <p>L'encaissé et l'à-venir jusqu'en décembre, avec la part qui repose sur des contrats en retard.</p>
+          </li>
+          <li v-reveal="240">
+            <i class="pi pi-list"></i>
+            <h3>Contrat par contrat</h3>
+            <p>Chaque échéance avec son rythme. Un rythme se corrige, un contrat se retire du prévisionnel.</p>
+          </li>
+        </ul>
 
-          <!-- Cyan -->
-          <div class="p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background-color: rgba(6, 182, 212, 0.15);">
-              <i class="pi pi-shield text-xl" style="color: #06b6d4;"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">Rôles et permissions avancés</h3>
-            <p class="text-gray-600">Contrôlez finement les accès avec un système de rôles et permissions personnalisables.</p>
+        <!-- La capture arrive couchée et se redresse en montant ; un halo s'allume derrière -->
+        <div v-scroll:entree class="pilotage-scene">
+          <div class="pilotage-halo" aria-hidden="true"></div>
+          <div class="pilotage-incline">
+            <BrowserFrame :src="capture('pilotage', sombre)" alt="Aperçu du pilotage et du prévisionnel" tab="Pilotage" path="pilotage" @zoom="openLightbox" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Feature Showcase: Commissions -->
-    <section class="py-20 bg-white">
+    <!-- Contrôler : commissions attendues -->
+    <section id="attendues" class="py-20 bg-page">
       <div class="container">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <!-- Screenshot côté gauche -->
-          <div class="order-2 lg:order-1">
-            <div class="browser-window-small">
-              <!-- Chrome Title Bar with macOS buttons + Tab -->
-              <div class="browser-titlebar-small">
-                <!-- macOS Traffic Lights -->
-                <div class="window-controls-small">
-                  <span class="window-control-small close"></span>
-                  <span class="window-control-small minimize"></span>
-                  <span class="window-control-small maximize"></span>
-                </div>
-                <!-- Tabs Container -->
-                <div class="browser-tabs-container-small">
-                  <div class="browser-tab-small">
-                    <img src="/favicon/favicon.svg" alt="" class="browser-tab-icon-small" />
-                    <span class="browser-tab-title-small">Conance - Commissions</span>
-                  </div>
-                </div>
-              </div>
-              <!-- URL Bar / Toolbar -->
-              <div class="browser-toolbar-small">
-                <div class="browser-nav-small">
-                  <span class="browser-nav-btn-small disabled">←</span>
-                  <span class="browser-nav-btn-small disabled">→</span>
-                  <span class="browser-nav-btn-small">↻</span>
-                </div>
-                <div class="browser-url-small">
-                  <span class="browser-url-icon-small">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                    </svg>
-                  </span>
-                  <span class="browser-url-text-small"><span class="url-dimmed">https://</span>app.conance.io/commissions</span>
-                </div>
-              </div>
-              <!-- Screenshot Content -->
-              <div class="browser-content-small cursor-pointer" @click="openLightbox('/screenshots/commissions.png', 'Aperçu de la gestion des commissions')">
-                <img
-                  src="/screenshots/commissions.png"
-                  alt="Aperçu de la gestion des commissions"
-                  class="w-full"
-                />
-              </div>
-            </div>
+          <div v-reveal.left>
+            <span class="section-badge"><i class="pi pi-bell"></i>Commissions attendues</span>
+            <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Repérez la commission qui n'est pas venue
+            </h2>
+            <p class="text-lg text-gray-600 mb-6">
+              Un contrat qui payait tous les trimestres et se tait depuis six mois remonte tout seul,
+              avec ce qu'il aurait dû verser. Une commission que l'on vous annonce, un droit d'entrée
+              par exemple, se déclare et se rapproche de ce qui arrive dans les bordereaux.
+            </p>
+            <ul class="liste-points">
+              <li><i class="pi pi-check-circle"></i><span>Contrats muets au regard de leur propre rythme, versements manqués chiffrés</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Commissions annoncées rapprochées à l'import, écart signalé si le montant diffère</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Conance signale, vous tranchez : contrat résilié, attente annulée</span></li>
+            </ul>
           </div>
-
-          <!-- Texte côté droit -->
-          <div class="order-1 lg:order-2">
-            <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-4" style="background-color: rgba(16, 185, 129, 0.15); color: #10b981;">
-              <i class="pi pi-money-bill mr-2"></i>
-              Commissions
+          <Parallaxe :force="90">
+            <div class="cadre-pastille">
+              <BrowserFrame v-reveal.right="120" :src="capture('attendues', sombre)" alt="Aperçu des commissions attendues" tab="Pilotage" path="pilotage" @zoom="openLightbox" />
+              <div v-reveal.scale="650" class="pastille pastille--ligne pastille-manque" aria-hidden="true">
+                <span class="pastille-tuile pastille-tuile--alerte"><i class="pi pi-bell"></i></span>
+                <span>
+                  <span class="pastille-titre"><strong class="manque">~14 800 €</strong> de manque estimé</span>
+                  <span class="pastille-sous">12 contrats à regarder</span>
+                </span>
+              </div>
             </div>
+          </Parallaxe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analyser : commissions -->
+    <section id="analyse" class="py-20 bg-warm">
+      <div class="container">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <Parallaxe class="order-2 lg:order-1">
+            <BrowserFrame v-reveal.left="120" :src="capture('commissions', sombre)" alt="Aperçu de la gestion des commissions" tab="Commissions" path="commissions" @zoom="openLightbox" />
+          </Parallaxe>
+          <div v-reveal.right class="order-1 lg:order-2">
+            <span class="section-badge"><i class="pi pi-money-bill"></i>Commissions</span>
             <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               La comptabilité analytique de votre chiffre d'affaires
             </h2>
@@ -300,109 +316,104 @@
               Bien plus qu'un simple suivi : ventilez l'ensemble de votre chiffre d'affaires selon
               tous les axes qui comptent pour piloter votre cabinet, et obtenez la réponse en quelques clics.
             </p>
-            <ul class="space-y-3">
-              <li class="flex items-start">
-                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Par conseiller, partenaire, produit et client</span>
-              </li>
-              <li class="flex items-start">
-                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Par nature : récurrent (encours) ou ponctuel (droits d'entrée)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Par activité : CIF, Courtage, IOBSP…</span>
-              </li>
-              <li class="flex items-start">
-                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Par entité comptable, avec historique complet et traçabilité</span>
-              </li>
+            <ul class="liste-points">
+              <li><i class="pi pi-check-circle"></i><span>Par conseiller, partenaire, produit et client</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Par nature : récurrent (encours) ou ponctuel (droits d'entrée)</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Par activité : CIF, Courtage, IOBSP…</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Par entité comptable, avec historique complet et traçabilité</span></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Feature Showcase: Import -->
-    <section class="py-20 bg-gray-50">
+    <!-- Déclarer et comptabiliser -->
+    <section id="declarer" class="py-20 bg-page">
       <div class="container">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <!-- Texte côté gauche -->
-          <div>
-            <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-4" style="background-color: rgba(245, 158, 11, 0.15); color: #f59e0b;">
-              <i class="pi pi-upload mr-2"></i>
-              Import
-            </div>
+          <div v-reveal.left>
+            <span class="section-badge"><i class="pi pi-file-check"></i>Déclarer et comptabiliser</span>
             <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Importez vos données facilement
+              La FRA CIF et la comptabilité, sans ressaisie
             </h2>
             <p class="text-lg text-gray-600 mb-6">
-              Gagnez du temps avec notre système d'import intelligent. Importez vos fichiers de commissions
-              depuis vos partenaires en quelques clics, avec détection automatique des formats.
+              Les chiffres de la fiche de renseignements annuels se calculent à partir de vos commissions,
+              avec ce qu'il reste à compléter. Vous relisez, vous exportez.
             </p>
-            <ul class="space-y-3">
-              <li class="flex items-start">
-                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Support des formats Excel et CSV, et désormais le PDF <span class="inline-flex items-center px-2 py-0.5 rounded-sm text-xs font-medium align-middle" style="background-color: rgba(245, 158, 11, 0.15); color: #b45309;">Beta</span></span>
+            <ul class="liste-points">
+              <li><i class="pi pi-check-circle"></i><span>Rétrocessions, honoraires et courtage de l'exercice, clients, contrats, encours au 31 décembre</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Rubriques à régler selon vos natures de commission</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Alerte quand une donnée manque, export Excel</span></li>
+            </ul>
+          </div>
+          <Parallaxe>
+            <BrowserFrame v-reveal.right="120" :src="capture('reglementaire', sombre)" alt="Aperçu de la FRA CIF préparée par Conance" tab="Réglementaire" path="pilotage/reglementaire" @zoom="openLightbox" />
+          </Parallaxe>
+        </div>
+
+        <div v-reveal class="carte-export">
+          <span class="carte-export-tuile"><i class="pi pi-calculator"></i></span>
+          <div class="carte-export-texte">
+            <h3 class="heading-font">Export comptable</h3>
+            <p>
+              Une écriture par commission, sur un compte de produit choisi selon la nature et sur le compte
+              du partenaire qui l'a versée. À remettre à votre expert-comptable ou à importer dans Pennylane.
+            </p>
+          </div>
+          <div class="carte-export-formats">
+            <span>FEC</span>
+            <span>CSV</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sécurité et équipe -->
+    <section id="securite" class="py-20 bg-warm">
+      <div class="container">
+        <div class="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-24 items-center max-w-5xl mx-auto">
+          <div>
+            <span v-reveal class="section-badge"><i class="pi pi-shield"></i>Sécurité et équipe</span>
+            <h2 v-reveal="80" class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+              Vos données restent les vôtres
+            </h2>
+            <ul class="garanties">
+              <li v-reveal="160">
+                <span class="garantie-tuile"><i class="pi pi-lock"></i></span>
+                <div>
+                  <h3>Double authentification</h3>
+                  <p>Par code, clé d'accès (Touch ID, Face ID, clé physique) ou e-mail, imposable à tout le cabinet.</p>
+                </div>
               </li>
-              <li class="flex items-start">
-                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Mapping intelligent des colonnes</span>
+              <li v-reveal="260">
+                <span class="garantie-tuile"><i class="pi pi-users"></i></span>
+                <div>
+                  <h3>Rôles et permissions</h3>
+                  <p>Chacun voit et modifie ce que son rôle permet, fonctionnalité par fonctionnalité.</p>
+                </div>
               </li>
-              <li class="flex items-start">
-                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Validation et détection des erreurs</span>
+              <li v-reveal="360">
+                <span class="garantie-tuile"><i class="pi pi-server"></i></span>
+                <div>
+                  <h3>Données hébergées en France</h3>
+                  <p>L'application, la base, les fichiers et les sauvegardes.</p>
+                </div>
               </li>
-              <li class="flex items-start">
-                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Configurations sauvegardées par partenaire</span>
+              <li v-reveal="460">
+                <span class="garantie-tuile"><i class="pi pi-mobile"></i></span>
+                <div>
+                  <h3>Aussi sur téléphone</h3>
+                  <p>Les pages du quotidien à portée de main, avec une barre d'onglets.</p>
+                </div>
               </li>
             </ul>
           </div>
-
-          <!-- Screenshot côté droit -->
-          <div>
-            <div class="browser-window-small">
-              <!-- Chrome Title Bar with macOS buttons + Tab -->
-              <div class="browser-titlebar-small">
-                <!-- macOS Traffic Lights -->
-                <div class="window-controls-small">
-                  <span class="window-control-small close"></span>
-                  <span class="window-control-small minimize"></span>
-                  <span class="window-control-small maximize"></span>
-                </div>
-                <!-- Tabs Container -->
-                <div class="browser-tabs-container-small">
-                  <div class="browser-tab-small">
-                    <img src="/favicon/favicon.svg" alt="" class="browser-tab-icon-small" />
-                    <span class="browser-tab-title-small">Conance - Import</span>
-                  </div>
-                </div>
-              </div>
-              <!-- URL Bar / Toolbar -->
-              <div class="browser-toolbar-small">
-                <div class="browser-nav-small">
-                  <span class="browser-nav-btn-small disabled">←</span>
-                  <span class="browser-nav-btn-small disabled">→</span>
-                  <span class="browser-nav-btn-small">↻</span>
-                </div>
-                <div class="browser-url-small">
-                  <span class="browser-url-icon-small">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                    </svg>
-                  </span>
-                  <span class="browser-url-text-small"><span class="url-dimmed">https://</span>app.conance.io/import</span>
-                </div>
-              </div>
-              <!-- Screenshot Content -->
-              <div class="browser-content-small cursor-pointer" @click="openLightbox('/screenshots/import.png', 'Aperçu de l\'import de données')">
-                <img
-                  src="/screenshots/import.png"
-                  alt="Aperçu de l'import de données"
-                  class="w-full"
-                />
+          <!-- Le téléphone monte plus vite que la page et se redresse -->
+          <div v-scroll class="telephone-scene">
+            <div class="telephone-halo" aria-hidden="true"></div>
+            <div class="telephone-couche">
+              <div v-reveal.scale="200" class="telephone">
+                <img :src="capture('mobile', sombre)" alt="Le tableau de bord Conance sur téléphone" loading="lazy" />
               </div>
             </div>
           </div>
@@ -413,11 +424,11 @@
     <!-- Section Témoignage -->
     <!-- DÉSACTIVÉE : avis fictifs. Pour réactiver, retirer le <template v-if="false"> / </template> qui entourent la section, et remplacer les témoignages factices (tableau `testimonials`) par les vrais avis. -->
     <template v-if="false">
-    <section class="py-10 overflow-hidden" style="background-color: #0F2F2C;">
+    <section class="py-10 overflow-hidden bg-deep">
       <div class="testimonial-marquee relative">
         <div class="marquee-track flex items-start py-2">
           <div v-for="(t, i) in marqueeTestimonials" :key="i" class="shrink-0 w-[340px] md:w-[440px] flex mr-5" :aria-hidden="i >= testimonials.length ? 'true' : null">
-            <div class="flex flex-col h-[330px] md:h-[285px] w-full bg-white rounded-2xl p-6 overflow-hidden" style="box-shadow: 0 2px 4px rgba(15,47,44,0.04), 0 10px 22px -8px rgba(15,47,44,0.16);">
+            <div class="flex flex-col h-[330px] md:h-[285px] w-full bg-white rounded-2xl p-6 overflow-hidden" style="box-shadow: 0 2px 4px rgba(6,41,36,0.04), 0 10px 22px -8px rgba(6,41,36,0.16);">
               <span class="heading-font text-4xl leading-none select-none pointer-events-none" style="color: rgba(35, 176, 134, 0.22);">&ldquo;</span>
 
               <blockquote class="text-[15px] text-gray-700 leading-relaxed mt-2 mb-5">
@@ -426,7 +437,7 @@
 
               <!-- Auteur -->
               <div class="flex items-center pt-5 mt-auto border-t border-gray-100">
-                <div class="w-10 h-10 rounded-full flex items-center justify-center mr-3 text-white text-xs font-semibold shrink-0" style="background-color: #0F2F2C;">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center mr-3 text-blanc text-xs font-semibold shrink-0" style="background-color: #062924;">
                   {{ t.initials }}
                 </div>
                 <div class="text-left min-w-0">
@@ -442,17 +453,17 @@
     </template>
 
     <!-- Section Externalisation / Prestataires -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-page">
       <div class="container">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <!-- Illustration schématique (gauche) -->
-          <div class="flex items-center justify-center">
+          <div v-reveal.left class="flex items-center justify-center">
             <div class="w-full max-w-md">
               <!-- Prestataire card -->
-              <div class="bg-white rounded-xl shadow-lg border-2 p-6 mb-4" style="border-color: #23b086;">
+              <div class="bg-white rounded-xl shadow-lg border-2 border-primary-700 p-6 mb-4">
                 <div class="flex items-center mb-4">
-                  <div class="w-10 h-10 rounded-lg flex items-center justify-center mr-3" style="background-color: rgba(35, 176, 134, 0.15);">
-                    <i class="pi pi-building text-lg" style="color: #23b086;"></i>
+                  <div class="w-10 h-10 rounded-lg flex items-center justify-center mr-3 tuile-douce">
+                    <i class="pi pi-building text-lg"></i>
                   </div>
                   <div>
                     <h4 class="font-semibold text-gray-900">Prestataire</h4>
@@ -462,21 +473,21 @@
                 <div class="border-t border-gray-100 pt-4">
                   <p class="text-xs text-gray-400 uppercase font-medium mb-3">Cabinets gérés</p>
                   <div class="space-y-2">
-                    <div class="flex items-center p-2 rounded-lg bg-gray-50">
-                      <div class="w-8 h-8 rounded-md flex items-center justify-center mr-3" style="background-color: rgba(99, 102, 241, 0.15);">
-                        <i class="pi pi-briefcase text-sm" style="color: #6366f1;"></i>
+                    <div v-reveal.left="300" class="flex items-center p-2 rounded-lg bg-warm">
+                      <div class="w-8 h-8 rounded-md flex items-center justify-center mr-3 tuile-douce">
+                        <i class="pi pi-briefcase text-sm"></i>
                       </div>
                       <span class="text-sm font-medium text-gray-700">Cabinet Alpha</span>
                     </div>
-                    <div class="flex items-center p-2 rounded-lg bg-gray-50">
-                      <div class="w-8 h-8 rounded-md flex items-center justify-center mr-3" style="background-color: rgba(245, 158, 11, 0.15);">
-                        <i class="pi pi-briefcase text-sm" style="color: #f59e0b;"></i>
+                    <div v-reveal.left="440" class="flex items-center p-2 rounded-lg bg-warm">
+                      <div class="w-8 h-8 rounded-md flex items-center justify-center mr-3 tuile-douce">
+                        <i class="pi pi-briefcase text-sm"></i>
                       </div>
                       <span class="text-sm font-medium text-gray-700">Cabinet Beta</span>
                     </div>
-                    <div class="flex items-center p-2 rounded-lg bg-gray-50">
-                      <div class="w-8 h-8 rounded-md flex items-center justify-center mr-3" style="background-color: rgba(239, 68, 68, 0.15);">
-                        <i class="pi pi-briefcase text-sm" style="color: #ef4444;"></i>
+                    <div v-reveal.left="580" class="flex items-center p-2 rounded-lg bg-warm">
+                      <div class="w-8 h-8 rounded-md flex items-center justify-center mr-3 tuile-douce">
+                        <i class="pi pi-briefcase text-sm"></i>
                       </div>
                       <span class="text-sm font-medium text-gray-700">Cabinet Gamma</span>
                     </div>
@@ -487,11 +498,8 @@
           </div>
 
           <!-- Texte (droite) -->
-          <div>
-            <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-4" style="background-color: rgba(239, 68, 68, 0.15); color: #ef4444;">
-              <i class="pi pi-sitemap mr-2"></i>
-              Multi-Cabinets
-            </div>
+          <div v-reveal.right>
+            <span class="section-badge"><i class="pi pi-sitemap"></i>Multi-Cabinets</span>
             <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               Vous gérez les commissions pour plusieurs cabinets ?
             </h2>
@@ -502,23 +510,12 @@
               pour ces prestataires, leur permettant de centraliser la gestion des commissions
               de tous leurs cabinets clients depuis un espace unifié.
             </p>
-            <ul class="space-y-3">
-              <li class="flex items-start">
-                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Un seul abonnement pour gérer plusieurs cabinets</span>
-              </li>
-              <li class="flex items-start">
-                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Chaque cabinet dispose de son propre espace isolé et sécurisé</span>
-              </li>
-              <li class="flex items-start">
-                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Basculez entre vos cabinets en un clic</span>
-              </li>
-              <li class="flex items-start">
-                <i class="pi pi-check-circle text-primary-500 mr-3 mt-1"></i>
-                <span class="text-gray-700">Idéal pour les prestataires qui gèrent l'externalisation des commissions</span>
-              </li>
+            <ul class="liste-points">
+              <li><i class="pi pi-check-circle"></i><span>Un seul abonnement pour gérer plusieurs cabinets</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Chaque cabinet dispose de son propre espace isolé et sécurisé</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Basculez entre vos cabinets en un clic</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Crédits IA mis en commun entre les cabinets du groupe</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Idéal pour les prestataires qui gèrent l'externalisation des commissions</span></li>
             </ul>
             <div class="mt-8">
               <a href="#tarifs" class="btn-primary px-6 py-3 inline-block" @click.prevent="showGroupPricing">Voir les offres Multi-Cabinets</a>
@@ -529,9 +526,9 @@
     </section>
 
     <!-- Tarifs Section -->
-    <section id="tarifs" class="py-20 bg-gray-50">
+    <section id="tarifs" class="py-20 bg-warm">
       <div class="container">
-        <div class="text-center mb-12">
+        <div v-reveal class="text-center mb-12">
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Tarifs transparents
           </h2>
@@ -546,13 +543,13 @@
           <div class="flex justify-center">
             <div class="inline-flex rounded-lg border border-gray-200 bg-white p-1 shadow-xs">
               <button
-                :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'cabinet' ? 'bg-primary-500 text-white shadow-xs' : 'text-gray-600 hover:text-gray-900']"
+                :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'cabinet' ? 'bg-action text-blanc shadow-xs' : 'text-gray-600 hover:text-gray-900']"
                 @click="pricingTab = 'cabinet'"
               >
                 <i class="pi pi-building mr-2"></i>Cabinet
               </button>
               <button
-                :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'group' ? 'bg-primary-500 text-white shadow-xs' : 'text-gray-600 hover:text-gray-900']"
+                :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'group' ? 'bg-action text-blanc shadow-xs' : 'text-gray-600 hover:text-gray-900']"
                 @click="pricingTab = 'group'"
               >
                 <i class="pi pi-sitemap mr-2"></i>Multi-Cabinets
@@ -572,16 +569,16 @@
                 role="switch"
                 :aria-checked="billingPeriod === 'annual'"
                 aria-label="Basculer entre facturation mensuelle et annuelle"
-                :class="['relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200', billingPeriod === 'annual' ? 'bg-primary-500' : 'bg-gray-300']"
+                :class="['relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200', billingPeriod === 'annual' ? 'bg-action' : 'bg-gray-300']"
                 @click="billingPeriod = billingPeriod === 'annual' ? 'monthly' : 'annual'"
               >
-                <span :class="['inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition-transform duration-200', billingPeriod === 'annual' ? 'translate-x-6' : 'translate-x-1']"></span>
+                <span :class="['inline-block h-4 w-4 transform rounded-full bg-blanc shadow-sm transition-transform duration-200', billingPeriod === 'annual' ? 'translate-x-6' : 'translate-x-1']"></span>
               </button>
               <span
                 :class="['text-sm cursor-pointer transition-colors', billingPeriod === 'annual' ? 'text-gray-900 font-semibold' : 'text-gray-500']"
                 @click="billingPeriod = 'annual'"
               >Annuel</span>
-              <span class="px-2 py-0.5 rounded-full text-xs font-medium text-primary-500" style="background-color: rgba(35, 176, 134, 0.12);">2 mois offerts</span>
+              <span class="px-2 py-0.5 rounded-full text-xs font-medium tuile-douce">2 mois offerts</span>
             </div>
           </div>
         </div>
@@ -589,7 +586,7 @@
         <!-- Plans Cabinet -->
         <div v-show="pricingTab === 'cabinet'" class="grid md:grid-cols-5 gap-6 max-w-7xl mx-auto items-stretch">
           <!-- Plan Gratuit -->
-          <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
+          <div v-reveal="0" class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
             <div class="text-center">
               <h3 class="text-xl font-bold text-gray-900 mb-2">Gratuit</h3>
               <p class="text-gray-600 mb-4 text-sm">Pour découvrir Conance</p>
@@ -600,31 +597,31 @@
             </div>
             <ul class="space-y-2 mb-6 grow text-sm">
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>5 000 commissions</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>3 partenaires</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>3 utilisateurs</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>1 Go de stockage</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>Support communautaire</span>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
+                <span>Support par e-mail</span>
               </li>
             </ul>
             <a href="https://app.conance.io/register?plan=gratuit" class="w-full btn-secondary-light text-center block mt-auto text-sm">Commencer gratuitement</a>
           </div>
 
           <!-- Plan Starter -->
-          <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
+          <div v-reveal="80" class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
             <div class="text-center">
               <h3 class="text-xl font-bold text-gray-900 mb-2">Starter</h3>
               <p class="text-gray-600 mb-4 text-sm">Pour les petites structures</p>
@@ -636,27 +633,27 @@
             </div>
             <ul class="space-y-2 mb-6 grow text-sm">
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>500 000 commissions</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>10 partenaires</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>3 utilisateurs</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>10 Go de stockage</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>Support email</span>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
+                <span>Support par e-mail</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                <i class="pi pi-sparkles text-primary-700 mr-2"></i>
                 <span><strong>Fonctionnalités IA</strong></span>
               </li>
             </ul>
@@ -664,9 +661,9 @@
           </div>
 
           <!-- Plan Standard -->
-          <div class="bg-white rounded-lg shadow-lg p-6 border-2 border-primary-500 relative flex flex-col">
+          <div v-reveal="160" class="bg-white rounded-lg shadow-lg p-6 border-2 border-primary-700 relative flex flex-col">
             <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-              <span class="bg-primary-500 text-white px-3 py-1 rounded-full text-xs font-medium">Populaire</span>
+              <span class="bg-action text-blanc px-3 py-1 rounded-full text-xs font-medium">Populaire</span>
             </div>
             <div class="text-center">
               <h3 class="text-xl font-bold text-gray-900 mb-2">Standard</h3>
@@ -679,27 +676,27 @@
             </div>
             <ul class="space-y-2 mb-6 grow text-sm">
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>2 millions de commissions</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>25 partenaires</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>10 utilisateurs</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>50 Go de stockage</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>Support email</span>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
+                <span>Support par e-mail</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                <i class="pi pi-sparkles text-primary-700 mr-2"></i>
                 <span><strong>Fonctionnalités IA</strong></span>
               </li>
             </ul>
@@ -707,7 +704,7 @@
           </div>
 
           <!-- Plan Premium -->
-          <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
+          <div v-reveal="240" class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
             <div class="text-center">
               <h3 class="text-xl font-bold text-gray-900 mb-2">Premium</h3>
               <p class="text-gray-600 mb-4 text-sm">Pour les grands cabinets</p>
@@ -719,27 +716,27 @@
             </div>
             <ul class="space-y-2 mb-6 grow text-sm">
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>8 millions de commissions</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>75 partenaires</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>25 utilisateurs</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>100 Go de stockage</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
-                <span>Support email</span>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
+                <span>Support par e-mail</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                <i class="pi pi-sparkles text-primary-700 mr-2"></i>
                 <span><strong>Fonctionnalités IA</strong></span>
               </li>
             </ul>
@@ -747,7 +744,7 @@
           </div>
 
           <!-- Plan Entreprise -->
-          <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
+          <div v-reveal="320" class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
             <div class="text-center">
               <h3 class="text-xl font-bold text-gray-900 mb-2">Entreprise</h3>
               <p class="text-gray-600 mb-4 text-sm">Pour les plus exigeants</p>
@@ -759,32 +756,32 @@
             </div>
             <ul class="space-y-2 mb-6 grow text-sm">
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>20 millions de commissions</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>Partenaires illimités</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>100 utilisateurs</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>300 Go de stockage</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-check text-primary-500 mr-2"></i>
+                <i class="pi pi-check text-primary-700 mr-2"></i>
                 <span>Support dédié</span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                <i class="pi pi-sparkles text-primary-700 mr-2"></i>
                 <span><strong>Fonctionnalités IA</strong></span>
               </li>
               <li class="flex items-center">
-                <i class="pi pi-star text-primary-500 mr-2"></i>
-                <span class="text-primary-500 font-medium">Configuration dédiée</span>
+                <i class="pi pi-star text-primary-700 mr-2"></i>
+                <span class="text-primary-700 font-medium">Configuration dédiée</span>
               </li>
             </ul>
             <a href="https://app.conance.io/register?plan=entreprise" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
@@ -798,7 +795,7 @@
           </p>
           <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
             <!-- Groupe Starter -->
-            <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
+            <div v-reveal="0" class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
               <div class="text-center">
                 <h3 class="text-xl font-bold text-gray-900 mb-2">Groupe Starter</h3>
                 <p class="text-gray-600 mb-4 text-sm">Pour débuter en multi-cabinets</p>
@@ -810,31 +807,31 @@
               </div>
               <ul class="space-y-2 mb-6 grow text-sm">
                 <li class="flex items-center">
-                  <i class="pi pi-building text-primary-500 mr-2"></i>
+                  <i class="pi pi-building text-primary-700 mr-2"></i>
                   <span><strong>3 cabinets</strong> inclus</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>10 Go de stockage par cabinet</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>3 utilisateurs par cabinet</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>500 000 commissions par cabinet</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>10 partenaires par cabinet</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>Imports, Exports et Rapports</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                  <i class="pi pi-sparkles text-primary-700 mr-2"></i>
                   <span><strong>Fonctionnalités IA</strong></span>
                 </li>
               </ul>
@@ -842,9 +839,9 @@
             </div>
 
             <!-- Groupe Standard -->
-            <div class="bg-white rounded-lg shadow-lg p-6 border-2 border-primary-500 relative flex flex-col">
+            <div v-reveal="80" class="bg-white rounded-lg shadow-lg p-6 border-2 border-primary-700 relative flex flex-col">
               <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span class="bg-primary-500 text-white px-3 py-1 rounded-full text-xs font-medium">Populaire</span>
+                <span class="bg-action text-blanc px-3 py-1 rounded-full text-xs font-medium">Populaire</span>
               </div>
               <div class="text-center">
                 <h3 class="text-xl font-bold text-gray-900 mb-2">Groupe Standard</h3>
@@ -857,31 +854,31 @@
               </div>
               <ul class="space-y-2 mb-6 grow text-sm">
                 <li class="flex items-center">
-                  <i class="pi pi-building text-primary-500 mr-2"></i>
+                  <i class="pi pi-building text-primary-700 mr-2"></i>
                   <span><strong>10 cabinets</strong> inclus</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>10 Go de stockage par cabinet</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>3 utilisateurs par cabinet</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>500 000 commissions par cabinet</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>10 partenaires par cabinet</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>Imports, Exports et Rapports</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                  <i class="pi pi-sparkles text-primary-700 mr-2"></i>
                   <span><strong>Fonctionnalités IA</strong></span>
                 </li>
               </ul>
@@ -889,7 +886,7 @@
             </div>
 
             <!-- Groupe Premium -->
-            <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
+            <div v-reveal="160" class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
               <div class="text-center">
                 <h3 class="text-xl font-bold text-gray-900 mb-2">Groupe Premium</h3>
                 <p class="text-gray-600 mb-4 text-sm">Pour les grands prestataires</p>
@@ -901,31 +898,31 @@
               </div>
               <ul class="space-y-2 mb-6 grow text-sm">
                 <li class="flex items-center">
-                  <i class="pi pi-building text-primary-500 mr-2"></i>
+                  <i class="pi pi-building text-primary-700 mr-2"></i>
                   <span><strong>25 cabinets</strong> inclus</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>10 Go de stockage par cabinet</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>3 utilisateurs par cabinet</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>500 000 commissions par cabinet</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>10 partenaires par cabinet</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-check text-primary-500 mr-2"></i>
+                  <i class="pi pi-check text-primary-700 mr-2"></i>
                   <span>Imports, Exports et Rapports</span>
                 </li>
                 <li class="flex items-center">
-                  <i class="pi pi-sparkles text-primary-500 mr-2"></i>
+                  <i class="pi pi-sparkles text-primary-700 mr-2"></i>
                   <span><strong>Fonctionnalités IA</strong></span>
                 </li>
               </ul>
@@ -934,16 +931,16 @@
           </div>
 
           <p class="text-center text-gray-400 text-sm mt-6">
-            Besoin de plus de cabinets ? <a href="#contact" class="text-primary-500 hover:underline">Contactez-nous</a> pour une offre sur mesure.
+            Besoin de plus de cabinets ? <a href="#contact" class="text-primary-700 hover:underline">Contactez-nous</a> pour une offre sur mesure.
           </p>
         </div>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-20 bg-page">
       <div class="container">
-        <div class="text-center mb-16">
+        <div v-reveal class="text-center mb-16">
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Contactez-nous
           </h2>
@@ -957,15 +954,15 @@
             <h3 class="text-2xl font-semibold mb-6">Informations de contact</h3>
             <div class="space-y-4">
               <div class="flex items-center">
-                <i class="pi pi-envelope text-primary-500 mr-4"></i>
+                <i class="pi pi-envelope text-primary-700 mr-4"></i>
                 <span>contact@conance.io</span>
               </div>
               <div class="flex items-center">
-                <i class="pi pi-phone text-primary-500 mr-4"></i>
+                <i class="pi pi-phone text-primary-700 mr-4"></i>
                 <span>06 99 96 46 97</span>
               </div>
               <div class="flex items-center">
-                <i class="pi pi-map-marker text-primary-500 mr-4"></i>
+                <i class="pi pi-map-marker text-primary-700 mr-4"></i>
                 <span>4 Quai François Mitterrand, 44200 Nantes</span>
               </div>
             </div>
@@ -977,13 +974,13 @@
                 <div>
                   <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nom *</label>
                   <input type="text" id="name" v-model="form.name" required 
-                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-700 focus:border-transparent">
                 </div>
                 
                 <div>
                   <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
                   <input type="email" id="email" v-model="form.email" required
-                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-700 focus:border-transparent">
                 </div>
               </div>
 
@@ -991,20 +988,20 @@
                 <div>
                   <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Entreprise</label>
                   <input type="text" id="company" v-model="form.company"
-                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-700 focus:border-transparent">
                 </div>
                 
                 <div>
                   <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Téléphone</label>
                   <input type="tel" id="phone" v-model="form.phone"
-                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-700 focus:border-transparent">
                 </div>
               </div>
               
               <div>
                 <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
                 <textarea id="message" v-model="form.message" rows="5" required
-                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-700 focus:border-transparent"
                           placeholder="Décrivez votre projet ou vos besoins..."></textarea>
               </div>
 
@@ -1012,7 +1009,7 @@
               <div v-if="statusMessage" 
                    :class="[
                      'p-4 rounded-lg border',
-                     statusType === 'success' ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'
+                     statusType === 'success' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-950/40 dark:text-green-300 dark:border-green-900' : 'bg-red-50 text-red-700 border-red-200 dark:bg-red-950/40 dark:text-red-300 dark:border-red-900'
                    ]">
                 <div v-if="statusType === 'error'" class="whitespace-pre-line">{{ statusMessage }}</div>
                 <div v-else>{{ statusMessage }}</div>
@@ -1028,47 +1025,48 @@
     </section>
 
     <!-- Footer -->
-    <footer class="text-white py-12" style="background-color: #0F2F2C;">
+    <footer class="text-blanc py-12 bg-deep">
       <div class="container">
         <div class="grid md:grid-cols-4 gap-8">
           <div>
             <div class="flex items-center mb-4">
               <img src="/logo-conance-white.svg" alt="Conance" class="h-8 w-auto" />
             </div>
-            <p class="text-gray-400">
+            <p class="text-brume-2">
               Solution SaaS de gestion des commissions pour cabinets de gestion de patrimoine.
             </p>
+            <ThemeSelector sur-sombre class="mt-6" />
           </div>
           
           <div>
             <h4 class="font-semibold mb-4">Produit</h4>
-            <ul class="space-y-2 text-gray-400">
-              <li><a href="#fonctionnalites" class="hover:text-white transition-colors">Fonctionnalités</a></li>
-              <li><a href="#tarifs" class="hover:text-white transition-colors">Tarifs</a></li>
-              <li><a href="https://app.conance.io/login" class="hover:text-white transition-colors">Se connecter</a></li>
+            <ul class="space-y-2 text-brume-2">
+              <li><a href="#fonctionnalites" class="hover:text-blanc transition-colors">Fonctionnalités</a></li>
+              <li><a href="#tarifs" class="hover:text-blanc transition-colors">Tarifs</a></li>
+              <li><a href="https://app.conance.io/login" class="hover:text-blanc transition-colors">Se connecter</a></li>
             </ul>
           </div>
           
           <div>
             <h4 class="font-semibold mb-4">Support</h4>
-            <ul class="space-y-2 text-gray-400">
-              <li><a href="https://docs.conance.io" target="_blank" class="hover:text-white transition-colors">Documentation</a></li>
-              <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
-              <li><a href="mailto:contact@conance.io" class="hover:text-white transition-colors">Support</a></li>
+            <ul class="space-y-2 text-brume-2">
+              <li><a href="https://docs.conance.io" target="_blank" class="hover:text-blanc transition-colors">Documentation</a></li>
+              <li><a href="#contact" class="hover:text-blanc transition-colors">Contact</a></li>
+              <li><a href="mailto:contact@conance.io" class="hover:text-blanc transition-colors">Support</a></li>
             </ul>
           </div>
           
           <div>
             <h4 class="font-semibold mb-4">Légal</h4>
-            <ul class="space-y-2 text-gray-400">
-              <li><router-link to="/cgu" class="hover:text-white transition-colors">CGU</router-link></li>
-              <li><router-link to="/mentions-legales" class="hover:text-white transition-colors">Mentions légales</router-link></li>
-              <li><router-link to="/politique-confidentialite" class="hover:text-white transition-colors">Politique de confidentialité</router-link></li>
+            <ul class="space-y-2 text-brume-2">
+              <li><router-link to="/cgu" class="hover:text-blanc transition-colors">CGU</router-link></li>
+              <li><router-link to="/mentions-legales" class="hover:text-blanc transition-colors">Mentions légales</router-link></li>
+              <li><router-link to="/politique-confidentialite" class="hover:text-blanc transition-colors">Politique de confidentialité</router-link></li>
             </ul>
           </div>
         </div>
         
-        <div class="pt-8 mt-8 text-center text-gray-400">
+        <div class="pt-8 mt-8 text-center text-brume-2">
           <p>&copy; {{ currentYear }} Conance. Tous droits réservés.</p>
         </div>
       </div>
@@ -1076,7 +1074,7 @@
 
     <!-- Modale Témoignage complet -->
     <Transition name="lightbox">
-      <div v-if="testimonialModal" class="fixed inset-0 z-60 flex items-center justify-center p-4" style="background: rgba(15,47,44,0.55);" @click="closeTestimonialModal">
+      <div v-if="testimonialModal" class="fixed inset-0 z-60 flex items-center justify-center p-4" style="background: rgba(6,41,36,0.55);" @click="closeTestimonialModal">
         <div class="bg-white rounded-2xl max-w-lg w-full p-8 relative shadow-2xl" @click.stop>
           <button type="button" @click="closeTestimonialModal" aria-label="Fermer" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition-colors">
             <i class="pi pi-times"></i>
@@ -1086,7 +1084,7 @@
             {{ testimonialModal.quote }}
           </blockquote>
           <div class="flex items-center pt-5 border-t border-gray-100">
-            <div class="w-11 h-11 rounded-full flex items-center justify-center mr-3 text-white text-sm font-semibold shrink-0" style="background-color: #0F2F2C;">
+            <div class="w-11 h-11 rounded-full flex items-center justify-center mr-3 text-blanc text-sm font-semibold shrink-0" style="background-color: #062924;">
               {{ testimonialModal.initials }}
             </div>
             <div class="text-left">
@@ -1114,9 +1112,22 @@
 
 <script>
 import { contactService } from '../services/api'
+import BrowserFrame from '../components/BrowserFrame.vue'
+import Parallaxe from '../components/Parallaxe.vue'
+import ThemeSelector from '../components/ThemeSelector.vue'
+import { capture, sombre } from '../theme'
+
+// Prévisionnel du cabinet de démonstration (capture Pilotage), en k€ de janvier à décembre :
+// encaissé jusqu'en septembre, à venir ensuite
+const PREVISION_MENSUELLE = [15, 17, 52, 22, 30, 80, 16, 17, 62, 12, 17, 85]
+const PREVISION_TOTALE = 424490
 
 export default {
   name: 'Home',
+  components: { BrowserFrame, Parallaxe, ThemeSelector },
+  setup() {
+    return { capture, sombre }
+  },
   data() {
     return {
       form: {
@@ -1130,12 +1141,28 @@ export default {
       statusMessage: '',
       statusType: 'success', // 'success' or 'error'
       currentYear: new Date().getFullYear(),
-      scrollHandler: null,
       navbarScrollHandler: null,
       resizeHandler: null,
       navbarDark: true,
       pricingTab: 'cabinet',
       billingPeriod: 'monthly', // 'monthly' | 'annual' — l'annuel offre 2 mois (facturé 10× le mensuel)
+      // Le mois d'un cabinet : chaque temps renvoie à sa section, dans l'ordre de la page
+      etapes: [
+        { ancre: 'import', icone: 'pi-upload', titre: 'Importer', texte: 'Excel, CSV ou PDF, le format de chaque partenaire mémorisé.' },
+        { ancre: 'previsionnel', icone: 'pi-chart-line', titre: 'Prévoir', texte: "Combien d'ici décembre, et quand, contrat par contrat." },
+        { ancre: 'attendues', icone: 'pi-bell', titre: 'Contrôler', texte: 'Les contrats qui ne paient plus, les montants qui ne collent pas.' },
+        { ancre: 'analyse', icone: 'pi-chart-pie', titre: 'Analyser', texte: 'Par conseiller, partenaire, produit, nature ou entité.' },
+        { ancre: 'declarer', icone: 'pi-file-check', titre: 'Déclarer', texte: "Les chiffres de la FRA CIF et les écritures pour l'expert-comptable." }
+      ],
+      etapesAllumees: 0,
+      barresPrevision: PREVISION_MENSUELLE.map((v) => Math.round((v / Math.max(...PREVISION_MENSUELLE)) * 100)),
+      prevision: PREVISION_TOTALE,
+      // Trois contrats muets de la capture « Commissions attendues » du cabinet de démonstration
+      contratsMuets: [
+        { numero: 'CTR481471', partenaire: 'Cardif', manque: '1 680' },
+        { numero: 'A2P444610', partenaire: 'Generali Vie', manque: '1 180' },
+        { numero: 'CTR591137', partenaire: 'Cardif', manque: '1 110' }
+      ],
       lightboxOpen: false,
       lightboxImage: '',
       lightboxAlt: '',
@@ -1180,51 +1207,32 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.initParallaxScroll()
       this.initNavbarScroll()
     })
+    this.compterPrevision()
   },
   beforeUnmount() {
-    if (this.scrollHandler) {
-      window.removeEventListener('scroll', this.scrollHandler)
-    }
     if (this.navbarScrollHandler) {
       window.removeEventListener('scroll', this.navbarScrollHandler)
     }
   },
   methods: {
-    initParallaxScroll() {
-      const browserContent = this.$refs.browserContent
-      const screenshotImg = this.$refs.screenshotImg
-
-      if (!browserContent || !screenshotImg) return
-
-      // Calculate max scroll based on image aspect ratio
-      const imgWidth = screenshotImg.offsetWidth
-      const aspectRatio = 2960 / 3230 // Screenshot aspect ratio
-      const imgHeight = imgWidth * aspectRatio
-      const containerHeight = browserContent.offsetHeight
-      const maxScroll = Math.max(0, imgHeight - containerHeight)
-
-      this.scrollHandler = () => {
-        const rect = browserContent.getBoundingClientRect()
-        const windowHeight = window.innerHeight
-
-        // Start scrolling when browser window is at 40% from top of viewport
-        // End when browser window has completely left the viewport
-        const scrollStart = windowHeight * 0.4
-        const scrollEnd = -rect.height * 0.8
-
-        // Calculate progress (0 = scroll starts, 1 = scroll ends)
-        const progress = Math.max(0, Math.min(1, (scrollStart - rect.top) / (scrollStart - scrollEnd)))
-
-        // Apply parallax transform (slower with 0.7 multiplier)
-        const translateY = -progress * maxScroll * 0.7
-        screenshotImg.style.transform = `translateY(${translateY}px)`
+    // Le total du prévisionnel défile jusqu'à sa valeur quand sa pastille apparaît
+    compterPrevision() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+      const debut = performance.now() + 900
+      const duree = 1400
+      this.prevision = 0
+      const pas = (maintenant) => {
+        const t = Math.min(1, Math.max(0, (maintenant - debut) / duree))
+        const adouci = 1 - Math.pow(1 - t, 3)
+        this.prevision = Math.round((PREVISION_TOTALE * adouci) / 10) * 10
+        if (t < 1) requestAnimationFrame(pas)
       }
-
-      window.addEventListener('scroll', this.scrollHandler, { passive: true })
-      this.scrollHandler()
+      requestAnimationFrame(pas)
+    },
+    allumerEtapes(p) {
+      this.etapesAllumees = Math.min(this.etapes.length, Math.floor(p * (this.etapes.length + 1)))
     },
     initNavbarScroll() {
       // Get the hero section element

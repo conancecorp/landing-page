@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+/* dark: cible la classe posée par theme.ts, pas seulement la préférence du système */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-primary-50: #f0fffe;
   --color-primary-100: #ccfff9;
@@ -10,8 +13,33 @@
   --color-primary-600: #1e9672;
   --color-primary-700: #1a7d5e;
   --color-primary-800: #15634a;
-  --color-primary-900: #0f2f2c;
-  --color-primary-950: #08211f;
+  --color-primary-900: #062924;
+  --color-primary-950: #031c18;
+
+  /* Charte de l'app : vert profond de la barre latérale, fond chaud, vert clair sur fond sombre */
+  --color-deep: #062924;
+  --color-warm: #f9f7f3;
+  --color-mint: #52d2a6;
+  /* Fond des sections claires ; les cartes restent en bg-white (redéfini en sombre) */
+  --color-page: #ffffff;
+  /* Couleurs fixes, les mêmes dans les deux thèmes : texte sur le vert profond, bouton plein */
+  --color-blanc: #ffffff;
+  --color-brume: #d4d1ca;
+  --color-brume-2: #8c8982;
+  --color-action: #1a7d5e;
+
+  /* Gris chauds de l'app (les gris Tailwind tirent sur le bleu) */
+  --color-gray-50: #f9f7f3;
+  --color-gray-100: #f1efea;
+  --color-gray-200: #e5e3dd;
+  --color-gray-300: #d4d1ca;
+  --color-gray-400: #8c8982;
+  --color-gray-500: #6e6b65;
+  --color-gray-600: #5d5a55;
+  --color-gray-700: #45423d;
+  --color-gray-800: #2f2c28;
+  --color-gray-900: #23211d;
+  --color-gray-950: #171512;
 
   --color-neutral-50: #ffffff;
   --color-neutral-100: #f5f5f5;
@@ -26,6 +54,70 @@
   --color-neutral-950: #000000;
 
   --font-sans: Inter, system-ui, sans-serif;
+}
+
+/* Jetons des classes maison (thème clair) */
+:root {
+  --page: #ffffff;
+  --page-alt: #f9f7f3;
+  --carte: #ffffff;
+  --carte-alt: #f9f7f3;
+  --bordure: #e5e3dd;
+  --bordure-forte: #d4d1ca;
+  --texte: #23211d;
+  --texte-2: #45423d;
+  --texte-3: #5d5a55;
+  --texte-4: #8c8982;
+  --vert-texte: #1a7d5e;
+  --vert-doux: rgba(26, 125, 94, 0.1);
+  --vert-lisere: rgba(26, 125, 94, 0.4);
+  --alerte-texte: #c2410c;
+  --alerte-doux: rgba(194, 65, 12, 0.1);
+  --ombre: rgba(6, 41, 36, 0.35);
+}
+
+/* Thème sombre : les tons de l'app en sombre (fond #181715, cartes un cran plus clair, vert clair
+   pour le texte). Les bandeaux vert profond, le pied de page et les boutons pleins ne changent pas. */
+.dark {
+  --page: #181715;
+  --page-alt: #1d1c19;
+  --carte: #24221f;
+  --carte-alt: #1d1c19;
+  --bordure: #33312d;
+  --bordure-forte: #44423d;
+  --texte: #eae8e3;
+  --texte-2: #cfccc5;
+  --texte-3: #b5b2ab;
+  --texte-4: #8f8c84;
+  --vert-texte: #52d2a6;
+  --vert-doux: rgba(82, 210, 166, 0.12);
+  --vert-lisere: rgba(82, 210, 166, 0.45);
+  --alerte-texte: #f59e5b;
+  --alerte-doux: rgba(245, 158, 91, 0.14);
+  --ombre: rgba(0, 0, 0, 0.6);
+
+  /* Les utilitaires Tailwind lisent ces variables : sections, cartes et gris basculent avec elles */
+  --color-page: #181715;
+  --color-white: #24221f;
+  --color-warm: #1d1c19;
+  --color-primary-700: #52d2a6;
+  --color-gray-50: #1d1c19;
+  --color-gray-100: #24221f;
+  --color-gray-200: #33312d;
+  --color-gray-300: #44423d;
+  --color-gray-400: #8f8c84;
+  --color-gray-500: #a09d95;
+  --color-gray-600: #b5b2ab;
+  --color-gray-700: #cfccc5;
+  --color-gray-800: #e0ddd6;
+  --color-gray-900: #eae8e3;
+  --color-gray-950: #f5f3ef;
+}
+
+/* Changement de thème en fondu (theme.ts) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
 }
 
 /*
@@ -62,12 +154,26 @@
   body {
     font-family: 'Inter', system-ui, sans-serif;
     line-height: 1.6;
-    color: #262626;
-    background-color: #ffffff;
+    color: var(--texte);
+    background-color: var(--page);
   }
 
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Tailwind 4 rend aux boutons le curseur par défaut : main sur tout ce qui se clique
+     (onglets Cabinet / Multi-Cabinets, interrupteur Mensuel / Annuel, envoi du formulaire…) */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  /* Les entrées latérales (v-reveal.left/.right) et les halos dépassent un instant du bord :
+     jamais de défilement horizontal pour autant */
+  html,
+  body {
+    overflow-x: clip;
   }
 }
 
@@ -76,21 +182,60 @@
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
+/* Tous les boutons : libellé centré dans la boîte, et une bordure (transparente pour les pleins)
+   pour qu'un bouton plein et un bouton contour côte à côte aient la même hauteur */
+.btn-primary,
+.btn-accent,
+.btn-primary-nav,
+.btn-primary-card,
+.btn-secondary,
+.btn-secondary-light,
+.btn-nav-floating-dark,
+.btn-nav-floating-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  line-height: 1.5;
+}
+
 .btn-primary {
-  @apply text-white py-3 px-6 rounded-xl transition-all duration-200;
+  @apply text-blanc py-3 px-6 rounded-xl transition-all duration-200;
   font-size: 0.938rem;
   font-weight: 500;
-  background: #23b086;
+  background: #1a7d5e;
 }
 
 .btn-primary:hover {
-  background: #1da578;
-  box-shadow: 0 8px 20px -4px rgba(35, 176, 134, 0.4);
+  background: #15634a;
+  box-shadow: 0 8px 20px -4px rgba(26, 125, 94, 0.4);
+}
+
+/* Bouton principal sur le vert profond : vert d'action de l'app et texte blanc (5,1:1), un liseré
+   clair et une lueur pour qu'il se détache du fond */
+.btn-accent {
+  @apply py-3 px-6 rounded-xl transition-all duration-200;
+  font-size: 0.938rem;
+  font-weight: 600;
+  background: #1a7d5e;
+  border-color: rgba(82, 210, 166, 0.45);
+  color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 10px 28px -10px rgba(35, 176, 134, 0.55);
+}
+
+.btn-accent:hover {
+  background: #1e8a68;
+  border-color: rgba(82, 210, 166, 0.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 14px 32px -10px rgba(35, 176, 134, 0.7);
 }
 
 /* Navbar variant - smaller pill */
 .btn-primary-nav {
-  @apply text-white py-2 px-5 rounded-full transition-all duration-200;
+  @apply text-blanc py-2 px-5 rounded-full transition-all duration-200;
   font-size: 0.875rem;
   font-weight: 500;
   background: #23b086;
@@ -102,7 +247,7 @@
 }
 
 .btn-secondary {
-  @apply bg-transparent text-white py-3 px-6 rounded-xl transition-all duration-200;
+  @apply bg-transparent text-blanc py-3 px-6 rounded-xl transition-all duration-200;
   font-size: 0.938rem;
   font-weight: 500;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -118,26 +263,26 @@
   @apply bg-transparent py-2.5 px-5 rounded-xl transition-all duration-200;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #23b086;
-  border: 1px solid rgba(35, 176, 134, 0.35);
+  color: var(--vert-texte);
+  border: 1px solid var(--vert-lisere);
 }
 
 .btn-secondary-light:hover {
-  background: rgba(35, 176, 134, 0.08);
-  border-color: #23b086;
+  background: var(--vert-doux);
+  border-color: var(--vert-texte);
 }
 
 /* Primary button for cards/forms (less rounded) */
 .btn-primary-card {
-  @apply text-white py-2.5 px-5 rounded-xl transition-all duration-200;
+  @apply text-blanc py-2.5 px-5 rounded-xl transition-all duration-200;
   font-size: 0.875rem;
   font-weight: 500;
-  background: #23b086;
+  background: #1a7d5e;
 }
 
 .btn-primary-card:hover {
-  background: #1da578;
-  box-shadow: 0 6px 16px -4px rgba(35, 176, 134, 0.4);
+  background: #15634a;
+  box-shadow: 0 6px 16px -4px rgba(26, 125, 94, 0.4);
 }
 
 /* ====================================== */
@@ -155,6 +300,17 @@
 }
 
 /* Light variant (for light sections) */
+.dark .navbar-floating-light {
+  background: rgba(29, 28, 25, 0.86);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.5);
+}
+
+/* Pages légales : leur logo coloré devient blanc en thème sombre */
+.dark img[src="/logo-conance.svg"] {
+  content: url('/logo-conance-white.svg');
+}
+
 .navbar-floating-light {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(16px);
@@ -184,14 +340,14 @@
   @apply py-2 px-5 rounded-xl transition-all duration-200;
   font-size: 0.875rem;
   font-weight: 500;
-  background: #23b086;
+  background: #1a7d5e;
   color: white;
-  border: 1px solid #23b086;
+  border: 1px solid #1a7d5e;
 }
 
 .btn-nav-floating-light:hover {
-  background: #1da578;
-  box-shadow: 0 6px 16px -4px rgba(35, 176, 134, 0.4);
+  background: #15634a;
+  box-shadow: 0 6px 16px -4px rgba(26, 125, 94, 0.4);
 }
 
 /* Heading font */
@@ -655,8 +811,18 @@
 /* Browser content area - small version */
 .browser-content-small {
   position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
   overflow: hidden;
   background: #1a1a1a;
+  cursor: zoom-in;
+}
+
+.browser-content-small:focus-visible {
+  outline: 2px solid #52d2a6;
+  outline-offset: -2px;
 }
 
 .browser-content-small img {
@@ -800,4 +966,864 @@
 .lightbox-enter-from .lightbox-content,
 .lightbox-leave-to .lightbox-content {
   transform: scale(0.95);
+}
+
+/* ====================================== */
+/* Sections (charte de l'app)             */
+/* ====================================== */
+
+/* Pastille de section : vert d'action doux sur fond clair, vert clair sur le vert profond */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: var(--vert-doux);
+  color: var(--vert-texte);
+}
+
+.section-badge--sombre {
+  background: rgba(82, 210, 166, 0.14);
+  color: #52d2a6;
+}
+
+/* Tuile d'icône douce, comme les cartes de l'app et de la doc */
+.tuile-douce {
+  background: var(--vert-doux);
+  color: var(--vert-texte);
+}
+
+.liste-points {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.liste-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--texte-2);
+}
+
+.liste-points .pi {
+  flex-shrink: 0;
+  margin-top: 0.3rem;
+  color: var(--vert-texte);
+}
+
+/* Le mois d'un cabinet : cinq cartes en ligne, empilées et horizontales sous 1024px */
+.etapes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.etape {
+  display: flex;
+  gap: 1rem;
+  height: 100%;
+  padding: 1.25rem;
+  border: 1px solid var(--bordure);
+  border-radius: 0.875rem;
+  background: var(--carte);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.etape:hover {
+  border-color: var(--vert-lisere);
+  box-shadow: 0 10px 24px -14px var(--ombre);
+  transform: translateY(-2px);
+}
+
+.etape:focus-visible {
+  outline: 2px solid var(--vert-texte);
+  outline-offset: 2px;
+}
+
+.etape-tuile {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  background: var(--vert-doux);
+  color: var(--vert-texte);
+  font-size: 1.125rem;
+}
+
+.etape-corps {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.etape-num {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--texte-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.etape-titre {
+  margin: 0.125rem 0 0.375rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--texte);
+}
+
+.etape-texte {
+  font-size: 0.938rem;
+  line-height: 1.5;
+  color: var(--texte-3);
+}
+
+@media (min-width: 1024px) {
+  .etapes {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    max-width: none;
+  }
+
+  .etape {
+    flex-direction: column;
+  }
+}
+
+/* Section phare sur le vert profond : trois points en colonnes */
+.points-sombres {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 64rem;
+  margin: 0 auto 3rem;
+}
+
+.points-sombres li {
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.875rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.points-sombres .pi {
+  font-size: 1.125rem;
+  color: #52d2a6;
+}
+
+.points-sombres h3 {
+  margin: 0.75rem 0 0.375rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.points-sombres p {
+  font-size: 0.938rem;
+  line-height: 1.55;
+  color: rgba(234, 232, 227, 0.78);
+}
+
+@media (min-width: 768px) {
+  .points-sombres {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Export comptable : bandeau sous la FRA CIF */
+.carte-export {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.5rem;
+  margin-top: 3.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--bordure);
+  border-radius: 0.875rem;
+  background: var(--carte-alt);
+}
+
+.carte-export-tuile {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: var(--vert-doux);
+  color: var(--vert-texte);
+  font-size: 1.25rem;
+}
+
+.carte-export-texte {
+  flex: 1 1 22rem;
+  min-width: 0;
+}
+
+.carte-export-texte h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--texte);
+}
+
+.carte-export-texte p {
+  color: var(--texte-3);
+}
+
+.carte-export-formats {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.carte-export-formats span {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--bordure-forte);
+  border-radius: 0.5rem;
+  background: var(--carte);
+  font-size: 0.813rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--texte-2);
+}
+
+/* Sécurité et équipe */
+.garanties {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.garanties li {
+  display: flex;
+  gap: 1rem;
+}
+
+.garantie-tuile {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.625rem;
+  background: var(--vert-doux);
+  color: var(--vert-texte);
+}
+
+.garanties h3 {
+  margin-bottom: 0.125rem;
+  font-weight: 600;
+  color: var(--texte);
+}
+
+.garanties p {
+  color: var(--texte-3);
+}
+
+@media (min-width: 640px) {
+  .garanties {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 2rem;
+  }
+}
+
+/* Capture téléphone dans un cadre d'appareil */
+.telephone {
+  justify-self: center;
+  width: 17.5rem;
+  max-width: 100%;
+  padding: 0.625rem;
+  border-radius: 2.75rem;
+  background: #171512;
+  box-shadow:
+    0 30px 60px -20px rgba(6, 41, 36, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.telephone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2.25rem;
+}
+
+/* ====================================== */
+/* Mouvement (directives de motion.ts)    */
+/* ====================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal--left {
+  transform: translate3d(-40px, 0, 0);
+}
+
+.reveal--right {
+  transform: translate3d(40px, 0, 0);
+}
+
+.reveal--scale {
+  transform: scale(0.88);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.parallaxe-couche {
+  transform: translate3d(0, calc((0.5 - var(--p, 0.5)) * var(--force, 70px)), 0);
+  will-change: transform;
+}
+
+/* ---------- Héros ---------- */
+
+.heros {
+  position: relative;
+}
+
+.texte-degrade {
+  background: linear-gradient(100deg, #23b086 10%, #52d2a6 50%, #23b086 90%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: texte-degrade 8s ease-in-out infinite alternate;
+}
+
+@keyframes texte-degrade {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+/* La capture déborde de 15rem sur la section suivante (6rem sur téléphone) */
+.heros-scene {
+  position: relative;
+  z-index: 10;
+  max-width: 1300px;
+  margin: 0 auto -6rem;
+  padding: 0 1rem;
+  perspective: 1800px;
+}
+
+.apres-heros {
+  padding-top: calc(6rem + 4rem);
+}
+
+@media (min-width: 640px) {
+  .heros-scene {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heros-scene {
+    margin-bottom: -15rem;
+    padding: 0 4rem;
+  }
+
+  .apres-heros {
+    padding-top: calc(15rem + 5rem);
+  }
+}
+
+.heros-halo {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  width: 70%;
+  height: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(35, 176, 134, 0.45), transparent);
+  filter: blur(40px);
+  opacity: calc(0.5 + var(--p, 0) * 0.5);
+  pointer-events: none;
+}
+
+/* Inclinée en haut de page (--p = 0), à plat après un peu de défilement (--p = 1) */
+.heros-maquette {
+  transform-origin: 50% 0;
+  transform: rotateX(calc((1 - var(--p, 1)) * 20deg)) scale(calc(0.93 + var(--p, 1) * 0.07));
+  will-change: transform;
+}
+
+/* Pastilles flottantes : grand écran seulement, chacune à sa vitesse */
+.flottante {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  width: 15rem;
+}
+
+@media (min-width: 1024px) {
+  .flottante {
+    display: block;
+  }
+}
+
+.flottante--prevision {
+  top: 7%;
+  left: 0.5rem;
+  transform: translate3d(0, calc(var(--p, 0) * -90px), 0);
+}
+
+.flottante--attendues {
+  width: 17.5rem;
+  top: 24%;
+  right: 0.5rem;
+  transform: translate3d(0, calc(var(--p, 0) * -150px), 0);
+}
+
+.flottante--import {
+  width: 16.5rem;
+  top: 60%;
+  left: 2rem;
+  transform: translate3d(0, calc(var(--p, 0) * -210px), 0);
+}
+
+.flottante > .pastille.is-visible,
+.flottante > .pastille:not(.reveal) {
+  animation: flotter 7s ease-in-out infinite;
+}
+
+.flottante--attendues > .pastille {
+  animation-delay: -2.5s !important;
+}
+
+.flottante--import > .pastille {
+  animation-delay: -4.5s !important;
+}
+
+@keyframes flotter {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+
+.pastille {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--bordure);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--carte) 94%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 24px 48px -18px rgba(3, 28, 24, 0.55),
+    0 2px 6px rgba(3, 28, 24, 0.12);
+  color: var(--texte);
+}
+
+.flottante .pastille {
+  padding: 0.875rem 1rem 1rem;
+  background: color-mix(in srgb, var(--carte) 97%, transparent);
+}
+
+.pastille-entete {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.pastille-etiquette {
+  display: block;
+  font-size: 0.813rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--texte);
+}
+
+.pastille-compte {
+  margin-left: auto;
+  padding: 0.0625rem 0.5rem;
+  border-radius: 9999px;
+  background: var(--alerte-doux);
+  color: var(--alerte-texte);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Lignes de contrats muets : elles arrivent une à une */
+.mini-lignes {
+  display: grid;
+  gap: 0.375rem;
+  margin: 0.75rem 0 0.625rem;
+}
+
+.mini-lignes li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--carte-alt);
+  font-size: 0.75rem;
+  opacity: 0;
+  transform: translate3d(12px, 0, 0);
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--reveal-delay, 0ms) + 450ms + var(--i) * 160ms);
+}
+
+.mini-lignes .manque {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.mini-contrat {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--texte-3);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mini-contrat b {
+  margin-right: 0.375rem;
+  font-weight: 600;
+  color: var(--texte);
+}
+
+.pastille.is-visible .mini-lignes li,
+.pastille:not(.reveal) .mini-lignes li {
+  opacity: 1;
+  transform: none;
+}
+
+.pastille-pied {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--bordure);
+  font-size: 0.75rem;
+  color: var(--texte-3);
+}
+
+/* Colonnes du fichier reconnues une à une, puis la coche */
+.mini-colonnes {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 3px;
+  margin: 0.875rem 0 0.625rem;
+}
+
+.mini-colonnes span {
+  height: 1.375rem;
+  border-radius: 3px;
+  background: var(--bordure);
+  transition: background-color 0.35s ease;
+  transition-delay: calc(var(--reveal-delay, 0ms) + 450ms + var(--i) * 90ms);
+}
+
+.pastille.is-visible .mini-colonnes span,
+.pastille:not(.reveal) .mini-colonnes span {
+  background: #23b086;
+}
+
+.pastille-ok {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--vert-texte);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: calc(var(--reveal-delay, 0ms) + 1650ms);
+}
+
+.pastille.is-visible .pastille-ok,
+.pastille:not(.reveal) .pastille-ok {
+  opacity: 1;
+}
+
+.pastille--ligne {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pastille-tete {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pastille-tuile {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.625rem;
+  background: var(--vert-doux);
+  color: var(--vert-texte);
+  font-size: 0.875rem;
+}
+
+.pastille-tuile--alerte {
+  background: var(--alerte-doux);
+  color: var(--alerte-texte);
+}
+
+.pastille-tuile--plein {
+  background: #1a7d5e;
+  color: #ffffff;
+}
+
+.pastille-titre {
+  display: block;
+  font-size: 0.813rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.pastille-sous {
+  display: block;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--texte-3);
+}
+
+.manque {
+  color: var(--alerte-texte);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.pastille-chiffre {
+  display: block;
+  margin: 0.625rem 0 0.75rem;
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--vert-texte);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Le graphique du prévisionnel en miniature : les barres poussent en cascade */
+.mini-barres {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 3.5rem;
+}
+
+.mini-barres span {
+  flex: 1;
+  border-radius: 3px 3px 0 0;
+  background: #23b086;
+  transform-origin: 50% 100%;
+  transform: scaleY(0);
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--reveal-delay, 0ms) + 250ms + var(--i) * 60ms);
+}
+
+.mini-barres span.a-venir {
+  background: var(--texte-4);
+}
+
+.pastille.is-visible .mini-barres span,
+.pastille:not(.reveal) .mini-barres span {
+  transform: none;
+}
+
+.mini-mois {
+  display: flex;
+  gap: 3px;
+  margin-top: 0.25rem;
+}
+
+.mini-mois span {
+  flex: 1;
+  font-size: 0.563rem;
+  text-align: center;
+  color: var(--texte-4);
+}
+
+.mini-legende {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 0.688rem;
+  color: var(--texte-3);
+}
+
+.mini-legende span::before {
+  content: '';
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.3rem;
+  border-radius: 9999px;
+  background: #23b086;
+}
+
+.mini-legende span.a-venir::before {
+  background: var(--texte-4);
+}
+
+/* ---------- Le mois d'un cabinet ---------- */
+
+.etapes-scene {
+  position: relative;
+}
+
+/* Le fil passe dans les espaces entre les cartes, à hauteur des tuiles */
+.etapes-fil {
+  display: none;
+  position: absolute;
+  top: 2.625rem;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--bordure);
+}
+
+.etapes-fil-plein {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--vert-texte);
+  transform-origin: 0 50%;
+  transform: scaleX(var(--p, 1));
+}
+
+@media (min-width: 1024px) {
+  .etapes-fil {
+    display: block;
+  }
+}
+
+.etapes li {
+  position: relative;
+}
+
+.etape-tuile {
+  transition: background-color 0.4s ease, color 0.4s ease, transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.etape.is-active {
+  border-color: var(--vert-lisere);
+}
+
+.etape.is-active .etape-tuile {
+  background: #1a7d5e;
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* ---------- Pilotage ---------- */
+
+.pilotage-scene {
+  position: relative;
+  max-width: 64rem;
+  margin: 0 auto;
+  perspective: 1800px;
+}
+
+.pilotage-halo {
+  position: absolute;
+  inset: 10% 5% -5%;
+  background: radial-gradient(closest-side, rgba(35, 176, 134, 0.5), transparent);
+  filter: blur(50px);
+  opacity: var(--p, 1);
+  pointer-events: none;
+}
+
+/* Couchée en arrivant par le bas, à plat aux trois quarts de l'écran */
+.pilotage-incline {
+  position: relative;
+  transform-origin: 50% 100%;
+  transform: rotateX(calc((1 - var(--p, 1)) * 24deg)) scale(calc(0.88 + var(--p, 1) * 0.12));
+  opacity: calc(0.3 + var(--p, 1) * 0.7);
+  will-change: transform;
+}
+
+/* ---------- Commissions attendues : pastille posée sur la capture ---------- */
+
+.cadre-pastille {
+  position: relative;
+}
+
+.pastille-manque {
+  position: absolute;
+  top: -1.25rem;
+  right: 1.25rem;
+  z-index: 2;
+}
+
+@media (max-width: 639px) {
+  .pastille-manque {
+    position: static;
+    margin-top: 0.75rem;
+  }
+}
+
+/* ---------- Téléphone ---------- */
+
+.telephone-scene {
+  position: relative;
+  justify-self: center;
+}
+
+.telephone-halo {
+  position: absolute;
+  inset: 15% -20%;
+  background: radial-gradient(closest-side, rgba(35, 176, 134, 0.3), transparent);
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+/* Monte plus vite que la page, penché en arrivant, droit au milieu de l'écran */
+.telephone-couche {
+  position: relative;
+  transform:
+    translate3d(0, calc((0.5 - var(--p, 0.5)) * 160px), 0)
+    rotate(calc(max(0, 0.5 - var(--p, 0.5)) * 14deg));
+  will-change: transform;
+}
+
+/* ---------- Mouvement réduit : tout à sa place, rien ne bouge ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .parallaxe-couche,
+  .heros-maquette,
+  .flottante,
+  .pilotage-incline,
+  .telephone-couche,
+  .mini-barres span {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .texte-degrade,
+  .flottante > .pastille {
+    animation: none !important;
+  }
+
+  .mini-lignes li,
+  .pastille-ok {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .mini-colonnes span {
+    background: #23b086 !important;
+  }
 }

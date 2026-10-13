@@ -5,6 +5,8 @@ import Aura from '@primeuix/themes/aura'
 import 'primeicons/primeicons.css'
 import './style.css'
 
+import './theme'
+import motion from './motion'
 import App from './App.vue'
 import Home from './views/Home.vue'
 import CGU from './views/CGU.vue'
@@ -36,6 +38,7 @@ const router = createRouter({
 const app = createApp(App)
 
 app.use(router)
+app.use(motion)
 app.use(PrimeVue, {
   theme: {
     preset: Aura,
