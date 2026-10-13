@@ -183,6 +183,20 @@
           </section>
 
           <section class="mb-8">
+            <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">8ter. Assistance et accès du support</h2>
+            <p class="text-gray-600 mb-4">
+              Pour répondre à une demande d'assistance, un administrateur de Conance peut se connecter au compte
+              d'un Utilisateur et y effectuer, à sa place, les opérations nécessaires.
+            </p>
+            <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+              <li>Cet accès est <strong>activé par défaut</strong>. Un administrateur du cabinet peut le <strong>désactiver à tout moment</strong> depuis les paramètres de l'application (Sécurité) ; la désactivation met fin immédiatement aux accès en cours.</li>
+              <li>Il est réservé aux administrateurs de Conance et protégé par une authentification à deux facteurs. Chaque accès ouvre une session distincte, visible par l'Utilisateur dans la liste de ses sessions sous le nom « Support Conance », et qu'il peut fermer à tout moment.</li>
+              <li>Pendant cet accès, la sécurité du compte (mot de passe, adresse e-mail, double authentification, sessions), le paiement et l'abonnement, la suppression du compte ou des données et l'activation des fonctionnalités d'intelligence artificielle (qui vaut accord de partage, article 8bis) restent réservés à l'Utilisateur.</li>
+              <li>Les données consultées ne servent qu'au traitement de la demande d'assistance et restent soumises à l'obligation de confidentialité de Conance.</li>
+            </ul>
+          </section>
+
+          <section class="mb-8">
             <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">9. Propriété des données</h2>
             <p class="text-gray-600 mb-4">
               L'Utilisateur reste propriétaire de toutes les données qu'il importe ou crée dans le Service.
@@ -285,7 +299,7 @@ export default {
   name: 'CGU',
   data() {
     return {
-      lastUpdate: '9 juillet 2026'
+      lastUpdate: '13 octobre 2026'
     }
   }
 }

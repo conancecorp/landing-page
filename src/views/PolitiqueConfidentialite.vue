@@ -189,6 +189,7 @@
               <li>Chiffrement des données au repos</li>
               <li>Authentification sécurisée avec hachage des mots de passe</li>
               <li>Accès limité aux données (principe du moindre privilège)</li>
+              <li>Accès du support Conance à votre compte uniquement pour vous assister, protégé par une double authentification, visible dans vos sessions actives et désactivable par votre cabinet (voir l'article 8ter des CGU)</li>
               <li>Sauvegardes régulières et chiffrées</li>
               <li>Surveillance et alertes de sécurité</li>
             </ul>
@@ -273,7 +274,7 @@ export default {
   name: 'PolitiqueConfidentialite',
   data() {
     return {
-      lastUpdate: '11 juin 2026'
+      lastUpdate: '13 octobre 2026'
     }
   }
 }
