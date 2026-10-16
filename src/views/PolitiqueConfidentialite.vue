@@ -186,7 +186,7 @@
             </p>
             <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
               <li>Chiffrement des données en transit (HTTPS/TLS)</li>
-              <li>Chiffrement des données au repos</li>
+              <li>Chiffrement au repos des fichiers que vous déposez</li>
               <li>Authentification sécurisée avec hachage des mots de passe</li>
               <li>Accès limité aux données (principe du moindre privilège)</li>
               <li>Accès du support Conance à votre compte uniquement pour vous assister, protégé par une double authentification, visible dans vos sessions actives et désactivable par votre cabinet (voir l'article 8ter des CGU)</li>
@@ -274,7 +274,7 @@ export default {
   name: 'PolitiqueConfidentialite',
   data() {
     return {
-      lastUpdate: '13 octobre 2026'
+      lastUpdate: '15 octobre 2026'
     }
   }
 }
