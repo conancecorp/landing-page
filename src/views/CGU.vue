@@ -166,19 +166,22 @@
             <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">8bis. Fonctionnalités d'intelligence artificielle</h2>
             <p class="text-gray-600 mb-4">
               Le Service propose des fonctionnalités optionnelles reposant sur l'intelligence artificielle :
-              extraction de bordereaux PDF et suggestion de correspondance de colonnes lors des imports.
-              Ces fonctionnalités impliquent la transmission de certaines données à un prestataire
-              d'inférence tiers (Replicate, États-Unis), dans les conditions décrites dans la
+              extraction de bordereaux PDF, lecture de bulletins de souscription, suggestion de
+              correspondance de colonnes, pré-remplissage de la configuration lors des imports et
+              recherche écrite comme une phrase. Ces
+              fonctionnalités impliquent la transmission de certaines données à deux prestataires
+              d'intelligence artificielle situés aux États-Unis, Anthropic (Claude) et TypeSafe (Jev),
+              dans les conditions décrites dans la
               <router-link to="/politique-confidentialite" class="text-primary-500 hover:text-primary-700">Politique de Confidentialité</router-link>.
             </p>
             <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
               <li>Elles sont <strong>désactivées par défaut</strong> et ne peuvent être utilisées qu'après activation explicite par un administrateur du cabinet, depuis les paramètres de l'application, après lecture des conditions de partage. Cette acceptation est horodatée et journalisée.</li>
               <li>Elles peuvent être <strong>désactivées à tout moment</strong> par un administrateur du cabinet ; la désactivation bloque immédiatement leur usage pour tous les membres.</li>
-              <li>Les données transmises servent exclusivement au traitement demandé ; elles ne sont pas utilisées pour entraîner des modèles et sont automatiquement supprimées de la plateforme du prestataire au bout d'une heure.</li>
-              <li>Les résultats produits par l'IA (tableaux extraits, suggestions de mapping) sont fournis à titre d'assistance : l'Utilisateur reste responsable de leur vérification avant validation.</li>
+              <li>Les données transmises servent exclusivement au traitement demandé et ne sont pas utilisées pour entraîner des modèles. Anthropic les conserve au plus 30 jours, puis les supprime, sauf si la loi ou le respect de ses règles d'utilisation impose une conservation plus longue ; TypeSafe les conserve le temps nécessaire au traitement, sans durée maximale fixée.</li>
+              <li>Les résultats produits par l'IA (tableaux extraits, suggestions de mapping, valeurs pré-remplies lors d'un import) sont fournis à titre d'assistance : l'Utilisateur reste responsable de leur vérification avant validation.</li>
             </ul>
             <p class="text-gray-600 mb-4">
-              Version des conditions de partage IA : 11 juin 2026.
+              Version des conditions de partage IA : 20 octobre 2026.
             </p>
           </section>
 
@@ -299,7 +302,7 @@ export default {
   name: 'CGU',
   data() {
     return {
-      lastUpdate: '13 octobre 2026'
+      lastUpdate: '20 octobre 2026'
     }
   }
 }

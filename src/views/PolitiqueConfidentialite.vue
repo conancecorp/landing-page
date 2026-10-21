@@ -125,7 +125,7 @@
               <li><strong>Stripe</strong> : traitement des paiements (certifié PCI-DSS)</li>
               <li><strong>Scaleway</strong> : hébergement de l'application et des données, envoi des emails transactionnels, sauvegardes (serveurs en France)</li>
               <li><strong>OVHcloud</strong> : stockage des fichiers déposés sur la plateforme — imports Excel/CSV, PDF (serveurs en France)</li>
-              <li><strong>Replicate</strong> : traitement par intelligence artificielle (États-Unis) — <strong>uniquement</strong> si votre cabinet a explicitement activé les fonctionnalités IA (voir section 7bis)</li>
+              <li><strong>Anthropic</strong> (modèles Claude) et <strong>TypeSafe</strong> (modèle Jev) : traitement par intelligence artificielle (États-Unis) — <strong>uniquement</strong> si votre cabinet a explicitement activé les fonctionnalités IA (voir section 7bis)</li>
               <li><strong>Umami</strong> : analyse d'audience anonymisée, auto-hébergée sur nos propres serveurs en Europe (Allemagne) — sans cookies, aucune donnée transmise à un tiers</li>
             </ul>
             <p class="text-gray-600 mb-4">
@@ -141,7 +141,7 @@
               Vos données sont principalement hébergées et traitées au sein de l'Union Européenne (France).
             </p>
             <p class="text-gray-600 mb-4">
-              Certains de nos prestataires (Stripe, et Replicate si les fonctionnalités IA sont activées)
+              Certains de nos prestataires (Stripe, et les prestataires d'IA si les fonctionnalités IA sont activées)
               peuvent traiter des données aux États-Unis. Ces transferts sont encadrés par des garanties
               appropriées (clauses contractuelles types, Data Privacy Framework).
             </p>
@@ -150,19 +150,22 @@
           <section class="mb-8">
             <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">7bis. Fonctionnalités d'intelligence artificielle (optionnelles)</h2>
             <p class="text-gray-600 mb-4">
-              Certaines fonctionnalités de Conance (extraction de bordereaux PDF, suggestion de
-              correspondance de colonnes lors d'un import) reposent sur des modèles d'intelligence
-              artificielle exécutés via la plateforme d'inférence Replicate (États-Unis).
+              Certaines fonctionnalités de Conance (extraction de bordereaux PDF, lecture de bulletins
+              de souscription, suggestion de correspondance de colonnes et pré-remplissage de la
+              configuration lors d'un import, recherche écrite comme une phrase) reposent sur des modèles d'intelligence artificielle
+              d'Anthropic (Claude) et de TypeSafe (Jev), deux prestataires situés aux États-Unis.
             </p>
             <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
               <li>Ces fonctionnalités sont <strong>désactivées par défaut</strong> : un administrateur de votre cabinet doit les activer explicitement, après lecture des conditions de partage, depuis les paramètres de l'application. Elles peuvent être désactivées à tout moment.</li>
               <li><strong>Extraction PDF</strong> : le document est d'abord traité localement sur nos serveurs ; le recours à un modèle d'IA externe (transmission du contenu du document) n'intervient qu'après confirmation explicite de l'utilisateur.</li>
-              <li><strong>Suggestion de mapping</strong> : seuls les en-têtes de colonnes et au plus trois lignes d'exemple du fichier (valeurs tronquées) sont transmis.</li>
-              <li>Les données transmises servent <strong>uniquement au traitement</strong> : elles sont automatiquement supprimées de la plateforme Replicate au bout d'une heure et ne sont pas utilisées pour entraîner des modèles.</li>
+              <li><strong>Suggestion de mapping</strong> : seuls les en-têtes de colonnes et au plus trois lignes d'exemple du fichier (valeurs tronquées) sont transmis, à TypeSafe puis à Anthropic pour les colonnes que TypeSafe ne reconnaît pas avec assez de certitude.</li>
+              <li><strong>Pré-remplissage de l'import</strong> : les libellés d'opérations et les noms de partenaires et de produits du fichier sont transmis à TypeSafe, avec les noms et natures déjà enregistrés par le cabinet pour comparaison, ainsi que, pour un fichier Excel, les huit premières lignes remplies de chaque onglet pour repérer l'onglet des commissions, puis les quinze premières lignes remplies de cet onglet pour repérer la ligne d'en-tête (valeurs tronquées). Les valeurs proposées sont signalées à l'écran et restent modifiables.</li>
+              <li><strong>Recherche en langage naturel</strong> : une recherche écrite comme une phrase est transmise à TypeSafe avec la liste des pages de l'application, une fois remplacés par des marqueurs les noms de clients, de partenaires, de produits et de conseillers et les numéros de contrat enregistrés dans Conance.</li>
+              <li>Les données transmises servent <strong>uniquement au traitement</strong> et ne sont pas utilisées pour entraîner des modèles. Anthropic les conserve <strong>au plus 30 jours</strong>, puis les supprime, sauf si la loi ou le respect de ses règles d'utilisation impose une conservation plus longue. TypeSafe les conserve le temps nécessaire au traitement, <strong>sans durée maximale fixée</strong>.</li>
             </ul>
             <p class="text-gray-600 mb-4">
               Si votre cabinet n'active pas ces fonctionnalités, aucune de ses données n'est transmise
-              à ce prestataire.
+              à ces prestataires.
             </p>
           </section>
 
@@ -274,7 +277,7 @@ export default {
   name: 'PolitiqueConfidentialite',
   data() {
     return {
-      lastUpdate: '15 octobre 2026'
+      lastUpdate: '20 octobre 2026'
     }
   }
 }
