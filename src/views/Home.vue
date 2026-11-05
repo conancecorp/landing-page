@@ -89,6 +89,8 @@
           <div class="browser-content cursor-pointer" @click="openLightbox(capture('dashboard', sombre), 'Aperçu du tableau de bord Conance')">
             <img
               fetchpriority="high"
+              width="2000"
+              height="1958"
               :src="capture('dashboard', sombre)"
               alt="Aperçu du tableau de bord Conance"
             />
@@ -415,7 +417,7 @@
             <div class="telephone-halo" aria-hidden="true"></div>
             <div class="telephone-couche">
               <div v-reveal.scale="200" class="telephone">
-                <img loading="lazy" decoding="async" :src="capture('mobile', sombre)" alt="Le tableau de bord Conance sur téléphone" />
+                <img loading="lazy" decoding="async" width="2000" height="4277" :src="capture('mobile', sombre)" alt="Le tableau de bord Conance sur téléphone" />
               </div>
             </div>
           </div>

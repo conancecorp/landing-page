@@ -64,6 +64,23 @@ export function choisirTheme(choix: ChoixTheme) {
   else basculer()
 }
 
+// Every capture is 2000 px wide. Giving the browser its size reserves the height before a lazy image
+// arrives; otherwise the page grows on the way down and an anchor link stops too high.
+const CAPTURE_HEIGHTS: Record<string, number> = {
+  attendues: 1191,
+  commissions: 1093,
+  dashboard: 1958,
+  import: 1093,
+  mobile: 4277,
+  pilotage: 1389,
+  reglementaire: 953
+}
+
+export function captureSize(src: string): { width: number; height: number } {
+  const name = src.split('/').pop()?.split(/[-.]/)[0] ?? ''
+  return { width: 2000, height: CAPTURE_HEIGHTS[name] ?? 1093 }
+}
+
 // Capture de l'app dans le thème courant : `nom.webp` en clair, `nom-sombre.webp` en sombre.
 // The PNG next to them are the full-size sources (LinkedIn posts), never loaded by the pages.
 export function capture(nom: string, estSombre: boolean): string {

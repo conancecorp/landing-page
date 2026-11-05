@@ -32,12 +32,14 @@
     </div>
     <button type="button" class="browser-content-small" :aria-label="`Agrandir : ${alt}`" @click="$emit('zoom', src, alt)">
       <!-- loading must come before src: Vue sets attributes in order, and the download starts with src -->
-      <img loading="lazy" decoding="async" :src="src" :alt="alt" />
+      <img loading="lazy" decoding="async" v-bind="size" :src="src" :alt="alt" />
     </button>
   </div>
 </template>
 
 <script>
+import { captureSize } from '../theme'
+
 export default {
   name: 'BrowserFrame',
   props: {
@@ -46,6 +48,11 @@ export default {
     tab: { type: String, required: true },
     path: { type: String, default: '' }
   },
-  emits: ['zoom']
+  emits: ['zoom'],
+  computed: {
+    size() {
+      return captureSize(this.src)
+    }
+  }
 }
 </script>
