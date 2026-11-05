@@ -152,7 +152,7 @@
           <p class="text-lg text-gray-600 mb-4">
             Les logiciels patrimoniaux (CRM, agrégateurs d'encours, outils de conformité) savent
             tout sur vos clients et leurs placements. Mais aucun ne tient la <strong class="text-gray-900">comptabilité
-            de l'argent qui rentre</strong> dans votre cabinet.
+            des commissions reçues</strong> par votre cabinet.
           </p>
           <p class="text-lg text-gray-600">
             Conance ne remplace pas votre CRM : il prend le relais là où il s'arrête. Gardez vos outils,
@@ -937,8 +937,28 @@
       </div>
     </section>
 
+    <!-- FAQ: same text as the FAQPage schema (content/faq.ts) -->
+    <section id="questions" class="py-20 bg-page">
+      <div class="container">
+        <div v-reveal class="text-center mb-12">
+          <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            Questions fréquentes
+          </h2>
+        </div>
+        <div class="max-w-3xl mx-auto">
+          <details v-for="item in faq" :key="item.question" class="faq-item">
+            <summary>
+              <h3>{{ item.question }}</h3>
+              <i class="pi pi-chevron-down" aria-hidden="true"></i>
+            </summary>
+            <p>{{ item.answer }}</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-page">
+    <section id="contact" class="py-20 bg-warm">
       <div class="container">
         <div v-reveal class="text-center mb-16">
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -1042,6 +1062,8 @@
             <h4 class="font-semibold mb-4">Produit</h4>
             <ul class="space-y-2 text-brume-2">
               <li><a href="#fonctionnalites" class="hover:text-blanc transition-colors">Fonctionnalités</a></li>
+              <li><router-link to="/logiciel-gestion-commissions-cgp" class="hover:text-blanc transition-colors">Logiciel de gestion des commissions</router-link></li>
+              <li><router-link to="/comparatif-gestion-commissions-cgp" class="hover:text-blanc transition-colors">Comparer les approches</router-link></li>
               <li><a href="#tarifs" class="hover:text-blanc transition-colors">Tarifs</a></li>
               <li><a href="https://app.conance.io/login" class="hover:text-blanc transition-colors">Se connecter</a></li>
             </ul>
@@ -1050,7 +1072,9 @@
           <div>
             <h4 class="font-semibold mb-4">Support</h4>
             <ul class="space-y-2 text-brume-2">
+              <li><router-link to="/guides" class="hover:text-blanc transition-colors">Guides</router-link></li>
               <li><a href="https://docs.conance.io" target="_blank" class="hover:text-blanc transition-colors">Documentation</a></li>
+              <li><a href="https://www.linkedin.com/company/110153499/" target="_blank" rel="noopener" class="hover:text-blanc transition-colors">LinkedIn</a></li>
               <li><a href="#contact" class="hover:text-blanc transition-colors">Contact</a></li>
               <li><a href="mailto:contact@conance.io" class="hover:text-blanc transition-colors">Support</a></li>
             </ul>
@@ -1116,6 +1140,7 @@ import BrowserFrame from '../components/BrowserFrame.vue'
 import Parallaxe from '../components/Parallaxe.vue'
 import ThemeSelector from '../components/ThemeSelector.vue'
 import { capture, sombre } from '../theme'
+import { faq } from '../content/faq'
 
 // Prévisionnel du cabinet de démonstration (capture Pilotage), en k€ de janvier à décembre :
 // encaissé jusqu'en septembre, à venir ensuite
@@ -1126,7 +1151,7 @@ export default {
   name: 'Home',
   components: { BrowserFrame, Parallaxe, ThemeSelector },
   setup() {
-    return { capture, sombre }
+    return { capture, sombre, faq }
   },
   data() {
     return {

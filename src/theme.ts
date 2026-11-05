@@ -7,7 +7,9 @@ import { ref } from 'vue'
 export type ChoixTheme = 'light' | 'dark' | 'system'
 
 const CLE = 'conance-vitrine-theme'
-const systemeSombre = window.matchMedia('(prefers-color-scheme: dark)')
+// Prerendering runs in Node: no system preference, no DOM to touch, light captures by default
+const inBrowser = typeof window !== 'undefined'
+const systemeSombre = inBrowser ? window.matchMedia('(prefers-color-scheme: dark)') : null
 
 function lire(): ChoixTheme {
   try {
@@ -30,16 +32,19 @@ function themeChatwoot() {
 }
 
 function appliquer() {
-  sombre.value = choixTheme.value === 'dark' || (choixTheme.value === 'system' && systemeSombre.matches)
+  sombre.value = choixTheme.value === 'dark' || (choixTheme.value === 'system' && !!systemeSombre?.matches)
+  if (!inBrowser) return
   document.documentElement.classList.toggle('dark', sombre.value)
   document.documentElement.style.colorScheme = sombre.value ? 'dark' : 'light'
   themeChatwoot()
 }
 
 appliquer()
-systemeSombre.addEventListener('change', appliquer)
-// Thème changé avant que le widget soit prêt : on le lui redonne à son arrivée
-window.addEventListener('chatwoot:ready', themeChatwoot)
+if (inBrowser) {
+  systemeSombre?.addEventListener('change', appliquer)
+  // Thème changé avant que le widget soit prêt : on le lui redonne à son arrivée
+  window.addEventListener('chatwoot:ready', themeChatwoot)
+}
 
 // Change de thème en fondu (View Transitions) quand le navigateur le permet
 export function choisirTheme(choix: ChoixTheme) {

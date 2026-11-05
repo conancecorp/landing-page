@@ -5,14 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "build:skip-check": "vite build",
+    "build": "vue-tsc --noEmit && npm run build:skip-check",
+    "build:skip-check": "vite build && vite build --ssr src/entry-server.ts --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@primeuix/themes": "^2.0.3",
     "primeicons": "^7.0.0",
-    "primevue": "^4.0.0",
     "vue": "^3.4.0",
     "vue-router": "^5.3.1"
   },

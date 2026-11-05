@@ -1,0 +1,5 @@
+# Public marketing site: search engines and AI assistants are welcome to read and cite it.
+User-agent: *
+Allow: /
+
+Sitemap: https://conance.io/sitemap.xml

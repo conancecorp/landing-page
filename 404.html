@@ -2,62 +2,45 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Conance - Redirection</title>
+    <title>Page introuvable | Conance</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+    <script>
+        // Public pages are real files without a trailing slash: an old link with one still lands
+        if (location.pathname.length > 1 && location.pathname.endsWith('/')) {
+            location.replace(location.pathname.slice(0, -1) + location.search + location.hash);
+        }
+    </script>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            background-color: #f8fafc;
-            color: #64748b;
-        }
-        .container {
+            padding: 1rem;
+            box-sizing: border-box;
+            background-color: #062924;
+            color: #d4d1ca;
             text-align: center;
-            padding: 2rem;
         }
-        .spinner {
-            width: 24px;
-            height: 24px;
-            border: 3px solid #e2e8f0;
-            border-top: 3px solid #23b086;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
+        h1 {
+            color: #ffffff;
+            font-size: 1.75rem;
+            margin: 1.5rem 0 0.5rem;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        a {
+            color: #52d2a6;
         }
     </style>
-    <script>
-        // Configuration SPA pour GitHub Pages
-        // Stocke l'URL demandée et redirige vers l'index
-        (function() {
-            const path = window.location.pathname.slice(1);
-            const search = window.location.search;
-            const hash = window.location.hash;
-            
-            if (path) {
-                // Stocke le path complet dans sessionStorage pour que l'app Vue puisse le récupérer
-                sessionStorage.setItem('pathToRestore', path + search + hash);
-                
-                // Redirige vers l'index avec un paramètre pour éviter les boucles
-                window.location.replace(window.location.origin + '/index.html');
-            } else {
-                // Si pas de path spécifique, va directement à l'index
-                window.location.replace(window.location.origin + '/index.html');
-            }
-        })();
-    </script>
 </head>
 <body>
-    <div class="container">
-        <div class="spinner"></div>
-        <p>Redirection en cours...</p>
-    </div>
+    <main>
+        <img src="/logo-conance-white.svg" alt="Conance" height="32">
+        <h1>Cette page n'existe pas</h1>
+        <p>Elle a peut-être changé d'adresse. <a href="/">Revenir à l'accueil</a></p>
+    </main>
 </body>
 </html>

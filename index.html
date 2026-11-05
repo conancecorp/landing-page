@@ -18,20 +18,23 @@
       document.documentElement.style.colorScheme = sombre ? 'dark' : 'light'
     })()
   </script>
-  <meta name="description"
-    content="Conance - Solution SaaS de gestion des commissions pour cabinets de gestion de patrimoine" />
-  <meta name="keywords" content="gestion commissions, cabinet patrimoine, SaaS, finance" />
-  <meta property="og:title" content="Conance - Simplifiez la gestion de vos commissions" />
-  <meta property="og:description" content="Le back-office des commissions des cabinets de gestion de patrimoine : importez vos bordereaux, repérez ce qui manque, prévoyez ce qui va tomber." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://conance.io" />
+  <!-- With JavaScript the app replaces the prerendered text at mount: keep it hidden until then.
+       Without JavaScript (AI crawlers) the class is never set and the text stays readable. -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js body > #app:not([data-v-app]) { visibility: hidden }</style>
+  <!-- seo:start -->
+  <title>Conance : logiciel de gestion des commissions pour CGP</title>
+  <meta name="description" content="Conance, le back-office des commissions des cabinets de gestion de patrimoine : importez vos bordereaux, repérez ce qui manque, prévoyez ce qui va tomber." />
+  <link rel="canonical" href="https://conance.io/" />
+  <meta property="og:title" content="Conance : logiciel de gestion des commissions pour CGP" />
+  <meta property="og:description" content="Conance, le back-office des commissions des cabinets de gestion de patrimoine : importez vos bordereaux, repérez ce qui manque, prévoyez ce qui va tomber." />
+  <meta property="og:url" content="https://conance.io/" />
+  <!-- seo:end -->
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <title>Conance - Simplifiez la gestion de vos commissions</title>
 
   <!-- Umami Analytics -->
   <script defer src="https://analytics.elouanb7.com/script.js"

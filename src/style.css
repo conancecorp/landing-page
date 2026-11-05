@@ -307,7 +307,7 @@
 }
 
 /* Pages légales : leur logo coloré devient blanc en thème sombre */
-.dark img[src="/logo-conance.svg"] {
+.dark img[src$="/logo-conance.svg"] {
   content: url('/logo-conance-white.svg');
 }
 
@@ -1826,4 +1826,50 @@
   .mini-colonnes span {
     background: #23b086 !important;
   }
+}
+
+/* Questions fréquentes : text stays in the HTML even when closed, so crawlers read every answer */
+.faq-item {
+  border-bottom: 1px solid var(--bordure);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item h3 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--texte);
+}
+
+.faq-item summary i {
+  font-size: 0.8rem;
+  color: var(--texte-3);
+  transition: transform 0.2s;
+}
+
+.faq-item[open] summary i {
+  transform: rotate(180deg);
+}
+
+.faq-item p {
+  padding-bottom: 1.25rem;
+  color: var(--texte-2);
+  line-height: 1.65;
+}
+
+/* PrimeIcons has no size of its own: 1rem unless a more specific rule says otherwise */
+.pi {
+  font-size: 1rem;
 }

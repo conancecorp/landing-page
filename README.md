@@ -1,6 +1,6 @@
 # Site Vitrine Conance
 
-Site vitrine moderne pour l'application Conance, développé avec Vue 3, TypeScript, PrimeVue 3 et Tailwind CSS.
+Site vitrine moderne pour l'application Conance, développé avec Vue 3, TypeScript et Tailwind CSS, pré-rendu au build pour que chaque page soit lisible sans JavaScript.
 
 ## Activité
 
@@ -150,7 +150,8 @@ Le site vitrine sera une page unique (one-page) avec les sections suivantes :
 ## Technologies utilisées
 
 - Vue.js 3 avec TypeScript
-- PrimeVue 3 pour les composants UI
+- PrimeIcons pour les icônes
+- Pré-rendu : `src/entry-server.ts` + `scripts/prerender.mjs` écrivent une page HTML par entrée de `src/seo/pages.ts`, ainsi que `sitemap.xml`. Une nouvelle page s'ajoute dans `src/app.ts` et `src/seo/pages.ts`.
 - Tailwind CSS pour le styling personnalisé
 - Vue Router pour la navigation
 - Vite pour le build et le développement
