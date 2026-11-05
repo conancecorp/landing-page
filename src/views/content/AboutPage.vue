@@ -38,9 +38,9 @@
     <ul>
       <li>E-mail : <a href="mailto:elouan@conance.io">elouan@conance.io</a></li>
       <li>Téléphone : <a href="tel:+33699964697">06 99 96 46 97</a></li>
-      <li>Rendez-vous : <a href="https://calendar.app.google/FGXDBU3t4C9atAKL7" rel="noopener">choisir un créneau</a></li>
+      <li>Rendez-vous : <a href="https://cal.com/elouan" rel="noopener">choisir un créneau</a></li>
       <li>LinkedIn : <a href="https://www.linkedin.com/in/elouanb/" rel="noopener">Elouan Bessettes</a> et <a href="https://www.linkedin.com/company/110153499/" rel="noopener">la page Conance</a></li>
-      <li>Adresse : 4 Quai François Mitterrand, 44200 Nantes</li>
+      <li>Ville : Nantes</li>
     </ul>
     <p class="content-note">
       Conance (conance.io) n'a aucun lien avec les sociétés portant un nom proche, en France ou à l'étranger. Les informations

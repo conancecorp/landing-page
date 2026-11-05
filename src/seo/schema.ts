@@ -21,12 +21,9 @@ const organization = {
   telephone: '+33699964697',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '4 Quai François Mitterrand',
-    postalCode: '44200',
     addressLocality: 'Nantes',
     addressCountry: 'FR'
   },
-  identifier: { '@type': 'PropertyValue', propertyID: 'SIRET', value: '99150569400018' },
   founder: { '@id': FOUNDER_ID },
   sameAs: [LINKEDIN_PAGE]
 }
