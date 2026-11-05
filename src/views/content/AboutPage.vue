@@ -20,9 +20,8 @@
 
     <h2>Qui est derrière</h2>
     <p>
-      <strong>Elouan Bessettes</strong>, fondateur de Conance, est développeur, formé à l'EPSI à Nantes. Il conçoit le produit,
-      le développe et répond lui-même aux cabinets : vous avez un interlocuteur unique, qui connaît votre dossier et le code qui
-      le traite.
+      <strong>Elouan Bessettes</strong>, fondateur de Conance, est développeur. Il conçoit le produit, le développe et répond
+      lui-même aux cabinets : vous avez un interlocuteur unique, qui connaît votre dossier et le code qui le traite.
     </p>
     <p>
       Chaque évolution est décrite dans les notes de version, visibles dans l'application. La
