@@ -35,6 +35,7 @@ const founder = {
   '@type': 'Person',
   '@id': FOUNDER_ID,
   name: 'Elouan Bessettes',
+  url: `${SITE_URL}/a-propos`,
   jobTitle: 'Fondateur de Conance',
   worksFor: { '@id': ORGANIZATION_ID },
   sameAs: [LINKEDIN_FOUNDER]
@@ -129,6 +130,9 @@ export function pageSchema(page: PageSeo): object {
     graph.push(software, faqPage, { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, url: `${SITE_URL}/`, name: 'Conance', inLanguage: 'fr', publisher: { '@id': ORGANIZATION_ID } })
   }
   if (page.path === '/logiciel-gestion-commissions-cgp') graph.push(software)
+  if (page.path === '/a-propos') {
+    graph.push({ '@type': 'AboutPage', url: canonicalUrl(page), name: page.title, inLanguage: 'fr', about: { '@id': ORGANIZATION_ID } })
+  }
   if (page.crumb) graph.push(breadcrumb(page))
   if (page.article) graph.push(article(page))
   return { '@context': 'https://schema.org', '@graph': graph }

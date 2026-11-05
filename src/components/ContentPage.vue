@@ -25,6 +25,9 @@
 
       <article class="content-article">
         <h1 class="heading-font">{{ title }}</h1>
+        <p v-if="updatedOn" class="content-byline">
+          Par <router-link to="/a-propos">Elouan Bessettes</router-link>, fondateur de Conance. Mis à jour le {{ updatedOn }}.
+        </p>
         <slot />
       </article>
 
@@ -45,6 +48,7 @@
         <router-link to="/logiciel-gestion-commissions-cgp">Le logiciel</router-link>
         <router-link to="/comparatif-gestion-commissions-cgp">Comparer les approches</router-link>
         <router-link to="/guides">Guides</router-link>
+        <router-link to="/a-propos">À propos</router-link>
         <a href="https://docs.conance.io">Documentation</a>
         <router-link to="/mentions-legales">Mentions légales</router-link>
         <router-link to="/cgu">CGU</router-link>
@@ -65,6 +69,13 @@ defineProps<{ title: string }>()
 const route = useRoute()
 const isGuide = computed(() => route.path.startsWith('/guide-'))
 const crumb = computed(() => findPage(route.path)?.crumb ?? '')
+
+// Articles show who wrote them and when, like their schema. UTC on both sides: the date never shifts.
+const dateFormat = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'UTC' })
+const updatedOn = computed(() => {
+  const page = findPage(route.path)
+  return page?.article ? dateFormat.format(new Date(`${page.updated}T00:00:00Z`)) : ''
+})
 </script>
 
 <style>
@@ -98,6 +109,12 @@ const crumb = computed(() => findPage(route.path)?.crumb ?? '')
   font-weight: 700;
   color: var(--texte);
   margin-bottom: 1.5rem;
+}
+
+.content-article .content-byline {
+  margin: -0.75rem 0 1.5rem;
+  font-size: 0.875rem;
+  color: var(--texte-3);
 }
 
 .content-article h2 {

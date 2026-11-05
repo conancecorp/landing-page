@@ -14,6 +14,7 @@
             <div class="hidden md:flex items-center space-x-8">
               <a href="#fonctionnalites" :class="['transition-colors text-sm', navbarDark ? 'text-brume hover:text-blanc' : 'text-gray-600 hover:text-primary-700']">Fonctionnalités</a>
               <a href="#tarifs" :class="['transition-colors text-sm', navbarDark ? 'text-brume hover:text-blanc' : 'text-gray-600 hover:text-primary-700']">Tarifs</a>
+              <router-link to="/guides" :class="['transition-colors text-sm', navbarDark ? 'text-brume hover:text-blanc' : 'text-gray-600 hover:text-primary-700']">Guides</router-link>
               <a href="#contact" :class="['transition-colors text-sm', navbarDark ? 'text-brume hover:text-blanc' : 'text-gray-600 hover:text-primary-700']">Contact</a>
             </div>
             <div class="flex items-center space-x-3">
@@ -62,7 +63,7 @@
             <!-- Tabs Container -->
             <div class="browser-tabs-container">
               <div class="browser-tab">
-                <img src="/favicon/favicon.svg" alt="" class="browser-tab-icon" />
+                <img src="/favicon/favicon-96x96.png" alt="" class="browser-tab-icon" />
                 <span class="browser-tab-title">Conance - Tableau de bord</span>
                 <span class="browser-tab-close">×</span>
               </div>
@@ -87,6 +88,7 @@
           </div>
           <div class="browser-content cursor-pointer" @click="openLightbox(capture('dashboard', sombre), 'Aperçu du tableau de bord Conance')">
             <img
+              fetchpriority="high"
               :src="capture('dashboard', sombre)"
               alt="Aperçu du tableau de bord Conance"
             />
@@ -413,7 +415,7 @@
             <div class="telephone-halo" aria-hidden="true"></div>
             <div class="telephone-couche">
               <div v-reveal.scale="200" class="telephone">
-                <img :src="capture('mobile', sombre)" alt="Le tableau de bord Conance sur téléphone" loading="lazy" />
+                <img loading="lazy" decoding="async" :src="capture('mobile', sombre)" alt="Le tableau de bord Conance sur téléphone" />
               </div>
             </div>
           </div>
@@ -1073,6 +1075,7 @@
             <h4 class="font-semibold mb-4">Support</h4>
             <ul class="space-y-2 text-brume-2">
               <li><router-link to="/guides" class="hover:text-blanc transition-colors">Guides</router-link></li>
+              <li><router-link to="/a-propos" class="hover:text-blanc transition-colors">À propos</router-link></li>
               <li><a href="https://docs.conance.io" target="_blank" class="hover:text-blanc transition-colors">Documentation</a></li>
               <li><a href="https://www.linkedin.com/company/110153499/" target="_blank" rel="noopener" class="hover:text-blanc transition-colors">LinkedIn</a></li>
               <li><a href="#contact" class="hover:text-blanc transition-colors">Contact</a></li>

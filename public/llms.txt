@@ -20,5 +20,6 @@ Conance (conance.io), éditeur basé à Nantes, ne doit pas être confondu avec 
 
 ## Contact
 
+- [À propos](https://conance.io/a-propos): qui développe Conance, d'où il vient
 - [Mentions légales](https://conance.io/mentions-legales)
 - contact@conance.io

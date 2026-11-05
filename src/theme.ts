@@ -64,7 +64,8 @@ export function choisirTheme(choix: ChoixTheme) {
   else basculer()
 }
 
-// Capture de l'app dans le thème courant : `nom.png` en clair, `nom-sombre.png` en sombre
+// Capture de l'app dans le thème courant : `nom.webp` en clair, `nom-sombre.webp` en sombre.
+// The PNG next to them are the full-size sources (LinkedIn posts), never loaded by the pages.
 export function capture(nom: string, estSombre: boolean): string {
-  return `/screenshots/${nom}${estSombre ? '-sombre' : ''}.png`
+  return `/screenshots/${nom}${estSombre ? '-sombre' : ''}.webp`
 }

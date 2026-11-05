@@ -9,7 +9,7 @@
       </div>
       <div class="browser-tabs-container-small">
         <div class="browser-tab-small">
-          <img src="/favicon/favicon.svg" alt="" class="browser-tab-icon-small" />
+          <img src="/favicon/favicon-96x96.png" alt="" class="browser-tab-icon-small" />
           <span class="browser-tab-title-small">Conance - {{ tab }}</span>
         </div>
       </div>
@@ -31,7 +31,8 @@
       </div>
     </div>
     <button type="button" class="browser-content-small" :aria-label="`Agrandir : ${alt}`" @click="$emit('zoom', src, alt)">
-      <img :src="src" :alt="alt" loading="lazy" />
+      <!-- loading must come before src: Vue sets attributes in order, and the download starts with src -->
+      <img loading="lazy" decoding="async" :src="src" :alt="alt" />
     </button>
   </div>
 </template>

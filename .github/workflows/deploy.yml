@@ -75,4 +75,15 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 
+        uses: actions/deploy-pages@v4
+
+      # Tells Bing and the other IndexNow engines that the pages changed. Public URLs only, and a
+      # failure here never fails the deployment. The key is public by design (public/<key>.txt).
+      - name: Notify IndexNow
+        continue-on-error: true
+        run: |
+          urls=$(curl -fsS https://conance.io/sitemap.xml | grep -o '<loc>[^<]*</loc>' | sed -E 's|</?loc>||g' | jq -R . | jq -cs .)
+          key=1d3c71beb7325e54dd83df113aae4bc8
+          curl -sS -o /dev/null -w 'IndexNow: HTTP %{http_code}\n' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "{\"host\":\"conance.io\",\"key\":\"$key\",\"keyLocation\":\"https://conance.io/$key.txt\",\"urlList\":$urls}" 

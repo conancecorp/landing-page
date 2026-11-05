@@ -102,6 +102,14 @@ export const pages: PageSeo[] = [
     crumb: 'Préparer les chiffres de la FRA CIF'
   },
   {
+    path: '/a-propos',
+    title: 'À propos de Conance et de son fondateur',
+    description:
+      'Conance est un logiciel français de gestion des commissions pour les cabinets de gestion de patrimoine, développé à Nantes par Elouan Bessettes.',
+    updated: '2026-11-05',
+    crumb: 'À propos'
+  },
+  {
     path: '/cgu',
     title: 'Conditions générales d’utilisation | Conance',
     description: 'Les conditions générales d’utilisation de Conance, logiciel de gestion des commissions.',

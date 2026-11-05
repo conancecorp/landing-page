@@ -14,6 +14,7 @@ import GuideReconciliation from './views/content/GuideReconciliation.vue'
 import GuideMissingCommissions from './views/content/GuideMissingCommissions.vue'
 import GuideForecast from './views/content/GuideForecast.vue'
 import GuideFraCif from './views/content/GuideFraCif.vue'
+import AboutPage from './views/content/AboutPage.vue'
 
 // Every path also needs its entry in seo/pages.ts: that list drives prerendering and the sitemap
 const routes: RouteRecordRaw[] = [
@@ -25,6 +26,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/guide-commissions-manquantes', component: GuideMissingCommissions },
   { path: '/guide-prevision-commissions', component: GuideForecast },
   { path: '/guide-chiffres-fra-cif', component: GuideFraCif },
+  { path: '/a-propos', component: AboutPage },
   { path: '/cgu', component: CGU },
   { path: '/mentions-legales', component: MentionsLegales },
   { path: '/politique-confidentialite', component: PolitiqueConfidentialite }
