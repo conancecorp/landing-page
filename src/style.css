@@ -1285,6 +1285,29 @@
   transform: none;
 }
 
+/* Lifts a card on hover. Declared after .reveal with its own transition list: the entrance keeps its
+   delay, and the hover never waits for it. `translate`, because .reveal already uses `transform`. */
+.hover-lift {
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+    translate 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.hover-lift:hover {
+  translate: 0 -6px;
+  border-color: var(--vert-texte);
+  box-shadow: 0 24px 44px -18px var(--ombre);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-lift:hover {
+    translate: none;
+  }
+}
+
 .parallaxe-couche {
   transform: translate3d(0, calc((0.5 - var(--p, 0.5)) * var(--force, 70px)), 0);
   will-change: transform;

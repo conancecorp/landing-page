@@ -2,27 +2,7 @@
   <div class="min-h-screen">
     <!-- Hero Section -->
     <section v-scroll:page class="heros bg-deep">
-      <!-- Floating Navigation -->
-      <nav class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4">
-        <div :class="['max-w-6xl mx-auto transition-all duration-300', navbarDark ? 'navbar-floating-dark' : 'navbar-floating-light']">
-          <div class="flex justify-between items-center h-14 px-4 sm:px-6">
-            <div class="flex items-center">
-              <a href="#" @click.prevent="scrollToTop" class="flex items-center">
-                <img :src="navbarDark || sombre ? '/logo-conance-white.svg' : '/logo-conance.svg'" alt="Conance" class="h-7 w-auto" />
-              </a>
-            </div>
-            <div class="hidden md:flex items-center space-x-8">
-              <a href="#fonctionnalites" :class="['transition-colors text-sm', navbarDark ? 'text-brume hover:text-blanc' : 'text-gray-600 hover:text-primary-700']">Fonctionnalités</a>
-              <a href="#tarifs" :class="['transition-colors text-sm', navbarDark ? 'text-brume hover:text-blanc' : 'text-gray-600 hover:text-primary-700']">Tarifs</a>
-              <router-link to="/guides" :class="['transition-colors text-sm', navbarDark ? 'text-brume hover:text-blanc' : 'text-gray-600 hover:text-primary-700']">Guides</router-link>
-              <a href="#contact" :class="['transition-colors text-sm', navbarDark ? 'text-brume hover:text-blanc' : 'text-gray-600 hover:text-primary-700']">Contact</a>
-            </div>
-            <div class="flex items-center space-x-3">
-              <a href="https://app.conance.io/login" :class="navbarDark ? 'btn-nav-floating-dark' : 'btn-nav-floating-light'">Se connecter</a>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav :dark="navbarDark" />
 
       <!-- Text content with container constraint -->
       <div class="container relative pt-28">
@@ -38,9 +18,9 @@
             <a href="https://app.conance.io/register?plan=gratuit" class="btn-accent px-6 py-3">
               Démarrer gratuitement
             </a>
-            <a href="#tarifs" class="btn-secondary px-6 py-3">
+            <router-link to="/tarifs" class="btn-secondary px-6 py-3">
               Voir les tarifs
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -217,6 +197,7 @@
               <li><i class="pi pi-check-circle"></i><span>Validation et détection des erreurs avant l'import</span></li>
               <li><i class="pi pi-check-circle"></i><span>Un import raté s'annule en entier, contrats et clients créés compris</span></li>
             </ul>
+            <router-link to="/guide-rapprochement-bordereaux-commissions" class="lien-fleche mt-6">Lire le guide : rapprocher ses bordereaux <i class="pi pi-arrow-right"></i></router-link>
           </div>
           <Parallaxe>
             <BrowserFrame v-reveal.right="120" :src="capture('import', sombre)" alt="Aperçu de l'import de données" tab="Import" path="import" @zoom="openLightbox" />
@@ -238,6 +219,7 @@
             encaisser d'ici décembre, mois par mois et contrat par contrat. Un contrat en retard est
             signalé, un rythme mal compris se corrige en deux clics.
           </p>
+          <router-link to="/guide-prevision-commissions" class="lien-fleche lien-fleche--sombre mt-6">Lire le guide : prévoir ses commissions <i class="pi pi-arrow-right"></i></router-link>
         </div>
 
         <ul class="points-sombres">
@@ -287,6 +269,7 @@
               <li><i class="pi pi-check-circle"></i><span>Commissions annoncées rapprochées à l'import, écart signalé si le montant diffère</span></li>
               <li><i class="pi pi-check-circle"></i><span>Conance signale, vous tranchez : contrat résilié, attente annulée</span></li>
             </ul>
+            <router-link to="/guide-commissions-manquantes" class="lien-fleche mt-6">Lire le guide : repérer les commissions manquantes <i class="pi pi-arrow-right"></i></router-link>
           </div>
           <Parallaxe :force="90">
             <div class="cadre-pastille">
@@ -349,6 +332,7 @@
               <li><i class="pi pi-check-circle"></i><span>Rubriques à régler selon vos natures de commission</span></li>
               <li><i class="pi pi-check-circle"></i><span>Alerte quand une donnée manque, export Excel</span></li>
             </ul>
+            <router-link to="/guide-chiffres-fra-cif" class="lien-fleche mt-6">Lire le guide : préparer la FRA CIF <i class="pi pi-arrow-right"></i></router-link>
           </div>
           <Parallaxe>
             <BrowserFrame v-reveal.right="120" :src="capture('reglementaire', sombre)" alt="Aperçu de la FRA CIF préparée par Conance" tab="Réglementaire" path="pilotage/reglementaire" @zoom="openLightbox" />
@@ -522,427 +506,34 @@
               <li><i class="pi pi-check-circle"></i><span>Idéal pour les prestataires qui gèrent l'externalisation des commissions</span></li>
             </ul>
             <div class="mt-8">
-              <a href="#tarifs" class="btn-primary px-6 py-3 inline-block" @click.prevent="showGroupPricing">Voir les offres Multi-Cabinets</a>
+              <router-link to="/tarifs#multi-cabinets" class="btn-primary px-6 py-3 inline-block">Voir les offres Multi-Cabinets</router-link>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Tarifs Section -->
-    <section id="tarifs" class="py-20 bg-warm">
+    <!-- Guides -->
+    <section id="guides" class="py-20 bg-warm">
       <div class="container">
         <div v-reveal class="text-center mb-12">
+          <span class="section-badge"><i class="pi pi-book"></i>Guides</span>
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Tarifs transparents
+            Vos commissions, cas par cas
           </h2>
           <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
-            Des offres adaptées aux cabinets comme aux prestataires multi-cabinets
+            Les situations que les cabinets rencontrent, et ce que Conance y change.
           </p>
         </div>
-
-        <!-- Sélecteurs tarifs : onglets centrés, toggle périodicité à droite -->
-        <div class="relative mb-10">
-          <!-- Onglets Cabinet / Multi-Cabinets (centrés) -->
-          <div class="flex justify-center">
-            <div class="inline-flex rounded-lg border border-gray-200 bg-white p-1 shadow-xs">
-              <button
-                :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'cabinet' ? 'bg-action text-blanc shadow-xs' : 'text-gray-600 hover:text-gray-900']"
-                @click="pricingTab = 'cabinet'"
-              >
-                <i class="pi pi-building mr-2"></i>Cabinet
-              </button>
-              <button
-                :class="['px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200', pricingTab === 'group' ? 'bg-action text-blanc shadow-xs' : 'text-gray-600 hover:text-gray-900']"
-                @click="pricingTab = 'group'"
-              >
-                <i class="pi pi-sitemap mr-2"></i>Multi-Cabinets
-              </button>
-            </div>
-          </div>
-
-          <!-- Toggle coulissant Mensuel / Annuel (à droite sur desktop, centré sous les onglets sur mobile) -->
-          <div class="flex justify-center mt-4 md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
-            <div class="inline-flex items-center gap-3 select-none">
-              <span
-                :class="['text-sm cursor-pointer transition-colors', billingPeriod === 'monthly' ? 'text-gray-900 font-semibold' : 'text-gray-500']"
-                @click="billingPeriod = 'monthly'"
-              >Mensuel</span>
-              <button
-                type="button"
-                role="switch"
-                :aria-checked="billingPeriod === 'annual'"
-                aria-label="Basculer entre facturation mensuelle et annuelle"
-                :class="['relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200', billingPeriod === 'annual' ? 'bg-action' : 'bg-gray-300']"
-                @click="billingPeriod = billingPeriod === 'annual' ? 'monthly' : 'annual'"
-              >
-                <span :class="['inline-block h-4 w-4 transform rounded-full bg-blanc shadow-sm transition-transform duration-200', billingPeriod === 'annual' ? 'translate-x-6' : 'translate-x-1']"></span>
-              </button>
-              <span
-                :class="['text-sm cursor-pointer transition-colors', billingPeriod === 'annual' ? 'text-gray-900 font-semibold' : 'text-gray-500']"
-                @click="billingPeriod = 'annual'"
-              >Annuel</span>
-              <span class="px-2 py-0.5 rounded-full text-xs font-medium tuile-douce">2 mois offerts</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Plans Cabinet -->
-        <div v-show="pricingTab === 'cabinet'" class="grid md:grid-cols-5 gap-6 max-w-7xl mx-auto items-stretch">
-          <!-- Plan Gratuit -->
-          <div v-reveal="0" class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
-            <div class="text-center">
-              <h3 class="text-xl font-bold text-gray-900 mb-2">Gratuit</h3>
-              <p class="text-gray-600 mb-4 text-sm">Pour découvrir Conance</p>
-              <div class="mb-4">
-                <span class="text-3xl font-bold text-gray-900">0€</span>
-                <span class="text-gray-600">/mois</span>
-              </div>
-            </div>
-            <ul class="space-y-2 mb-6 grow text-sm">
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>5 000 commissions</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>3 partenaires</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>3 utilisateurs</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>1 Go de stockage</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>Support par e-mail</span>
-              </li>
-            </ul>
-            <a href="https://app.conance.io/register?plan=gratuit" class="w-full btn-secondary-light text-center block mt-auto text-sm">Commencer gratuitement</a>
-          </div>
-
-          <!-- Plan Starter -->
-          <div v-reveal="80" class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
-            <div class="text-center">
-              <h3 class="text-xl font-bold text-gray-900 mb-2">Starter</h3>
-              <p class="text-gray-600 mb-4 text-sm">Pour les petites structures</p>
-              <div class="mb-4">
-                <span class="text-3xl font-bold text-gray-900">{{ displayPrice(100) }}€</span>
-                <span class="text-gray-600">/mois</span>
-                <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(100) }}€/an · 2 mois offerts</p>
-              </div>
-            </div>
-            <ul class="space-y-2 mb-6 grow text-sm">
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>500 000 commissions</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>10 partenaires</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>3 utilisateurs</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>10 Go de stockage</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>Support par e-mail</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-sparkles text-primary-700 mr-2"></i>
-                <span><strong>Fonctionnalités IA</strong></span>
-              </li>
-            </ul>
-            <a href="https://app.conance.io/register?plan=starter" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
-          </div>
-
-          <!-- Plan Standard -->
-          <div v-reveal="160" class="bg-white rounded-lg shadow-lg p-6 border-2 border-primary-700 relative flex flex-col">
-            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-              <span class="bg-action text-blanc px-3 py-1 rounded-full text-xs font-medium">Populaire</span>
-            </div>
-            <div class="text-center">
-              <h3 class="text-xl font-bold text-gray-900 mb-2">Standard</h3>
-              <p class="text-gray-600 mb-4 text-sm">Pour les cabinets en croissance</p>
-              <div class="mb-4">
-                <span class="text-3xl font-bold text-gray-900">{{ displayPrice(200) }}€</span>
-                <span class="text-gray-600">/mois</span>
-                <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(200) }}€/an · 2 mois offerts</p>
-              </div>
-            </div>
-            <ul class="space-y-2 mb-6 grow text-sm">
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>2 millions de commissions</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>25 partenaires</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>10 utilisateurs</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>50 Go de stockage</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>Support par e-mail</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-sparkles text-primary-700 mr-2"></i>
-                <span><strong>Fonctionnalités IA</strong></span>
-              </li>
-            </ul>
-            <a href="https://app.conance.io/register?plan=standard" class="w-full btn-primary-card text-center block mt-auto">Choisir ce plan</a>
-          </div>
-
-          <!-- Plan Premium -->
-          <div v-reveal="240" class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
-            <div class="text-center">
-              <h3 class="text-xl font-bold text-gray-900 mb-2">Premium</h3>
-              <p class="text-gray-600 mb-4 text-sm">Pour les grands cabinets</p>
-              <div class="mb-4">
-                <span class="text-3xl font-bold text-gray-900">{{ displayPrice(400) }}€</span>
-                <span class="text-gray-600">/mois</span>
-                <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(400) }}€/an · 2 mois offerts</p>
-              </div>
-            </div>
-            <ul class="space-y-2 mb-6 grow text-sm">
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>8 millions de commissions</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>75 partenaires</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>25 utilisateurs</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>100 Go de stockage</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>Support par e-mail</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-sparkles text-primary-700 mr-2"></i>
-                <span><strong>Fonctionnalités IA</strong></span>
-              </li>
-            </ul>
-            <a href="https://app.conance.io/register?plan=premium" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
-          </div>
-
-          <!-- Plan Entreprise -->
-          <div v-reveal="320" class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
-            <div class="text-center">
-              <h3 class="text-xl font-bold text-gray-900 mb-2">Entreprise</h3>
-              <p class="text-gray-600 mb-4 text-sm">Pour les plus exigeants</p>
-              <div class="mb-4">
-                <span class="text-3xl font-bold text-gray-900">{{ displayPrice(800) }}€</span>
-                <span class="text-gray-600">/mois</span>
-                <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(800) }}€/an · 2 mois offerts</p>
-              </div>
-            </div>
-            <ul class="space-y-2 mb-6 grow text-sm">
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>20 millions de commissions</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>Partenaires illimités</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>100 utilisateurs</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>300 Go de stockage</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>Support dédié</span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-sparkles text-primary-700 mr-2"></i>
-                <span><strong>Fonctionnalités IA</strong></span>
-              </li>
-              <li class="flex items-center">
-                <i class="pi pi-star text-primary-700 mr-2"></i>
-                <span class="text-primary-700 font-medium">Configuration dédiée</span>
-              </li>
-            </ul>
-            <a href="https://app.conance.io/register?plan=entreprise" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
-          </div>
-        </div>
-
-        <!-- Plans Multi-Cabinets -->
-        <div v-show="pricingTab === 'group'">
-          <p class="text-center text-gray-500 mb-8 max-w-3xl mx-auto">
-            Pour les prestataires qui gèrent les commissions de cabinets ayant choisi d'externaliser leur gestion. Chaque cabinet dispose de son propre espace avec des quotas dédiés.
-          </p>
-          <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
-            <!-- Groupe Starter -->
-            <div v-reveal="0" class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
-              <div class="text-center">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Groupe Starter</h3>
-                <p class="text-gray-600 mb-4 text-sm">Pour débuter en multi-cabinets</p>
-                <div class="mb-4">
-                  <span class="text-3xl font-bold text-gray-900">{{ displayPrice(180) }}€</span>
-                  <span class="text-gray-600">/mois</span>
-                  <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(180) }}€/an · 2 mois offerts</p>
-                </div>
-              </div>
-              <ul class="space-y-2 mb-6 grow text-sm">
-                <li class="flex items-center">
-                  <i class="pi pi-building text-primary-700 mr-2"></i>
-                  <span><strong>3 cabinets</strong> inclus</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>10 Go de stockage par cabinet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>3 utilisateurs par cabinet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>500 000 commissions par cabinet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>10 partenaires par cabinet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>Imports, Exports et Rapports</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-sparkles text-primary-700 mr-2"></i>
-                  <span><strong>Fonctionnalités IA</strong></span>
-                </li>
-              </ul>
-              <a href="https://app.conance.io/register?plan=groupe+starter" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
-            </div>
-
-            <!-- Groupe Standard -->
-            <div v-reveal="80" class="bg-white rounded-lg shadow-lg p-6 border-2 border-primary-700 relative flex flex-col">
-              <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span class="bg-action text-blanc px-3 py-1 rounded-full text-xs font-medium">Populaire</span>
-              </div>
-              <div class="text-center">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Groupe Standard</h3>
-                <p class="text-gray-600 mb-4 text-sm">Pour les prestataires en croissance</p>
-                <div class="mb-4">
-                  <span class="text-3xl font-bold text-gray-900">{{ displayPrice(550) }}€</span>
-                  <span class="text-gray-600">/mois</span>
-                  <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(550) }}€/an · 2 mois offerts</p>
-                </div>
-              </div>
-              <ul class="space-y-2 mb-6 grow text-sm">
-                <li class="flex items-center">
-                  <i class="pi pi-building text-primary-700 mr-2"></i>
-                  <span><strong>10 cabinets</strong> inclus</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>10 Go de stockage par cabinet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>3 utilisateurs par cabinet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>500 000 commissions par cabinet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>10 partenaires par cabinet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>Imports, Exports et Rapports</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-sparkles text-primary-700 mr-2"></i>
-                  <span><strong>Fonctionnalités IA</strong></span>
-                </li>
-              </ul>
-              <a href="https://app.conance.io/register?plan=groupe+standard" class="w-full btn-primary-card text-center block mt-auto">Choisir ce plan</a>
-            </div>
-
-            <!-- Groupe Premium -->
-            <div v-reveal="160" class="bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
-              <div class="text-center">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Groupe Premium</h3>
-                <p class="text-gray-600 mb-4 text-sm">Pour les grands prestataires</p>
-                <div class="mb-4">
-                  <span class="text-3xl font-bold text-gray-900">{{ displayPrice(1000) }}€</span>
-                  <span class="text-gray-600">/mois</span>
-                  <p v-show="billingPeriod === 'annual'" class="text-xs text-gray-500 mt-1">soit {{ annualTotal(1000) }}€/an · 2 mois offerts</p>
-                </div>
-              </div>
-              <ul class="space-y-2 mb-6 grow text-sm">
-                <li class="flex items-center">
-                  <i class="pi pi-building text-primary-700 mr-2"></i>
-                  <span><strong>25 cabinets</strong> inclus</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>10 Go de stockage par cabinet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>3 utilisateurs par cabinet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>500 000 commissions par cabinet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>10 partenaires par cabinet</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-check text-primary-700 mr-2"></i>
-                  <span>Imports, Exports et Rapports</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="pi pi-sparkles text-primary-700 mr-2"></i>
-                  <span><strong>Fonctionnalités IA</strong></span>
-                </li>
-              </ul>
-              <a href="https://app.conance.io/register?plan=groupe+premium" class="w-full btn-secondary-light text-center block mt-auto text-sm">Choisir ce plan</a>
-            </div>
-          </div>
-
-          <p class="text-center text-gray-400 text-sm mt-6">
-            Besoin de plus de cabinets ? <a href="#contact" class="text-primary-700 hover:underline">Contactez-nous</a> pour une offre sur mesure.
-          </p>
-        </div>
+        <GuideCards :limit="4" />
+        <p class="text-center mt-10">
+          <router-link to="/guides" class="lien-fleche">Voir tous les guides <i class="pi pi-arrow-right"></i></router-link>
+        </p>
       </div>
     </section>
 
     <!-- FAQ: same text as the FAQPage schema (content/faq.ts) -->
-    <section id="questions" class="py-20 bg-page">
+    <section id="questions" class="pt-20 pb-10 bg-page">
       <div class="container">
         <div v-reveal class="text-center mb-12">
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -961,145 +552,22 @@
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-warm">
+    <section class="pt-10 pb-20 bg-page">
       <div class="container">
-        <div v-reveal class="text-center mb-16">
-          <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Contactez-nous
-          </h2>
-          <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
-            Vous avez des questions ? Notre équipe est là pour vous aider.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <aside v-reveal class="content-cta">
           <div>
-            <h3 class="text-2xl font-semibold mb-6">Informations de contact</h3>
-            <div class="space-y-4">
-              <div class="flex items-center">
-                <i class="pi pi-envelope text-primary-700 mr-4"></i>
-                <span>contact@conance.io</span>
-              </div>
-              <div class="flex items-center">
-                <i class="pi pi-phone text-primary-700 mr-4"></i>
-                <span>06 99 96 46 97</span>
-              </div>
-              <div class="flex items-center">
-                <i class="pi pi-map-marker text-primary-700 mr-4"></i>
-                <span>4 Quai François Mitterrand, 44200 Nantes</span>
-              </div>
-            </div>
+            <h2 class="heading-font">Essayez Conance sur un vrai bordereau</h2>
+            <p>Gratuit jusqu'à 5 000 commissions et 3 partenaires.</p>
           </div>
-
-          <div>
-            <form @submit.prevent="submitForm" class="space-y-6">
-              <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nom *</label>
-                  <input type="text" id="name" v-model="form.name" required 
-                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-700 focus:border-transparent">
-                </div>
-                
-                <div>
-                  <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                  <input type="email" id="email" v-model="form.email" required
-                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-700 focus:border-transparent">
-                </div>
-              </div>
-
-              <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Entreprise</label>
-                  <input type="text" id="company" v-model="form.company"
-                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-700 focus:border-transparent">
-                </div>
-                
-                <div>
-                  <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Téléphone</label>
-                  <input type="tel" id="phone" v-model="form.phone"
-                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-700 focus:border-transparent">
-                </div>
-              </div>
-              
-              <div>
-                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
-                <textarea id="message" v-model="form.message" rows="5" required
-                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-700 focus:border-transparent"
-                          placeholder="Décrivez votre projet ou vos besoins..."></textarea>
-              </div>
-
-              <!-- Message de statut -->
-              <div v-if="statusMessage" 
-                   :class="[
-                     'p-4 rounded-lg border',
-                     statusType === 'success' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-950/40 dark:text-green-300 dark:border-green-900' : 'bg-red-50 text-red-700 border-red-200 dark:bg-red-950/40 dark:text-red-300 dark:border-red-900'
-                   ]">
-                <div v-if="statusType === 'error'" class="whitespace-pre-line">{{ statusMessage }}</div>
-                <div v-else>{{ statusMessage }}</div>
-              </div>
-              
-              <button type="submit" class="w-full btn-primary-card" :disabled="isSubmitting">
-                {{ isSubmitting ? 'Envoi en cours...' : 'Envoyer le message' }}
-              </button>
-            </form>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://app.conance.io/register?plan=gratuit" class="btn-accent px-6 py-3">Démarrer gratuitement</a>
+            <router-link to="/contact" class="btn-secondary px-6 py-3">Nous contacter</router-link>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="text-blanc py-12 bg-deep">
-      <div class="container">
-        <div class="grid md:grid-cols-4 gap-8">
-          <div>
-            <div class="flex items-center mb-4">
-              <img src="/logo-conance-white.svg" alt="Conance" class="h-8 w-auto" />
-            </div>
-            <p class="text-brume-2">
-              Solution SaaS de gestion des commissions pour cabinets de gestion de patrimoine.
-            </p>
-            <ThemeSelector sur-sombre class="mt-6" />
-          </div>
-          
-          <div>
-            <h4 class="font-semibold mb-4">Produit</h4>
-            <ul class="space-y-2 text-brume-2">
-              <li><a href="#fonctionnalites" class="hover:text-blanc transition-colors">Fonctionnalités</a></li>
-              <li><router-link to="/logiciel-gestion-commissions-cgp" class="hover:text-blanc transition-colors">Logiciel de gestion des commissions</router-link></li>
-              <li><router-link to="/comparatif-gestion-commissions-cgp" class="hover:text-blanc transition-colors">Comparer les approches</router-link></li>
-              <li><a href="#tarifs" class="hover:text-blanc transition-colors">Tarifs</a></li>
-              <li><a href="https://app.conance.io/login" class="hover:text-blanc transition-colors">Se connecter</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 class="font-semibold mb-4">Support</h4>
-            <ul class="space-y-2 text-brume-2">
-              <li><router-link to="/guides" class="hover:text-blanc transition-colors">Guides</router-link></li>
-              <li><router-link to="/a-propos" class="hover:text-blanc transition-colors">À propos</router-link></li>
-              <li><a href="https://docs.conance.io" target="_blank" class="hover:text-blanc transition-colors">Documentation</a></li>
-              <li><a href="https://www.linkedin.com/company/110153499/" target="_blank" rel="noopener" class="hover:text-blanc transition-colors">LinkedIn</a></li>
-              <li><a href="#contact" class="hover:text-blanc transition-colors">Contact</a></li>
-              <li><a href="mailto:contact@conance.io" class="hover:text-blanc transition-colors">Support</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 class="font-semibold mb-4">Légal</h4>
-            <ul class="space-y-2 text-brume-2">
-              <li><router-link to="/cgu" class="hover:text-blanc transition-colors">CGU</router-link></li>
-              <li><router-link to="/mentions-legales" class="hover:text-blanc transition-colors">Mentions légales</router-link></li>
-              <li><router-link to="/politique-confidentialite" class="hover:text-blanc transition-colors">Politique de confidentialité</router-link></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="pt-8 mt-8 text-center text-brume-2">
-          <p>&copy; {{ currentYear }} Conance. Tous droits réservés.</p>
-        </div>
-      </div>
-    </footer>
+    <SiteFooter />
 
     <!-- Modale Témoignage complet -->
     <Transition name="lightbox">
@@ -1140,10 +608,11 @@
 </template>
 
 <script>
-import { contactService } from '../services/api'
 import BrowserFrame from '../components/BrowserFrame.vue'
 import Parallaxe from '../components/Parallaxe.vue'
-import ThemeSelector from '../components/ThemeSelector.vue'
+import GuideCards from '../components/GuideCards.vue'
+import SiteFooter from '../components/SiteFooter.vue'
+import SiteNav from '../components/SiteNav.vue'
 import { capture, sombre } from '../theme'
 import { faq } from '../content/faq'
 
@@ -1154,28 +623,15 @@ const PREVISION_TOTALE = 424490
 
 export default {
   name: 'Home',
-  components: { BrowserFrame, Parallaxe, ThemeSelector },
+  components: { BrowserFrame, Parallaxe, GuideCards, SiteFooter, SiteNav },
   setup() {
     return { capture, sombre, faq }
   },
   data() {
     return {
-      form: {
-        name: '',
-        email: '',
-        message: '',
-        company: '',
-        phone: ''
-      },
-      isSubmitting: false,
-      statusMessage: '',
-      statusType: 'success', // 'success' or 'error'
-      currentYear: new Date().getFullYear(),
       navbarScrollHandler: null,
       resizeHandler: null,
       navbarDark: true,
-      pricingTab: 'cabinet',
-      billingPeriod: 'monthly', // 'monthly' | 'annual' — l'annuel offre 2 mois (facturé 10× le mensuel)
       // Le mois d'un cabinet : chaque temps renvoie à sa section, dans l'ordre de la page
       etapes: [
         { ancre: 'import', icone: 'pi-upload', titre: 'Importer', texte: 'Excel, CSV ou PDF, le format de chaque partenaire mémorisé.' },
@@ -1305,106 +761,6 @@ export default {
     closeTestimonialModal() {
       this.testimonialModal = null
       document.body.style.overflow = ''
-    },
-    // Prix mis en avant : mensuel tel quel, ou équivalent mensuel facturé annuellement (2 mois offerts → 10× le mensuel / 12)
-    displayPrice(monthly) {
-      const value = (this.billingPeriod === 'annual' && monthly > 0)
-        ? Math.round((monthly * 10) / 12)
-        : monthly
-      return value.toLocaleString('fr-FR')
-    },
-    // Montant annuel réellement facturé (2 mois offerts)
-    annualTotal(monthly) {
-      return (monthly * 10).toLocaleString('fr-FR')
-    },
-    showGroupPricing() {
-      this.pricingTab = 'group'
-      this.$nextTick(() => {
-        document.getElementById('tarifs').scrollIntoView({ behavior: 'smooth' })
-      })
-    },
-    scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      // Clear the hash from URL
-      if (window.location.hash) {
-        history.pushState('', document.title, window.location.pathname + window.location.search)
-      }
-    },
-    validateForm() {
-      const errors = []
-      
-      // Validate name
-      if (!this.form.name || this.form.name.trim().length < 2) {
-        errors.push('Nom: Veuillez saisir un nom d\'au moins 2 caractères')
-      }
-      
-      // Validate email
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-      if (!this.form.email || !emailRegex.test(this.form.email)) {
-        errors.push('Email: Veuillez saisir une adresse email valide')
-      }
-      
-      // Validate message
-      if (!this.form.message || this.form.message.trim().length < 10) {
-        errors.push('Message: Veuillez saisir un message d\'au moins 10 caractères')
-      }
-      
-      // Validate optional fields
-      if (this.form.company && this.form.company.length > 100) {
-        errors.push('Entreprise: Le nom ne peut pas dépasser 100 caractères')
-      }
-      
-      if (this.form.phone && this.form.phone.length > 20) {
-        errors.push('Téléphone: Le numéro ne peut pas dépasser 20 caractères')
-      }
-      
-      return errors
-    },
-
-    async submitForm() {
-      this.isSubmitting = true
-      this.statusMessage = ''
-      
-      // Validate form client-side first
-      const validationErrors = this.validateForm()
-      if (validationErrors.length > 0) {
-        this.statusMessage = validationErrors.join('\n')
-        this.statusType = 'error'
-        this.isSubmitting = false
-        return
-      }
-      
-      try {
-        const response = await contactService.sendContact({
-          name: this.form.name.trim(),
-          email: this.form.email.trim(),
-          message: this.form.message.trim(),
-          company: this.form.company ? this.form.company.trim() : undefined,
-          phone: this.form.phone ? this.form.phone.trim() : undefined
-        })
-        
-        if (response.success) {
-          // Reset form
-          this.form = {
-            name: '',
-            email: '',
-            message: '',
-            company: '',
-            phone: ''
-          }
-          
-          this.statusMessage = response.message
-          this.statusType = 'success'
-          
-          // Scroll to top of form to show success message
-          document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
-        }
-      } catch (error) {
-        this.statusMessage = error.message || 'Erreur lors de l\'envoi du message. Veuillez réessayer.'
-        this.statusType = 'error'
-      } finally {
-        this.isSubmitting = false
-      }
     }
   }
 }

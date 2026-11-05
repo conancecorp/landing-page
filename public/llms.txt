@@ -6,9 +6,9 @@ Conance (conance.io), éditeur basé à Nantes, ne doit pas être confondu avec 
 
 ## Le produit
 
-- [Logiciel de gestion des commissions](https://conance.io/logiciel-gestion-commissions-cgp): ce que fait Conance, pour quels cabinets, tarifs
+- [Conance](https://conance.io/): ce que fait le logiciel, pour quels cabinets
 - [Excel, CRM, prestataire ou logiciel dédié](https://conance.io/comparatif-gestion-commissions-cgp): comparer les approches
-- [Tarifs](https://conance.io/#tarifs): gratuit jusqu'à 5 000 commissions, puis 100, 200, 400 ou 800 € par mois ; Multi-Cabinets à partir de 180 € par mois
+- [Tarifs](https://conance.io/tarifs): gratuit jusqu'à 5 000 commissions, puis 100, 200, 400 ou 800 € par mois ; Multi-Cabinets à partir de 180 € par mois
 - [Documentation](https://docs.conance.io): guide d'utilisation
 
 ## Guides
@@ -21,5 +21,6 @@ Conance (conance.io), éditeur basé à Nantes, ne doit pas être confondu avec 
 ## Contact
 
 - [À propos](https://conance.io/a-propos): qui développe Conance, d'où il vient
+- [Contact](https://conance.io/contact)
 - [Mentions légales](https://conance.io/mentions-legales)
 - contact@conance.io

@@ -7,7 +7,7 @@ import { OG_IMAGE, SITE_URL, canonicalUrl, type PageSeo } from './pages'
 const ORGANIZATION_ID = `${SITE_URL}/#organization`
 const FOUNDER_ID = `${SITE_URL}/#founder`
 // "Conance" is shared with unrelated companies abroad: these links tell engines which one this is
-const LINKEDIN_PAGE = 'https://www.linkedin.com/company/110153499/'
+const LINKEDIN_PAGE = 'https://www.linkedin.com/company/conance-io/'
 const LINKEDIN_FOUNDER = 'https://www.linkedin.com/in/elouanb/'
 
 const organization = {
@@ -39,7 +39,7 @@ const founder = {
 }
 
 function offer(name: string, price: number, description: string) {
-  return { '@type': 'Offer', name, price, priceCurrency: 'EUR', description, url: `${SITE_URL}/#tarifs` }
+  return { '@type': 'Offer', name, price, priceCurrency: 'EUR', description, url: `${SITE_URL}/tarifs` }
 }
 
 const software = {
@@ -126,7 +126,6 @@ export function pageSchema(page: PageSeo): object {
   if (page.path === '/') {
     graph.push(software, faqPage, { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, url: `${SITE_URL}/`, name: 'Conance', inLanguage: 'fr', publisher: { '@id': ORGANIZATION_ID } })
   }
-  if (page.path === '/logiciel-gestion-commissions-cgp') graph.push(software)
   if (page.path === '/a-propos') {
     graph.push({ '@type': 'AboutPage', url: canonicalUrl(page), name: page.title, inLanguage: 'fr', about: { '@id': ORGANIZATION_ID } })
   }

@@ -26,14 +26,6 @@ export const pages: PageSeo[] = [
     updated: '2026-11-05'
   },
   {
-    path: '/logiciel-gestion-commissions-cgp',
-    title: 'Logiciel de gestion des commissions pour CGP | Conance',
-    description:
-      'Conance réunit vos bordereaux de commissions : import Excel, CSV et PDF, commissions manquantes, prévisionnel, chiffres de la FRA CIF, export comptable.',
-    updated: '2026-11-05',
-    crumb: 'Logiciel de gestion des commissions'
-  },
-  {
     path: '/comparatif-gestion-commissions-cgp',
     title: 'Commissions CGP : Excel, CRM, prestataire ou logiciel ?',
     description:
@@ -49,18 +41,18 @@ export const pages: PageSeo[] = [
     path: '/guides',
     title: 'Guides sur les commissions des cabinets de patrimoine | Conance',
     description:
-      'Rapprocher ses bordereaux, repérer les commissions manquantes, prévoir l’année, préparer la FRA CIF : des méthodes concrètes pour les cabinets.',
+      'Rapprocher ses bordereaux, repérer les commissions manquantes, prévoir l’année, préparer la FRA CIF : les situations des cabinets, cas par cas.',
     updated: '2026-11-05',
     crumb: 'Guides'
   },
   {
     path: '/guide-rapprochement-bordereaux-commissions',
-    title: 'Rapprocher ses bordereaux de commissions : la méthode',
+    title: 'Rapprocher ses bordereaux de commissions | Conance',
     description:
-      'Comment rapprocher les bordereaux de commissions d’un cabinet de gestion de patrimoine : réunir, normaliser, rattacher aux contrats, contrôler, archiver.',
+      'Rapprocher les bordereaux de commissions d’un cabinet de gestion de patrimoine : un format par partenaire, un bordereau sans numéro, un conseiller qui change.',
     updated: '2026-11-05',
     article: {
-      headline: 'Rapprocher ses bordereaux de commissions : la méthode en cinq étapes',
+      headline: 'Rapprocher ses bordereaux de commissions',
       published: '2026-11-05'
     },
     crumb: 'Rapprocher ses bordereaux'
@@ -69,7 +61,7 @@ export const pages: PageSeo[] = [
     path: '/guide-commissions-manquantes',
     title: 'Repérer les commissions manquantes d’un cabinet de CGP',
     description:
-      'Un contrat qui ne paie plus, un droit d’entrée jamais versé, un montant qui diffère : comment repérer les commissions manquantes et quoi vérifier ensuite.',
+      'Un contrat qui ne paie plus, un droit d’entrée jamais versé, un montant qui diffère : trois cas de commissions manquantes et comment Conance les signale.',
     updated: '2026-11-05',
     article: {
       headline: 'Repérer les commissions qui ne sont pas arrivées',
@@ -81,10 +73,10 @@ export const pages: PageSeo[] = [
     path: '/guide-prevision-commissions',
     title: 'Prévoir les commissions d’un cabinet de gestion de patrimoine',
     description:
-      'Comment estimer ce qui reste à encaisser d’ici décembre : séparer récurrent et ponctuel, lire le rythme de chaque contrat, isoler les contrats en retard.',
+      'Estimer ce qui reste à encaisser d’ici décembre à partir du rythme de chaque contrat, et savoir quelle part de ce chiffre repose sur des contrats en retard.',
     updated: '2026-11-05',
     article: {
-      headline: 'Prévoir ses commissions de l’année, contrat par contrat',
+      headline: 'Prévoir ses commissions de l’année',
       published: '2026-11-05'
     },
     crumb: 'Prévoir ses commissions'
@@ -102,10 +94,26 @@ export const pages: PageSeo[] = [
     crumb: 'Préparer les chiffres de la FRA CIF'
   },
   {
-    path: '/a-propos',
-    title: 'À propos de Conance et de son fondateur',
+    path: '/tarifs',
+    title: 'Tarifs de Conance : gratuit, puis de 100 à 800 € par mois',
     description:
-      'Conance est un logiciel français de gestion des commissions pour les cabinets de gestion de patrimoine, développé à Nantes par Elouan Bessettes.',
+      'Conance est gratuit jusqu’à 5 000 commissions et 3 partenaires, puis de 100 à 800 € par mois selon le volume. Offres Multi-Cabinets à partir de 180 € par mois.',
+    updated: '2026-11-05',
+    crumb: 'Tarifs'
+  },
+  {
+    path: '/contact',
+    title: 'Contacter Conance | Logiciel de gestion des commissions',
+    description:
+      'Une question sur Conance ou une démonstration : écrivez-nous, c’est celui qui développe le logiciel de gestion des commissions qui vous répond.',
+    updated: '2026-11-05',
+    crumb: 'Contact'
+  },
+  {
+    path: '/a-propos',
+    title: 'À propos de Conance',
+    description:
+      'Conance est un logiciel français de gestion des commissions pour les cabinets de gestion de patrimoine, conçu et développé à Nantes.',
     updated: '2026-11-05',
     crumb: 'À propos'
   },
