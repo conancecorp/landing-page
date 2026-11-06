@@ -1,7 +1,7 @@
 <template>
   <ContentPage title="À propos de Conance" highlight="Conance" badge="À propos" icon="pi-info-circle">
     <template #lead>
-      Moi c'est Elouan, développeur à Nantes. J'ai créé Conance avec un cabinet nantais qui traitait ses bordereaux de commissions à la main. Je le
+      Développeur à Nantes, j'ai créé Conance avec un cabinet de gestion de patrimoine qui traitait ses bordereaux de commissions à la main. Je le
       développe au quotidien, et c'est moi qui réponds quand vous écrivez.
     </template>
     <template #visual>
