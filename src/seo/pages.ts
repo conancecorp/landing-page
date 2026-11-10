@@ -20,9 +20,9 @@ export interface PageSeo {
 export const pages: PageSeo[] = [
   {
     path: '/',
-    title: 'Conance | Logiciel de gestion des commissions',
+    title: 'Conance | Simplifiez la gestion de vos commissions',
     description:
-      'Conance, le back-office des commissions des cabinets de gestion de patrimoine : importez vos bordereaux, repérez ce qui manque, prévoyez ce qui va tomber.',
+      'Logiciel de gestion des commissions pour les cabinets de gestion de patrimoine (CGP) : importez vos bordereaux, repérez ce qui manque, prévoyez ce qui va tomber.',
     updated: '2026-11-05'
   },
   {
