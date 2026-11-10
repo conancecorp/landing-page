@@ -63,12 +63,8 @@
             </div>
 
             <div>
-              <label for="source" class="block text-sm font-medium text-gray-700 mb-2">Comment avez-vous connu Conance ?</label>
-              <select id="source" v-model="form.source"
-                      class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-primary-700 focus:border-transparent">
-                <option value="">Choisir une réponse</option>
-                <option v-for="option in sourceOptions" :key="option.value" :value="option.value">{{ option.label }}</option>
-              </select>
+              <label for="source" class="block text-sm font-medium text-gray-700 mb-2">Comment avez-vous connu Conance ? *</label>
+              <ChoiceSelect id="source" v-model="form.source" :options="sourceOptions" placeholder="Choisir une réponse" required />
             </div>
 
             <div v-if="sourceNeedsDetail">
@@ -99,6 +95,7 @@
 
 <script>
 import { contactService } from '../services/api'
+import ChoiceSelect from './ChoiceSelect.vue'
 
 // The keys are checked by the API, which turns them back into these labels in the e-mail
 const SOURCE_OPTIONS = [
@@ -122,6 +119,7 @@ const emptyForm = () => ({ name: '', email: '', message: '', company: '', phone:
 
 export default {
   name: 'ContactSection',
+  components: { ChoiceSelect },
   data() {
     return {
       form: emptyForm(),
@@ -159,6 +157,10 @@ export default {
         errors.push('Message: Veuillez saisir un message d\'au moins 10 caractères')
       }
       
+      if (!this.form.source) {
+        errors.push('Comment avez-vous connu Conance : Veuillez choisir une réponse')
+      }
+
       // Validate optional fields
       if (this.form.company && this.form.company.length > 100) {
         errors.push('Entreprise: Le nom ne peut pas dépasser 100 caractères')
