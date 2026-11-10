@@ -62,6 +62,21 @@
                         placeholder="Décrivez votre projet ou vos besoins..."></textarea>
             </div>
 
+            <div>
+              <label for="source" class="block text-sm font-medium text-gray-700 mb-2">Comment avez-vous connu Conance ?</label>
+              <select id="source" v-model="form.source"
+                      class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-primary-700 focus:border-transparent">
+                <option value="">Choisir une réponse</option>
+                <option v-for="option in sourceOptions" :key="option.value" :value="option.value">{{ option.label }}</option>
+              </select>
+            </div>
+
+            <div v-if="sourceNeedsDetail">
+              <label for="source-detail" class="block text-sm font-medium text-gray-700 mb-2">{{ sourceDetailLabel }}</label>
+              <input type="text" id="source-detail" v-model="form.sourceDetail" maxlength="100"
+                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-700 focus:border-transparent">
+            </div>
+
             <!-- Message de statut -->
             <div v-if="statusMessage" 
                  :class="[
@@ -85,20 +100,43 @@
 <script>
 import { contactService } from '../services/api'
 
+// The keys are checked by the API, which turns them back into these labels in the e-mail
+const SOURCE_OPTIONS = [
+  { value: 'search_engine', label: 'Recherche sur Google ou Bing' },
+  { value: 'ai_assistant', label: 'Assistant IA (ChatGPT, Claude…)' },
+  { value: 'linkedin', label: 'LinkedIn' },
+  { value: 'our_outreach', label: 'E-mail ou appel de Conance' },
+  { value: 'referral', label: 'Recommandation (confrère, partenaire)' },
+  { value: 'directory', label: 'Comparatif ou annuaire (Capterra…)' },
+  { value: 'press', label: 'Article ou presse' },
+  { value: 'event', label: 'Salon ou événement' },
+  { value: 'other', label: 'Autre' }
+]
+const DETAIL_LABELS = {
+  referral: 'Qui vous a recommandé Conance ? (facultatif)',
+  event: 'Quel événement ? (facultatif)',
+  other: 'Précisez (facultatif)'
+}
+
+const emptyForm = () => ({ name: '', email: '', message: '', company: '', phone: '', source: '', sourceDetail: '' })
+
 export default {
   name: 'ContactSection',
   data() {
     return {
-      form: {
-        name: '',
-        email: '',
-        message: '',
-        company: '',
-        phone: ''
-      },
+      form: emptyForm(),
+      sourceOptions: SOURCE_OPTIONS,
       isSubmitting: false,
       statusMessage: '',
       statusType: 'success' // 'success' or 'error'
+    }
+  },
+  computed: {
+    sourceNeedsDetail() {
+      return this.form.source in DETAIL_LABELS
+    },
+    sourceDetailLabel() {
+      return DETAIL_LABELS[this.form.source]
     }
   },
   methods: {
@@ -152,18 +190,14 @@ export default {
           email: this.form.email.trim(),
           message: this.form.message.trim(),
           company: this.form.company ? this.form.company.trim() : undefined,
-          phone: this.form.phone ? this.form.phone.trim() : undefined
+          phone: this.form.phone ? this.form.phone.trim() : undefined,
+          source: this.form.source || undefined,
+          source_detail: this.sourceNeedsDetail && this.form.sourceDetail.trim() ? this.form.sourceDetail.trim() : undefined
         })
         
         if (response.success) {
           // Reset form
-          this.form = {
-            name: '',
-            email: '',
-            message: '',
-            company: '',
-            phone: ''
-          }
+          this.form = emptyForm()
           
           this.statusMessage = response.message
           this.statusType = 'success'

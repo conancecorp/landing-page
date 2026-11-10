@@ -4,6 +4,8 @@ interface ContactData {
   message: string;
   company?: string;
   phone?: string;
+  source?: string;
+  source_detail?: string;
 }
 
 interface ContactResponse {
