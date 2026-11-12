@@ -3,7 +3,8 @@
 // with a 200, and relative asset URLs keep working.
 
 export const SITE_URL = 'https://conance.io'
-export const OG_IMAGE = `${SITE_URL}/og-image.png`
+// Bump ?v= when the image changes: LinkedIn and others cache it by its address
+export const OG_IMAGE = `${SITE_URL}/og-image.png?v=2`
 
 export interface PageSeo {
   path: string
