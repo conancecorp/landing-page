@@ -22,15 +22,15 @@ export const pages: PageSeo[] = [
     path: '/',
     title: 'Conance | Simplifiez la gestion de vos commissions',
     description:
-      'Logiciel de gestion des commissions pour les cabinets de gestion de patrimoine (CGP) : importez vos bordereaux, repérez ce qui manque, prévoyez ce qui va tomber.',
-    updated: '2026-11-05'
+      'Logiciel de gestion des commissions pour les cabinets de conseil en gestion de patrimoine (CGP) : importez vos bordereaux, contrôlez l’exhaustivité de vos commissions, maîtrisez votre prévisionnel.',
+    updated: '2026-11-12'
   },
   {
     path: '/comparatif-gestion-commissions-cgp',
     title: 'Commissions CGP : Excel, CRM, prestataire ou logiciel ?',
     description:
       'Tableur, CRM patrimonial, prestataire ou logiciel dédié : ce que chaque approche couvre pour gérer les commissions d’un cabinet, et quand elle convient.',
-    updated: '2026-11-05',
+    updated: '2026-11-12',
     article: {
       headline: 'Excel, CRM, prestataire ou logiciel dédié : comment gérer les commissions d’un cabinet',
       published: '2026-11-05'
@@ -39,18 +39,18 @@ export const pages: PageSeo[] = [
   },
   {
     path: '/guides',
-    title: 'Guides sur les commissions des cabinets de patrimoine | Conance',
+    title: 'Guides sur les commissions des CGP | Conance',
     description:
-      'Rapprocher ses bordereaux, repérer les commissions manquantes, prévoir l’année, préparer la FRA CIF : les situations des cabinets, cas par cas.',
-    updated: '2026-11-05',
+      'Rapprocher ses bordereaux, contrôler l’exhaustivité de ses commissions, établir son prévisionnel, préparer la FRA CIF : les situations des cabinets, cas par cas.',
+    updated: '2026-11-12',
     crumb: 'Guides'
   },
   {
     path: '/guide-rapprochement-bordereaux-commissions',
     title: 'Rapprocher ses bordereaux de commissions | Conance',
     description:
-      'Rapprocher les bordereaux de commissions d’un cabinet de gestion de patrimoine : un format par partenaire, un bordereau sans numéro, un conseiller qui change.',
-    updated: '2026-11-05',
+      'Rapprocher les bordereaux de commissions d’un cabinet de conseil en gestion de patrimoine : un format par partenaire, un bordereau sans numéro, un conseiller qui change.',
+    updated: '2026-11-12',
     article: {
       headline: 'Rapprocher ses bordereaux de commissions',
       published: '2026-11-05'
@@ -59,46 +59,46 @@ export const pages: PageSeo[] = [
   },
   {
     path: '/guide-commissions-manquantes',
-    title: 'Repérer les commissions manquantes d’un cabinet de CGP',
+    title: 'Contrôler l’exhaustivité des commissions d’un cabinet de CGP',
     description:
-      'Un contrat qui ne paie plus, un droit d’entrée jamais versé, un montant qui diffère : trois cas de commissions manquantes et comment Conance les signale.',
-    updated: '2026-11-05',
+      'Un contrat sans versement, un droit d’entrée non perçu, un montant différent de l’attendu : trois cas de commissions non perçues et leur détection avec Conance.',
+    updated: '2026-11-12',
     article: {
-      headline: 'Repérer les commissions qui ne sont pas arrivées',
+      headline: 'Contrôler l’exhaustivité de ses commissions',
       published: '2026-11-05'
     },
-    crumb: 'Repérer les commissions manquantes'
+    crumb: 'Contrôler l’exhaustivité'
   },
   {
     path: '/guide-prevision-commissions',
-    title: 'Prévoir les commissions d’un cabinet de gestion de patrimoine',
+    title: 'Établir le prévisionnel de commissions d’un cabinet de CGP',
     description:
-      'Estimer ce qui reste à encaisser d’ici décembre à partir du rythme de chaque contrat, et savoir quelle part de ce chiffre repose sur des contrats en retard.',
-    updated: '2026-11-05',
+      'Estimer le reste à encaisser jusqu’au 31 décembre à partir de la périodicité de chaque contrat, et la part exposée à des retards de versement.',
+    updated: '2026-11-12',
     article: {
-      headline: 'Prévoir ses commissions de l’année',
+      headline: 'Établir son prévisionnel de commissions',
       published: '2026-11-05'
     },
-    crumb: 'Prévoir ses commissions'
+    crumb: 'Établir son prévisionnel'
   },
   {
     path: '/guide-chiffres-fra-cif',
     title: 'FRA CIF : préparer ses chiffres à partir des commissions',
     description:
       'Quels chiffres préparer pour la fiche de renseignements annuelle d’un CIF : rétrocessions, honoraires, courtage, clients, contrats, encours au 31 décembre.',
-    updated: '2026-11-05',
+    updated: '2026-11-12',
     article: {
       headline: 'FRA CIF : préparer ses chiffres à partir de ses commissions',
       published: '2026-11-05'
     },
-    crumb: 'Préparer les chiffres de la FRA CIF'
+    crumb: 'Préparer les données de la FRA CIF'
   },
   {
     path: '/tarifs',
     title: 'Tarifs de Conance : gratuit, puis de 100 à 800 € par mois',
     description:
       'Conance est gratuit jusqu’à 5 000 commissions et 3 partenaires, puis de 100 à 800 € par mois selon le volume. Offres Multi-Cabinets à partir de 180 € par mois.',
-    updated: '2026-11-05',
+    updated: '2026-11-12',
     crumb: 'Tarifs'
   },
   {
@@ -113,8 +113,8 @@ export const pages: PageSeo[] = [
     path: '/a-propos',
     title: 'À propos de Conance',
     description:
-      'Conance est un logiciel français de gestion des commissions pour les cabinets de gestion de patrimoine, conçu et développé à Nantes.',
-    updated: '2026-11-05',
+      'Conance est un logiciel français de gestion des commissions pour les cabinets de conseil en gestion de patrimoine, conçu et développé à Nantes.',
+    updated: '2026-11-12',
     crumb: 'À propos'
   },
   {

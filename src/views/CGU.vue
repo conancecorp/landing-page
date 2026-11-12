@@ -31,7 +31,7 @@
             <h2 class="heading-font text-xl md:text-2xl font-semibold text-gray-900 mb-4">1. Objet</h2>
             <p class="text-gray-600 mb-4">
               Les présentes Conditions Générales d'Utilisation (CGU) régissent l'utilisation de la plateforme Conance,
-              solution SaaS de gestion des commissions pour cabinets de gestion de patrimoine, éditée par Conance.
+              solution SaaS de gestion des commissions pour cabinets de conseil en gestion de patrimoine, éditée par Conance.
             </p>
             <p class="text-gray-600 mb-4">
               En vous inscrivant sur la plateforme, vous acceptez sans réserve les présentes CGU ainsi que notre

@@ -12,8 +12,8 @@
       <span v-for="(quarter, i) in quarters" :key="i" :class="{ 'is-missing': quarter.missing }" :style="{ height: `${quarter.height}%` }"></span>
     </div>
     <div class="ill-rhythm-labels"><span v-for="(quarter, i) in quarters" :key="i">{{ quarter.label }}</span></div>
-    <div class="ill-rhythm-legend"><span>Versé</span><span class="is-missing">Manquant</span></div>
-    <div class="pastille-pied"><strong class="manque">~1 680 €</strong> de manque estimé</div>
+    <div class="ill-rhythm-legend"><span>Versé</span><span class="is-missing">Non perçu</span></div>
+    <div class="pastille-pied"><strong class="manque">~1 680 €</strong> non perçus (estimation)</div>
   </div>
 </template>
 

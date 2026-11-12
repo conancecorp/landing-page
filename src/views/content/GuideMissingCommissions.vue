@@ -1,14 +1,14 @@
 <template>
   <ContentPage
-    title="Repérer les commissions qui ne sont pas arrivées"
+    title="Contrôler l'exhaustivité de ses commissions"
     highlight="commissions"
     badge="Guide"
     icon="pi-book"
     :closing="false"
   >
     <template #lead>
-      Une commission manquante ne se voit pas dans un bordereau, puisqu'elle n'y figure pas. Pour la repérer, il faut comparer ce qui arrive à
-      ce qui devrait arriver. Voici les trois cas à surveiller.
+      Une commission non versée n'apparaît dans aucun bordereau. Pour la détecter, il faut rapprocher les commissions perçues des
+      commissions attendues. Voici les trois cas à surveiller.
     </template>
     <template #visual>
       <ContractRhythm />
@@ -23,15 +23,15 @@
         <p v-reveal class="content-note content-narrow mt-10">
           <i class="pi pi-info-circle"></i>
           <span>
-            Un silence n'est pas toujours une erreur : le contrat a pu être résilié ou transféré, ou le partenaire est simplement en retard. Conance
-            signale, vous tranchez.
+            Une absence de versement n'est pas toujours une anomalie : le contrat a pu être racheté, résilié ou transféré, ou le partenaire est en
+            retard. Conance signale, vous décidez.
           </span>
         </p>
       </div>
     </section>
 
     <ConanceBand name="attendues" alt="Aperçu des commissions attendues" tab="Pilotage" path="pilotage">
-      La page Commissions attendues réunit les contrats qui se taisent et les commissions annoncées, avec le manque estimé.
+      La page Commissions attendues réunit les contrats sans versement et les commissions attendues, avec le montant non perçu estimé.
     </ConanceBand>
 
     <section class="py-20 bg-warm">
@@ -54,22 +54,22 @@ import ContractRhythm from '../../components/illustrations/ContractRhythm.vue'
 
 const cases = [
   {
-    title: 'Un contrat ne verse plus rien',
+    title: 'Un contrat sans versement',
     icon: 'pi-volume-off',
-    situation: 'Il payait tous les trimestres et se tait depuis six mois. Aucune ligne, donc aucune alerte.',
-    answer: 'Conance compare chaque contrat à son propre rythme et fait remonter ceux qui se taisent, avec les versements manqués chiffrés.'
+    situation: 'Commissionné chaque trimestre, il n’apparaît plus dans les bordereaux depuis six mois. Sans ligne, aucune alerte.',
+    answer: 'Conance compare chaque contrat à sa périodicité de versement et signale ceux qui n’ont rien versé, avec le montant non perçu estimé.'
   },
   {
-    title: 'Un droit d’entrée n’arrive pas',
+    title: 'Un droit d’entrée non versé',
     icon: 'pi-clock',
     situation: 'Il est attendu après une souscription, mais n’apparaît dans aucun bordereau.',
-    answer: 'Vous déclarez la commission annoncée, et Conance la rapproche de ce qui arrive à l’import.'
+    answer: 'Vous enregistrez la commission attendue, et Conance la rapproche des bordereaux à l’import.'
   },
   {
-    title: 'Le montant n’est pas le bon',
+    title: 'Un montant différent de l’attendu',
     icon: 'pi-sort-alt',
-    situation: 'La commission arrive, mais pas pour le montant prévu.',
-    answer: 'Conance signale l’écart, et vous décidez s’il mérite une question au partenaire.'
+    situation: 'La commission est versée, mais pour un autre montant.',
+    answer: 'Conance signale l’écart ; vous décidez s’il justifie une réclamation auprès du partenaire.'
   }
 ]
 </script>

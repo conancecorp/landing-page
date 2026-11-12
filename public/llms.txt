@@ -1,6 +1,6 @@
 # Conance
 
-> Conance est un logiciel français en ligne de gestion des commissions pour les cabinets de gestion de patrimoine (CGP, CIF, courtiers). Il importe les bordereaux des partenaires, les réunit dans une base consolidée, signale les commissions qui manquent, prévoit celles à venir et prépare les chiffres de la FRA CIF et de la comptabilité.
+> Conance est un logiciel français, en ligne, de gestion des commissions pour les cabinets de conseil en gestion de patrimoine (CGP, CIF, courtiers en assurance). Il importe les bordereaux des partenaires dans une base consolidée, contrôle l'exhaustivité des commissions perçues, établit le prévisionnel et prépare les données de la FRA CIF ainsi que l'export comptable.
 
 Conance (conance.io), éditeur basé à Nantes, ne doit pas être confondu avec des sociétés homonymes à l'étranger. Il complète un CRM patrimonial, il ne le remplace pas. Il ne dépose pas la déclaration FRA CIF à la place du cabinet.
 
@@ -14,9 +14,9 @@ Conance (conance.io), éditeur basé à Nantes, ne doit pas être confondu avec 
 ## Guides
 
 - [Rapprocher ses bordereaux de commissions](https://conance.io/guide-rapprochement-bordereaux-commissions)
-- [Repérer les commissions manquantes](https://conance.io/guide-commissions-manquantes)
-- [Prévoir ses commissions de l'année](https://conance.io/guide-prevision-commissions)
-- [Préparer les chiffres de la FRA CIF](https://conance.io/guide-chiffres-fra-cif)
+- [Contrôler l'exhaustivité de ses commissions](https://conance.io/guide-commissions-manquantes)
+- [Établir son prévisionnel de commissions](https://conance.io/guide-prevision-commissions)
+- [Préparer les données de la FRA CIF](https://conance.io/guide-chiffres-fra-cif)
 
 ## Contact
 

@@ -35,7 +35,7 @@
               </div>
               
               <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">E-mail *</label>
                 <input type="email" id="email" v-model="form.email" required
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-700 focus:border-transparent">
               </div>
@@ -149,7 +149,7 @@ export default {
       // Validate email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
       if (!this.form.email || !emailRegex.test(this.form.email)) {
-        errors.push('Email: Veuillez saisir une adresse email valide')
+        errors.push('E-mail: Veuillez saisir une adresse e-mail valide')
       }
       
       // Validate message

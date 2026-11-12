@@ -7,7 +7,7 @@
             <img src="/logo-conance-white.svg" alt="Conance" class="h-8 w-auto" />
           </div>
           <p class="text-brume-2">
-            Solution SaaS de gestion des commissions pour cabinets de gestion de patrimoine.
+            Logiciel de gestion des commissions pour les cabinets de conseil en gestion de patrimoine.
           </p>
           <ThemeSelector sur-sombre class="mt-6" />
         </div>

@@ -1,7 +1,7 @@
 <template>
   <ContentPage title="À propos de Conance" highlight="Conance" badge="À propos" icon="pi-info-circle">
     <template #lead>
-      Développeur à Nantes, j'ai créé Conance avec un cabinet de gestion de patrimoine qui traitait ses bordereaux de commissions à la main. Je le
+      Développeur à Nantes, j'ai créé Conance avec un cabinet de conseil en gestion de patrimoine qui traitait ses bordereaux de commissions manuellement. Je le
       développe au quotidien, et c'est moi qui réponds quand vous écrivez.
     </template>
     <template #visual>
@@ -23,12 +23,12 @@
           <div v-reveal class="content-card">
             <span class="etape-tuile"><i class="pi pi-file"></i></span>
             <h3>Du bordereau à la déclaration</h3>
-            <p>Un logiciel français pour gérer les commissions des cabinets de gestion de patrimoine.</p>
+            <p>Un logiciel français de gestion des commissions pour les cabinets de conseil en gestion de patrimoine.</p>
           </div>
           <div v-reveal="90" class="content-card">
             <span class="etape-tuile"><i class="pi pi-bullseye"></i></span>
             <h3>Un sujet, et un seul</h3>
-            <p>Les cabinets sont déjà équipés pour suivre leurs clients et tenir la conformité. Conance s'occupe des commissions qu'ils reçoivent.</p>
+            <p>Les cabinets disposent déjà d'outils pour la relation client et la conformité. Conance se consacre aux commissions qu'ils perçoivent.</p>
           </div>
           <div v-reveal="180" class="content-card">
             <span class="etape-tuile"><i class="pi pi-server"></i></span>

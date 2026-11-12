@@ -33,7 +33,7 @@
     </section>
 
     <ConanceBand name="reglementaire" alt="Aperçu de la FRA CIF préparée par Conance" tab="Réglementaire" path="pilotage/reglementaire">
-      Vos commissions de l'exercice donnent déjà l'essentiel : il reste à relire, à compléter ce qui manque et à exporter.
+      Vos commissions de l'exercice fournissent l'essentiel des données : il reste à les vérifier, à les compléter et à les exporter.
     </ConanceBand>
 
     <section class="py-20 bg-warm">
@@ -58,19 +58,19 @@ const cases = [
   {
     title: 'Retrouver les chiffres de l’exercice',
     icon: 'pi-calculator',
-    situation: 'Rétrocessions, honoraires, courtage, clients, contrats, encours au 31 décembre : ils dorment souvent dans plusieurs fichiers.',
+    situation: 'Rétrocessions, honoraires, courtage, clients, contrats, encours au 31 décembre : ils sont souvent dispersés dans plusieurs fichiers.',
     answer: 'Conance les calcule à partir de vos commissions.'
   },
   {
     title: 'Suivre les rubriques de votre association',
     icon: 'pi-sliders-h',
     situation: 'Les rubriques peuvent varier d’une association à l’autre.',
-    answer: 'Elles se règlent selon vos natures de commission.'
+    answer: 'Elles se paramètrent selon vos natures de commission.'
   },
   {
     title: 'Savoir ce qu’il reste à compléter',
     icon: 'pi-bell',
-    situation: 'Une commission non classée ou un bordereau absent fausse le total sans prévenir.',
+    situation: 'Une commission sans nature attribuée ou un bordereau manquant fausse le total sans alerte.',
     answer: 'Une alerte indique les données manquantes, et le tout s’exporte en Excel.'
   }
 ]

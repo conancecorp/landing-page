@@ -1,7 +1,7 @@
 <template>
-  <ContentPage title="Guides sur les commissions des cabinets de gestion de patrimoine" highlight="commissions" badge="Guides" icon="pi-book">
+  <ContentPage title="Guides sur les commissions des cabinets de conseil en gestion de patrimoine" highlight="commissions" badge="Guides" icon="pi-book">
     <template #lead>
-      Les situations que les cabinets rencontrent avec leurs commissions, et ce que Conance y change.
+      Les situations rencontrées par les cabinets avec leurs commissions, et la réponse de Conance.
     </template>
 
     <section class="py-20 bg-warm">

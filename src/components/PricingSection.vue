@@ -211,7 +211,7 @@
         <div v-reveal="320" class="hover-lift bg-white rounded-lg shadow-lg p-6 border border-gray-200 flex flex-col">
           <div class="text-center">
             <h3 class="text-xl font-bold text-gray-900 mb-2">Entreprise</h3>
-            <p class="text-gray-600 mb-4 text-sm">Pour les plus exigeants</p>
+            <p class="text-gray-600 mb-4 text-sm">Pour les structures à fort volume</p>
             <div class="mb-4">
               <span class="text-3xl font-bold text-gray-900">{{ displayPrice(800) }}€</span>
               <span class="text-gray-600">/mois</span>
@@ -255,7 +255,7 @@
       <!-- Plans Multi-Cabinets -->
       <div v-show="pricingTab === 'group'">
         <p class="text-center text-gray-500 mb-8 max-w-3xl mx-auto">
-          Pour les prestataires qui gèrent les commissions de cabinets ayant choisi d'externaliser leur gestion. Chaque cabinet dispose de son propre espace avec des quotas dédiés.
+          Pour les prestataires auxquels des cabinets confient le traitement de leurs commissions. Chaque cabinet dispose de son propre espace avec des quotas dédiés.
         </p>
         <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
           <!-- Groupe Starter -->
@@ -292,7 +292,7 @@
               </li>
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>Imports, Exports et Rapports</span>
+                <span>Imports, exports et rapports</span>
               </li>
               <li class="flex items-center">
                 <i class="pi pi-sparkles text-primary-700 mr-2"></i>
@@ -339,7 +339,7 @@
               </li>
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>Imports, Exports et Rapports</span>
+                <span>Imports, exports et rapports</span>
               </li>
               <li class="flex items-center">
                 <i class="pi pi-sparkles text-primary-700 mr-2"></i>
@@ -383,7 +383,7 @@
               </li>
               <li class="flex items-center">
                 <i class="pi pi-check text-primary-700 mr-2"></i>
-                <span>Imports, Exports et Rapports</span>
+                <span>Imports, exports et rapports</span>
               </li>
               <li class="flex items-center">
                 <i class="pi pi-sparkles text-primary-700 mr-2"></i>

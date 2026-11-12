@@ -10,7 +10,7 @@
       <div class="container">
         <div v-reveal class="content-heading">
           <h2 class="content-h2">Une question sur les offres ?</h2>
-          <p>Vous gérez plusieurs cabinets, ou votre volume sort de ces offres : parlons-en.</p>
+          <p>Vous traitez les commissions de plusieurs cabinets, ou votre volume dépasse ces offres : parlons-en.</p>
         </div>
         <div v-reveal class="flex flex-wrap justify-center gap-3">
           <router-link to="/contact" class="btn-primary px-6 py-3">Nous écrire</router-link>

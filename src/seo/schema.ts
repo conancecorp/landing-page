@@ -16,7 +16,7 @@ const organization = {
   name: 'Conance',
   url: `${SITE_URL}/`,
   logo: `${SITE_URL}/favicon/web-app-manifest-512x512.png`,
-  description: 'Éditeur français du logiciel de gestion des commissions pour cabinets de gestion de patrimoine.',
+  description: 'Éditeur français du logiciel de gestion des commissions pour cabinets de conseil en gestion de patrimoine.',
   email: 'contact@conance.io',
   telephone: '+33699964697',
   address: {
@@ -53,13 +53,13 @@ const software = {
   inLanguage: 'fr',
   image: OG_IMAGE,
   description:
-    'Logiciel en ligne de gestion des commissions pour cabinets de gestion de patrimoine : import des bordereaux Excel, CSV et PDF, base consolidée, commissions manquantes, prévisionnel, chiffres de la FRA CIF et export comptable.',
+    'Logiciel en ligne de gestion des commissions pour cabinets de conseil en gestion de patrimoine : import des bordereaux Excel, CSV et PDF, base consolidée, contrôle d’exhaustivité, prévisionnel, données de la FRA CIF et export comptable.',
   featureList: [
     'Import des bordereaux de commissions Excel, CSV, OpenDocument et PDF',
-    'Détection des commissions manquantes',
+    'Contrôle de l’exhaustivité des commissions perçues',
     'Prévisionnel des commissions de l’année',
     'Analyse par conseiller, partenaire, produit, client, nature, activité et entité',
-    'Préparation des chiffres de la FRA CIF',
+    'Préparation des données de la FRA CIF',
     'Export comptable FEC et CSV',
     'Double authentification, rôles et permissions',
     'Données hébergées en France'

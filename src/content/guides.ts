@@ -10,20 +10,20 @@ export const guides: { path: string; title: string; summary: string; illustratio
   },
   {
     path: '/guide-commissions-manquantes',
-    title: 'Repérer les commissions qui ne sont pas arrivées',
-    summary: 'Un contrat qui ne paie plus, un droit d’entrée jamais versé, un montant qui diffère.',
+    title: 'Contrôler l’exhaustivité de ses commissions',
+    summary: 'Un contrat sans versement, un droit d’entrée non perçu, un montant différent de l’attendu.',
     illustration: 'rhythm'
   },
   {
     path: '/guide-prevision-commissions',
-    title: 'Prévoir ses commissions de l’année',
-    summary: 'Ce qui reste à encaisser d’ici décembre, et la part de ce chiffre qui est sûre.',
+    title: 'Établir son prévisionnel de commissions',
+    summary: 'Le reste à encaisser jusqu’au 31 décembre, et la part exposée à des retards de versement.',
     illustration: 'forecast'
   },
   {
     path: '/guide-chiffres-fra-cif',
-    title: 'Préparer les chiffres de la FRA CIF',
-    summary: 'Retrouver les chiffres de la fiche annuelle d’un CIF et voir ce qu’il reste à compléter.',
+    title: 'Préparer les données de la FRA CIF',
+    summary: 'Les données de la fiche de renseignements annuelle d’un CIF et les éléments restant à compléter.',
     illustration: 'fra'
   },
   {

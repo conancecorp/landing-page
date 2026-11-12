@@ -11,8 +11,8 @@
             Simplifiez la gestion de vos <span class="texte-degrade">commissions</span>
           </h1>
           <p v-reveal="120" class="text-lg md:text-xl text-brume/90 mb-10 max-w-2xl mx-auto font-light">
-            Le back-office des commissions des cabinets de gestion de patrimoine&nbsp;:
-            importez vos bordereaux, repérez ce qui manque, prévoyez ce qui va tomber.
+            Le back-office des commissions des cabinets de conseil en gestion de patrimoine&nbsp;:
+            importez vos bordereaux, contrôlez l'exhaustivité de vos commissions, maîtrisez votre prévisionnel.
           </p>
           <div v-reveal="240" class="flex flex-col sm:flex-row justify-center gap-3 mb-12 md:mb-16">
             <a href="https://app.conance.io/register?plan=gratuit" class="btn-accent px-6 py-3">
@@ -106,7 +106,7 @@
                 <span class="manque">~{{ ligne.manque }} €</span>
               </li>
             </ul>
-            <div class="pastille-pied"><strong class="manque">~14 800 €</strong> de manque estimé</div>
+            <div class="pastille-pied"><strong class="manque">~14 800 €</strong> non perçus (estimation)</div>
           </div>
         </div>
         <div class="flottante flottante--import" aria-hidden="true">
@@ -134,28 +134,28 @@
             Votre CRM gère vos clients.<br />Conance gère vos commissions.
           </h2>
           <p class="text-lg text-gray-600 mb-4">
-            Les logiciels patrimoniaux (CRM, agrégateurs d'encours, outils de conformité) savent
-            tout sur vos clients et leurs placements. Mais aucun ne tient la <strong class="text-gray-900">comptabilité
-            des commissions reçues</strong> par votre cabinet.
+            Les logiciels patrimoniaux (CRM, agrégateurs, outils de conformité) couvrent la relation
+            client et le suivi des placements. Aucun n'est conçu pour le <strong class="text-gray-900">suivi
+            et le contrôle des commissions perçues</strong> par votre cabinet.
           </p>
           <p class="text-lg text-gray-600">
-            Conance ne remplace pas votre CRM : il prend le relais là où il s'arrête. Gardez vos outils,
+            Conance ne remplace pas votre CRM, il le complète. Conservez vos outils et
             confiez-nous le suivi et l'analyse de vos commissions.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Le mois d'un cabinet : cinq temps, chacun renvoie à sa section -->
+    <!-- Monthly cycle: five steps, each one links to its section -->
     <section id="fonctionnalites" class="py-20 bg-warm">
       <div class="container">
         <div v-reveal class="text-center mb-14">
-          <span class="section-badge"><i class="pi pi-calendar"></i>Le mois d'un cabinet</span>
+          <span class="section-badge"><i class="pi pi-calendar"></i>Le cycle mensuel</span>
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Du bordereau à la déclaration
           </h2>
           <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto">
-            Chaque mois, les mêmes cinq temps. Conance fait le travail de fond, vous gardez les décisions.
+            Chaque mois, cinq étapes. Conance assure le traitement, vous conservez la maîtrise des décisions.
           </p>
         </div>
 
@@ -185,17 +185,17 @@
           <div v-reveal.left>
             <span class="section-badge"><i class="pi pi-upload"></i>Import</span>
             <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Importez les bordereaux tels qu'ils arrivent
+              Importez vos bordereaux, quel que soit leur format
             </h2>
             <p class="text-lg text-gray-600 mb-6">
-              Déposez le fichier du partenaire : Conance reconnaît ses colonnes, signale les erreurs
-              avant d'écrire quoi que ce soit et retient le format pour la fois suivante.
+              Déposez le bordereau du partenaire : Conance identifie ses colonnes, contrôle les données
+              avant toute intégration et mémorise le format pour les bordereaux suivants.
             </p>
             <ul class="liste-points">
-              <li><i class="pi pi-check-circle"></i><span>Excel, CSV et PDF : un relevé PDF devient un tableau importable</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Excel, CSV et PDF : un bordereau PDF est converti en tableau exploitable</span></li>
               <li><i class="pi pi-check-circle"></i><span>Colonnes reconnues, configuration mémorisée par partenaire</span></li>
-              <li><i class="pi pi-check-circle"></i><span>Validation et détection des erreurs avant l'import</span></li>
-              <li><i class="pi pi-check-circle"></i><span>Un import raté s'annule en entier, contrats et clients créés compris</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Contrôle des données et détection des anomalies avant intégration</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Un import peut être annulé intégralement, y compris les contrats et clients qu'il a créés</span></li>
             </ul>
             <router-link to="/guide-rapprochement-bordereaux-commissions" class="lien-fleche mt-6">Lire le guide : rapprocher ses bordereaux <i class="pi pi-arrow-right"></i></router-link>
           </div>
@@ -212,31 +212,31 @@
         <div v-reveal class="text-center max-w-3xl mx-auto mb-12">
           <span class="section-badge section-badge--sombre"><i class="pi pi-chart-line"></i>Pilotage et prévisionnel</span>
           <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl font-bold text-blanc mb-6">
-            Sachez ce qui va tomber, et quand
+            Maîtrisez votre prévisionnel, mois par mois
           </h2>
           <p class="text-lg text-brume/90 font-light">
-            Conance lit le rythme de chaque contrat dans vos bordereaux et en déduit ce que vous allez
-            encaisser d'ici décembre, mois par mois et contrat par contrat. Un contrat en retard est
-            signalé, un rythme mal compris se corrige en deux clics.
+            Conance analyse la périodicité de versement de chaque contrat dans vos bordereaux et en déduit
+            vos encaissements prévisionnels jusqu'au 31 décembre, mois par mois et contrat par contrat.
+            Un contrat en retard est signalé ; une périodicité mal interprétée se corrige en deux clics.
           </p>
-          <router-link to="/guide-prevision-commissions" class="lien-fleche lien-fleche--sombre mt-6">Lire le guide : prévoir ses commissions <i class="pi pi-arrow-right"></i></router-link>
+          <router-link to="/guide-prevision-commissions" class="lien-fleche lien-fleche--sombre mt-6">Lire le guide : établir son prévisionnel <i class="pi pi-arrow-right"></i></router-link>
         </div>
 
         <ul class="points-sombres">
           <li v-reveal>
             <i class="pi pi-wallet"></i>
             <h3>Encours et production</h3>
-            <p>L'encours retenu par vos partenaires et la production de l'année, avec leur évolution mois par mois.</p>
+            <p>L'encours communiqué par vos partenaires et la production de l'année, avec leur évolution mensuelle.</p>
           </li>
           <li v-reveal="120">
             <i class="pi pi-chart-bar"></i>
             <h3>Prévisionnel de l'année</h3>
-            <p>L'encaissé et l'à-venir jusqu'en décembre, avec la part qui repose sur des contrats en retard.</p>
+            <p>L'encaissé et le reste à encaisser jusqu'au 31 décembre, dont la part liée à des contrats en retard.</p>
           </li>
           <li v-reveal="240">
             <i class="pi pi-list"></i>
             <h3>Contrat par contrat</h3>
-            <p>Chaque échéance avec son rythme. Un rythme se corrige, un contrat se retire du prévisionnel.</p>
+            <p>Chaque échéance et sa périodicité. Une périodicité peut être corrigée, un contrat exclu du prévisionnel.</p>
           </li>
         </ul>
 
@@ -257,19 +257,19 @@
           <div v-reveal.left>
             <span class="section-badge"><i class="pi pi-bell"></i>Commissions attendues</span>
             <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Repérez la commission qui n'est pas venue
+              Contrôlez l'exhaustivité de vos commissions
             </h2>
             <p class="text-lg text-gray-600 mb-6">
-              Un contrat qui payait tous les trimestres et se tait depuis six mois remonte tout seul,
-              avec ce qu'il aurait dû verser. Une commission que l'on vous annonce, un droit d'entrée
-              par exemple, se déclare et se rapproche de ce qui arrive dans les bordereaux.
+              Un contrat commissionné chaque trimestre et sans versement depuis six mois est signalé
+              automatiquement, avec le montant attendu. Une commission annoncée par un partenaire, un droit
+              d'entrée par exemple, est enregistrée comme attendue puis rapprochée des bordereaux reçus.
             </p>
             <ul class="liste-points">
-              <li><i class="pi pi-check-circle"></i><span>Contrats muets au regard de leur propre rythme, versements manqués chiffrés</span></li>
-              <li><i class="pi pi-check-circle"></i><span>Commissions annoncées rapprochées à l'import, écart signalé si le montant diffère</span></li>
-              <li><i class="pi pi-check-circle"></i><span>Conance signale, vous tranchez : contrat résilié, attente annulée</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Contrats sans versement au regard de leur périodicité, montants non perçus chiffrés</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Commissions attendues rapprochées à l'import, écart signalé en cas de différence de montant</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Conance signale, vous décidez : contrat résilié, commission attendue annulée</span></li>
             </ul>
-            <router-link to="/guide-commissions-manquantes" class="lien-fleche mt-6">Lire le guide : repérer les commissions manquantes <i class="pi pi-arrow-right"></i></router-link>
+            <router-link to="/guide-commissions-manquantes" class="lien-fleche mt-6">Lire le guide : contrôler l'exhaustivité de ses commissions <i class="pi pi-arrow-right"></i></router-link>
           </div>
           <Parallaxe :force="90">
             <div class="cadre-pastille">
@@ -277,8 +277,8 @@
               <div v-reveal.scale="650" class="pastille pastille--ligne pastille-manque" aria-hidden="true">
                 <span class="pastille-tuile pastille-tuile--alerte"><i class="pi pi-bell"></i></span>
                 <span>
-                  <span class="pastille-titre"><strong class="manque">~14 800 €</strong> de manque estimé</span>
-                  <span class="pastille-sous">12 contrats à regarder</span>
+                  <span class="pastille-titre"><strong class="manque">~14 800 €</strong> non perçus (estimation)</span>
+                  <span class="pastille-sous">12 contrats à vérifier</span>
                 </span>
               </div>
             </div>
@@ -297,40 +297,39 @@
           <div v-reveal.right class="order-1 lg:order-2">
             <span class="section-badge"><i class="pi pi-money-bill"></i>Commissions</span>
             <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              La comptabilité analytique de votre chiffre d'affaires
+              L'analyse de votre chiffre d'affaires
             </h2>
             <p class="text-lg text-gray-600 mb-6">
-              Bien plus qu'un simple suivi : ventilez l'ensemble de votre chiffre d'affaires selon
-              tous les axes qui comptent pour piloter votre cabinet, et obtenez la réponse en quelques clics.
+              Ventilez votre chiffre d'affaires selon les axes utiles au pilotage du cabinet, en quelques clics.
             </p>
             <ul class="liste-points">
               <li><i class="pi pi-check-circle"></i><span>Par conseiller, partenaire, produit et client</span></li>
-              <li><i class="pi pi-check-circle"></i><span>Par nature : récurrent (encours) ou ponctuel (droits d'entrée)</span></li>
-              <li><i class="pi pi-check-circle"></i><span>Par activité : CIF, Courtage, IOBSP…</span></li>
-              <li><i class="pi pi-check-circle"></i><span>Par entité comptable, avec historique complet et traçabilité</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Par nature : commissions sur encours (récurrentes) ou droits d'entrée (ponctuels)</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Par activité : CIF, courtage, IOBSP…</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Par entité juridique, avec l'historique et la traçabilité de chaque commission</span></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Déclarer et comptabiliser -->
+    <!-- Regulatory figures and accounting export -->
     <section id="declarer" class="py-20 bg-page">
       <div class="container">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div v-reveal.left>
-            <span class="section-badge"><i class="pi pi-file-check"></i>Déclarer et comptabiliser</span>
+            <span class="section-badge"><i class="pi pi-file-check"></i>Réglementaire et export comptable</span>
             <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              La FRA CIF et la comptabilité, sans ressaisie
+              La FRA CIF et l'export comptable, sans ressaisie
             </h2>
             <p class="text-lg text-gray-600 mb-6">
-              Les chiffres de la fiche de renseignements annuels se calculent à partir de vos commissions,
-              avec ce qu'il reste à compléter. Vous relisez, vous exportez.
+              Les données de la fiche de renseignements annuelle sont calculées à partir de vos commissions,
+              avec les éléments restant à compléter. Vous vérifiez, vous exportez.
             </p>
             <ul class="liste-points">
-              <li><i class="pi pi-check-circle"></i><span>Rétrocessions, honoraires et courtage de l'exercice, clients, contrats, encours au 31 décembre</span></li>
-              <li><i class="pi pi-check-circle"></i><span>Rubriques à régler selon vos natures de commission</span></li>
-              <li><i class="pi pi-check-circle"></i><span>Alerte quand une donnée manque, export Excel</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Rétrocessions, honoraires et courtage de l'exercice, clients, contrats, encours au 31 décembre</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Rubriques paramétrables selon vos natures de commission</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Alerte en cas de donnée manquante, export Excel</span></li>
             </ul>
             <router-link to="/guide-chiffres-fra-cif" class="lien-fleche mt-6">Lire le guide : préparer la FRA CIF <i class="pi pi-arrow-right"></i></router-link>
           </div>
@@ -344,8 +343,8 @@
           <div class="carte-export-texte">
             <h3 class="heading-font">Export comptable</h3>
             <p>
-              Une écriture par commission, sur un compte de produit choisi selon la nature et sur le compte
-              du partenaire qui l'a versée. À remettre à votre expert-comptable ou à importer dans Pennylane.
+              Une écriture par commission, imputée au compte de produit de sa nature et au compte du
+              partenaire. Le fichier se transmet à votre expert-comptable ou s'importe dans Pennylane.
             </p>
           </div>
           <div class="carte-export-formats">
@@ -363,21 +362,21 @@
           <div>
             <span v-reveal class="section-badge"><i class="pi pi-shield"></i>Sécurité et équipe</span>
             <h2 v-reveal="80" class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Vos données restent les vôtres
+              Vos données vous appartiennent
             </h2>
             <ul class="garanties">
               <li v-reveal="160">
                 <span class="garantie-tuile"><i class="pi pi-lock"></i></span>
                 <div>
                   <h3>Double authentification</h3>
-                  <p>Par code, clé d'accès (Touch ID, Face ID, clé physique) ou e-mail, imposable à tout le cabinet.</p>
+                  <p>Par code, clé d'accès (Touch ID, Face ID, clé physique) ou e-mail, pouvant être rendue obligatoire pour tout le cabinet.</p>
                 </div>
               </li>
               <li v-reveal="260">
                 <span class="garantie-tuile"><i class="pi pi-users"></i></span>
                 <div>
                   <h3>Rôles et permissions</h3>
-                  <p>Chacun voit et modifie ce que son rôle permet, fonctionnalité par fonctionnalité.</p>
+                  <p>Des droits d'accès définis par rôle, fonctionnalité par fonctionnalité.</p>
                 </div>
               </li>
               <li v-reveal="360">
@@ -390,8 +389,8 @@
               <li v-reveal="460">
                 <span class="garantie-tuile"><i class="pi pi-mobile"></i></span>
                 <div>
-                  <h3>Aussi sur téléphone</h3>
-                  <p>Les pages du quotidien à portée de main, avec une barre d'onglets.</p>
+                  <h3>Accessible sur mobile</h3>
+                  <p>Les écrans du quotidien, adaptés au téléphone.</p>
                 </div>
               </li>
             </ul>
@@ -489,11 +488,11 @@
           <div v-reveal.right>
             <span class="section-badge"><i class="pi pi-sitemap"></i>Multi-Cabinets</span>
             <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Vous gérez les commissions pour plusieurs cabinets ?
+              Vous traitez les commissions de plusieurs cabinets ?
             </h2>
             <p class="text-lg text-gray-600 mb-6">
-              De nombreux cabinets de gestion de patrimoine font le choix d'externaliser
-              le traitement de leurs commissions auprès de prestataires spécialisés.
+              De nombreux cabinets de conseil en gestion de patrimoine confient le traitement
+              de leurs commissions à des prestataires spécialisés.
               Conance propose des offres <strong>Multi-Cabinets</strong> conçues spécifiquement
               pour ces prestataires, leur permettant de centraliser la gestion des commissions
               de tous leurs cabinets clients depuis un espace unifié.
@@ -503,7 +502,7 @@
               <li><i class="pi pi-check-circle"></i><span>Chaque cabinet dispose de son propre espace isolé et sécurisé</span></li>
               <li><i class="pi pi-check-circle"></i><span>Basculez entre vos cabinets en un clic</span></li>
               <li><i class="pi pi-check-circle"></i><span>Crédits IA mis en commun entre les cabinets du groupe</span></li>
-              <li><i class="pi pi-check-circle"></i><span>Idéal pour les prestataires qui gèrent l'externalisation des commissions</span></li>
+              <li><i class="pi pi-check-circle"></i><span>Conçu pour les prestataires de back-office externalisé</span></li>
             </ul>
             <div class="mt-8">
               <router-link to="/tarifs#multi-cabinets" class="btn-primary px-6 py-3 inline-block">Voir les offres Multi-Cabinets</router-link>
@@ -632,13 +631,13 @@ export default {
       navbarScrollHandler: null,
       resizeHandler: null,
       navbarDark: true,
-      // Le mois d'un cabinet : chaque temps renvoie à sa section, dans l'ordre de la page
+      // Monthly cycle: each step links to its section, in page order
       etapes: [
         { ancre: 'import', icone: 'pi-upload', titre: 'Importer', texte: 'Excel, CSV ou PDF, le format de chaque partenaire mémorisé.' },
-        { ancre: 'previsionnel', icone: 'pi-chart-line', titre: 'Prévoir', texte: "Combien d'ici décembre, et quand, contrat par contrat." },
-        { ancre: 'attendues', icone: 'pi-bell', titre: 'Contrôler', texte: 'Les contrats qui ne paient plus, les montants qui ne collent pas.' },
-        { ancre: 'analyse', icone: 'pi-chart-pie', titre: 'Analyser', texte: 'Par conseiller, partenaire, produit, nature ou entité.' },
-        { ancre: 'declarer', icone: 'pi-file-check', titre: 'Déclarer', texte: "Les chiffres de la FRA CIF et les écritures pour l'expert-comptable." }
+        { ancre: 'previsionnel', icone: 'pi-chart-line', titre: 'Prévoir', texte: "Les encaissements attendus jusqu'au 31 décembre, contrat par contrat." },
+        { ancre: 'attendues', icone: 'pi-bell', titre: 'Contrôler', texte: "L'exhaustivité des commissions perçues et les écarts avec les commissions attendues." },
+        { ancre: 'analyse', icone: 'pi-chart-pie', titre: 'Analyser', texte: "Le chiffre d'affaires par conseiller, partenaire, produit, nature ou entité." },
+        { ancre: 'declarer', icone: 'pi-file-check', titre: 'Déclarer', texte: "Les données de la FRA CIF et l'export destiné à votre expert-comptable." }
       ],
       etapesAllumees: 0,
       barresPrevision: PREVISION_MENSUELLE.map((v) => Math.round((v / Math.max(...PREVISION_MENSUELLE)) * 100)),

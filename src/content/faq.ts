@@ -3,22 +3,22 @@ export const faq: { question: string; answer: string }[] = [
   {
     question: 'Qu’est-ce que Conance ?',
     answer:
-      'Conance est un logiciel français en ligne de gestion des commissions pour les cabinets de gestion de patrimoine. Il importe les bordereaux des partenaires, les réunit dans une base consolidée, signale les commissions qui manquent, prévoit celles à venir et prépare les chiffres de la FRA CIF et de la comptabilité.'
+      'Conance est un logiciel français, en ligne, de gestion des commissions pour les cabinets de conseil en gestion de patrimoine. Il importe les bordereaux des partenaires dans une base consolidée, contrôle l’exhaustivité des commissions perçues, établit le prévisionnel et prépare les données de la FRA CIF ainsi que l’export comptable.'
   },
   {
     question: 'À qui s’adresse Conance ?',
     answer:
-      'Aux cabinets de gestion de patrimoine (CGP, CIF, courtiers), de l’indépendant au cabinet à plusieurs conseillers et plusieurs entités, ainsi qu’aux prestataires qui traitent les commissions de plusieurs cabinets, avec les offres Multi-Cabinets.'
+      'Aux cabinets de conseil en gestion de patrimoine (CGP, CIF, courtiers en assurance), du conseiller indépendant au cabinet multi-conseillers et multi-entités, ainsi qu’aux prestataires qui traitent les commissions de plusieurs cabinets (offres Multi-Cabinets).'
   },
   {
     question: 'Conance remplace-t-il mon CRM patrimonial ?',
     answer:
-      'Non. Conance s’ajoute à votre CRM ou à votre logiciel patrimonial (O2S, Wizio, Majors…). Ces outils suivent vos clients et leurs placements ; Conance suit les commissions que le cabinet reçoit de ses partenaires.'
+      'Non. Conance s’ajoute à votre CRM ou à votre logiciel patrimonial (O2S, Wizio, Majors…). Ces outils suivent vos clients et leurs placements ; Conance assure le suivi des commissions que le cabinet perçoit de ses partenaires.'
   },
   {
     question: 'Quels formats de bordereaux Conance sait-il lire ?',
     answer:
-      'Excel, CSV, OpenDocument et PDF. Conance reconnaît les colonnes, signale les erreurs avant d’écrire quoi que ce soit et retient le format de chaque partenaire pour la fois suivante. Une soixantaine de modèles de bordereaux sont déjà prêts à l’emploi.'
+      'Excel, CSV, OpenDocument et PDF. Conance identifie les colonnes, contrôle les données avant toute intégration et mémorise le format de chaque partenaire pour les bordereaux suivants. Une soixantaine de modèles de bordereaux sont déjà prêts à l’emploi.'
   },
   {
     question: 'Combien coûte Conance ?',
@@ -28,17 +28,17 @@ export const faq: { question: string; answer: string }[] = [
   {
     question: 'Où sont hébergées les données ?',
     answer:
-      'En France : l’application, la base de données, les fichiers et les sauvegardes. L’accès est protégé par une double authentification, imposable à tout le cabinet, et par des rôles et permissions.'
+      'En France : l’application, la base de données, les fichiers et les sauvegardes. L’accès est protégé par une double authentification, qui peut être rendue obligatoire pour tout le cabinet, et par des droits d’accès définis par rôle.'
   },
   {
     question: 'Quel est le rôle de l’IA dans Conance ?',
     answer:
-      'L’IA est un assistant optionnel : elle propose, vous validez. Un PDF est d’abord traité sur nos serveurs. Rien n’est envoyé à un prestataire d’IA sans le consentement d’un administrateur du cabinet et, pour un document, sans votre confirmation. Les fonctionnalités IA sont incluses à partir de l’offre Starter.'
+      'L’IA est un assistant optionnel : elle propose, vous validez. L’import des bordereaux fonctionne sans IA. Un PDF est d’abord traité sur nos serveurs. Rien n’est envoyé à un prestataire d’IA sans le consentement d’un administrateur du cabinet et, pour un document, sans votre confirmation. Les fonctionnalités IA sont incluses à partir de l’offre Starter.'
   },
   {
     question: 'Conance remplit-il la FRA CIF ?',
     answer:
-      'Conance prépare les chiffres : rétrocessions, honoraires et courtage de l’exercice, clients, contrats et encours au 31 décembre. Vous les relisez, vous les exportez en Excel et vous les reportez dans le support de votre association. Conance ne dépose pas la déclaration à votre place.'
+      'Conance prépare les chiffres : rétrocessions, honoraires et courtage de l’exercice, clients, contrats et encours au 31 décembre. Vous les vérifiez, les exportez en Excel et les reportez dans le formulaire de votre association professionnelle. Conance ne dépose pas la déclaration à votre place.'
   },
   {
     question: 'Comment commencer ?',

@@ -38,7 +38,7 @@
     </section>
 
     <ConanceBand name="import" alt="Aperçu de l'import de données" tab="Import" path="import">
-      Conance signale les erreurs avant d'écrire quoi que ce soit, et un import raté s'annule en entier, contrats et clients créés compris.
+      Conance contrôle les données avant toute intégration, et un import peut être annulé intégralement, y compris les contrats et clients créés.
     </ConanceBand>
 
     <section class="py-20 bg-warm">
@@ -64,20 +64,20 @@ const cases = [
   {
     title: 'Chaque partenaire a son format',
     icon: 'pi-file-excel',
-    situation: 'Un Excel ici, un PDF là, des colonnes qui changent d’un partenaire à l’autre.',
-    answer: 'Conance reconnaît les colonnes et retient le format de chaque partenaire. Une soixantaine de modèles sont déjà prêts.'
+    situation: 'Excel, CSV ou PDF : la structure des bordereaux varie d’un partenaire à l’autre.',
+    answer: 'Conance identifie les colonnes et mémorise le format de chaque partenaire. Une soixantaine de modèles sont déjà prêts.'
   },
   {
     title: 'Le bordereau n’indique pas le contrat',
     icon: 'pi-search',
-    situation: 'Certains partenaires ne donnent qu’un nom de client, sans numéro de contrat.',
-    answer: 'Conance retrouve le contrat à partir du nom du client chez ce partenaire, et retient votre choix pour les prochains bordereaux.'
+    situation: 'Certains partenaires n’indiquent que le nom du client, sans numéro de contrat.',
+    answer: 'Conance retrouve le contrat à partir du nom du client chez ce partenaire, et mémorise votre choix pour les prochains bordereaux.'
   },
   {
     title: 'Un contrat change de conseiller',
     icon: 'pi-user-edit',
-    situation: 'Les commissions doivent aller au bon conseiller, avant comme après le changement.',
-    answer: 'Le contrat garde l’historique de ses conseillers : vous choisissez à partir de quelle date le changement s’applique.'
+    situation: 'Les commissions doivent être affectées au bon conseiller, avant comme après le changement.',
+    answer: 'Le contrat conserve l’historique de ses conseillers : vous fixez la date d’effet du changement.'
   }
 ]
 </script>
